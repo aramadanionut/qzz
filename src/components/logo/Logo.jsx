@@ -9,12 +9,12 @@ import './Logo.scss';
 export default function Logo(props) {
     const logoClasses = classNames({
         'Logo': true,
-        [`Logo--size-${props.size}`]: !!props.size
+        [`Logo--size-${props.size.toLowerCase()}`]: !!props.size
     });
 
     return (
-        <div className={ logoClasses }>
-            <img src={ logo } alt="Logo"/>
+        <div className={logoClasses}>
+            <img src={logo} alt="Logo"/>
         </div>
     );
 }

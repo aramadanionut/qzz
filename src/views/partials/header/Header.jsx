@@ -1,6 +1,6 @@
 import React from "react";
 
-import Logo from 'views/partials/logo/Logo';
+import Logo from 'components/logo/Logo';
 import { SIZES } from 'utils/constants';
 
 import './Header.scss';
