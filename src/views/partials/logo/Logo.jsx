@@ -2,10 +2,10 @@ import React from "react";
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import './Logo.scss';
-
 import logo from 'assets/img/logo.png';
+import { SIZES } from 'utils/constants';
 
+import './Logo.scss';
 export default function Logo(props) {
     const logoClasses = classNames({
         'Logo': true,
@@ -13,16 +13,16 @@ export default function Logo(props) {
     });
 
     return (
-        <div className={logoClasses}>
-            <img src={logo} alt="Logo"/>
+        <div className={ logoClasses }>
+            <img src={ logo } alt="Logo"/>
         </div>
     );
 }
 
 Logo.propTypes = {
-    size: PropTypes.oneOf(['small', 'medium', 'large'])
+    size: PropTypes.oneOf(Object.values(SIZES))
 };
 
 Logo.defaultProps = {
-    size: 'small'
+    size: SIZES.SMALL
 };
