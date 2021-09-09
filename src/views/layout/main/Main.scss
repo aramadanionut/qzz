@@ -1,6 +1,8 @@
 .layout-main {
+    flex-grow: 1;
     background: blue;
     padding: 0 45px;
+    
     .layout-main-inner {
         background: red;
     }

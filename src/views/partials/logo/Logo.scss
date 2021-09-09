@@ -1,0 +1,23 @@
+.Logo {
+    img {
+        max-width: 100px;
+    }
+
+    &.Logo--size-small {
+        img {
+            max-width: 100px;
+        }
+    }
+
+    &.Logo--size-medium {
+        img {
+            max-width: 200px;
+        }
+    }
+
+    &.Logo--size-large {
+        img {
+            max-width: 300px;
+        }
+    }
+}

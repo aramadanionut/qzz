@@ -3,6 +3,7 @@
 @import 'assets/scss/global';
 
 .App {
+  display: flex;
   padding: 3em;
   box-sizing: border-box;
   min-height: 100vh;
