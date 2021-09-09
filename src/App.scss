@@ -1,0 +1,9 @@
+@import-normalize;
+@import 'assets/scss/fonts';
+@import 'assets/scss/global';
+
+.App {
+  padding: 3em;
+  box-sizing: border-box;
+  min-height: 100vh;
+}
