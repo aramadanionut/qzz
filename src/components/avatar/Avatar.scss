@@ -1,4 +1,10 @@
+@import 'assets/scss/fonts';
+
 .Avatar {
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+
     .Avatar__image {
         width: 40px;
         height: 40px;
@@ -7,5 +13,15 @@
             max-width: 100%;
             max-height: 100%;
         }
+    }
+
+    .Avatar__name {
+        font-family: 'Libre Baskerville', serif;
+        font-weight: 600;
+        font-size: 14px;
+    }
+
+    &.Avatar--image-end {
+        flex-direction: row-reverse;
     }
 }

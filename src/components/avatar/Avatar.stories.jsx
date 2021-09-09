@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { AVATARS } from 'utils/constants';
+import { AVATARS, POSITIONS } from 'utils/constants';
 
 import Avatar from './Avatar';
 
@@ -19,12 +19,28 @@ export default {
       control: {
         type: 'radio'
       }
+    },
+    imagePosition: {
+      options: [
+        POSITIONS.START,
+        POSITIONS.END
+      ],
+      control: {
+        type: 'radio'
+      }
     }
   }
 }
 
-export const Primary = (args) => <Avatar image={ args.image }></Avatar>;
+export const Primary = (args) => (
+  <Avatar
+    name={ args.name }
+    image={ args.image }
+    imagePosition={ args.imagePosition }>
+  </Avatar>
+)
 
 Primary.args = {
+  name: 'John Smith',
   image: AVATARS.DEFAULT
 };

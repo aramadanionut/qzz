@@ -14,6 +14,12 @@ export const SIZES = keyMirror({
     LARGE: null
 });
 
+export const POSITIONS = keyMirror({
+    START: null,
+    CENTER: null,
+    END: null
+});
+
 export const AVATARS = keyMirror({
     ASTRONAUT: null,
     BEAR: null,
