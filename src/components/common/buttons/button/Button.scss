@@ -1,0 +1,33 @@
+@import 'assets/scss/easings';
+
+.Button {
+    cursor: pointer;
+    outline: none;
+    border-radius: 30px;
+    padding: 12px 24px;
+    box-shadow: none;
+    border: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    transition: transform 0.2s $easeInOutSine;
+
+    &.Button--small {
+        font-size: 11px;
+        font-weight: 600;
+        padding: 6px 12px;
+    }
+
+    &.Button--medium {
+        font-size: 14px;
+        padding: 12px 24px;
+    }
+
+    &.Button--large {
+        font-size: 18px;
+        padding: 20px 32px;
+    }
+
+    &:hover {
+        transform: scale(1.05);
+    }
+}
