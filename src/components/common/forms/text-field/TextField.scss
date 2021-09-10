@@ -1,0 +1,79 @@
+@import 'assets/scss/colors';
+@import 'assets/scss/fonts';
+@import 'assets/scss/easings';
+
+.TextField {
+
+    position: relative;
+
+    .TextField__label-container {
+        position: relative;
+        height: 40px;
+        overflow: hidden;
+        
+        .TextField__label {
+            position: absolute;
+            top: 0;
+            height: 100%;
+            line-height: 40px;
+            padding-left: 20px;
+            font-family: 'Poppins', sans-serif;
+            color: white;
+            transform: translateY(100%);
+            opacity: 0;
+            transition: all .2s $easeInOutSine;
+        }
+    }
+
+    .TextField__input {
+        padding: 12px 18px;
+        background: none;
+        border: 2px solid $deep-cyan;
+        border-radius: 6px;
+        font-size: 16px;
+        outline: none;
+        color: white;
+        font-family: 'Poppins', sans-serif;
+        overflow: hidden;
+        transition: all .2s $easeInOutSine;
+    
+        &::placeholder {
+            color: darken($deep-cyan, 15%);
+            opacity: 1;
+            transition: all .2s $easeInOutSine;
+        }
+    
+        &:focus {
+            border-color: white;
+    
+            &::placeholder {
+                color: darken(white, 15%);
+            }
+        }
+    }
+
+    &.TextField--focused {
+        .TextField__label-container {
+            .TextField__label {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .TextField__input {
+            &::placeholder {
+                transform: translateY(-150%);
+                opacity: 0;
+            }
+        }
+    }
+
+    &.TextField--has-value {
+        .TextField__label-container {
+            .TextField__label {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    }
+}
