@@ -10,7 +10,7 @@ export default function Avatar(props) {
     const avatarImage = AVATAR_IMAGES[props.image];
 
     const avatarClasses = classNames({
-        [ 'Avatar' ]: true,
+        Avatar: true,
         [ `Avatar--image-${props.imagePosition.toLowerCase()}` ]: !!props.imagePosition
     });
 

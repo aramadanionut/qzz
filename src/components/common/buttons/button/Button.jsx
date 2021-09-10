@@ -13,7 +13,7 @@ export default function Button(props) {
     const [ hoverRef, isHovered ] = useHover();
     
     const buttonClasses = classNames({
-        ['Button']: true,
+        Button: true,
         [`Button--${props.size.toLowerCase()}`]: !!props.size,
         [`Button--hovered`]: isHovered
     });

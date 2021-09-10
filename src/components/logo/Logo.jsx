@@ -14,7 +14,7 @@ export default function Logo(props) {
     } = props;
 
     const logoClasses = classNames({
-        'Logo': true,
+        Logo: true,
         [`Logo--size-${size.toLowerCase()}`]: !!size
     });
 
