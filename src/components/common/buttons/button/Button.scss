@@ -58,13 +58,24 @@ $button-height: 50px;
 
     .Button__text {
         position: relative;
-        top: 1px;
+        top: 0px;
         z-index: 2;
         color: $light-cyan;
         text-transform: uppercase;
         font-size: .9rem;
         transition: all 0.25s $easeInOutQuint;
         letter-spacing: 1px;
+    }
+
+    &.Button--secondary {
+        .Button__background {
+            background: $orange;
+            background: linear-gradient(180deg, $orange 0%, $mid-orange 80%, $pink 100%);
+        }
+
+        .Button__text {
+            color: $mid-orange;
+        }
     }
 
     &.Button--hovered {

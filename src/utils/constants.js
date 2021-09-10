@@ -8,6 +8,11 @@ import {
     DefaultAvatar
 } from 'assets/img/avatars/index';
 
+export const COLORS = keyMirror({
+    PRIMARY: null,
+    SECONDARY: null
+});
+
 export const SIZES = keyMirror({
     SMALL: null,
     MEDIUM: null,

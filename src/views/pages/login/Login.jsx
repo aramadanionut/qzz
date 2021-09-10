@@ -5,7 +5,7 @@ import TextField from "components/common/forms/text-field/TextField";
 import AvatarPicker from "components/avatar-picker/AvatarPicker";
 
 import './Login.scss';
-import { POSITIONS } from "utils/constants";
+import { COLORS, POSITIONS } from "utils/constants";
 
 export default function Login(props) {
     return (
@@ -33,7 +33,7 @@ export default function Login(props) {
                 </div>
 
                 <div className="Login__form__button">
-                    <Button>Let's go</Button>
+                    <Button color={ COLORS.PRIMARY }>Let's go</Button>
                 </div>
             </div>
         </div>

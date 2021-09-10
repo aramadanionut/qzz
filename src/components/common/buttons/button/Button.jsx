@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons'
 
-import { SIZES } from "utils/constants";
+import { SIZES, COLORS } from "utils/constants";
 import useHover from "hooks/useHover";
 
 import './Button.scss';
@@ -12,7 +12,8 @@ import './Button.scss';
 export default function Button(props) {
     const {
         size,
-        children
+        children,
+        color
     } = props;
 
     const [ hoverRef, isHovered ] = useHover();
@@ -20,7 +21,8 @@ export default function Button(props) {
     const buttonClasses = classNames({
         Button: true,
         [`Button--${size.toLowerCase()}`]: !!size,
-        [`Button--hovered`]: isHovered
+        [`Button--hovered`]: isHovered,
+        [`Button--${color.toLowerCase()}`]: !!color
     });
 
     return (
@@ -42,9 +44,11 @@ export default function Button(props) {
 }
 
 Button.propTypes = {
-    size: PropTypes.oneOf(Object.values(SIZES))
+    size: PropTypes.oneOf(Object.values(SIZES)),
+    color: PropTypes.oneOf(Object.values(COLORS))
 };
 
 Button.defaultProps = {
-    size: SIZES.MEDIUM
+    size: SIZES.MEDIUM,
+    color: COLORS.PRIMARY
 };
