@@ -1,6 +1,25 @@
 .Header {
     display: flex;
-    align-items: center;
+    align-items: top;
     place-content: space-between;
     padding: 0 0 16px 0;
+
+    .Header__logo-push {
+        flex: 1 0 200px;
+        padding-left: 16px;
+    }
+
+    .Header__logo {
+        flex: 2 0 300px;
+        display: flex;
+        place-content: center;
+    }
+
+    .Header__avatar {
+        flex: 1 0 200px;
+        display: flex;
+        place-content: flex-end;
+        align-items: flex-start;
+        padding: 16px 16px 0 0;
+    }
 }
