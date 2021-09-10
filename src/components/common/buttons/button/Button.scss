@@ -12,7 +12,7 @@ $button-height: 50px;
     outline: none;
     box-shadow: none;
     border: none;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-weight: 700;
     background: none;
     transition: all 0.2s $easeInOutQuint;
@@ -62,7 +62,7 @@ $button-height: 50px;
         z-index: 2;
         color: $light-cyan;
         text-transform: uppercase;
-        font-size: 12px;
+        font-size: .9rem;
         transition: all 0.25s $easeInOutQuint;
         letter-spacing: 1px;
     }

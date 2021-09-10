@@ -10,11 +10,16 @@ import useHover from "hooks/useHover";
 import './Button.scss';
 
 export default function Button(props) {
+    const {
+        size,
+        children
+    } = props;
+
     const [ hoverRef, isHovered ] = useHover();
     
     const buttonClasses = classNames({
         Button: true,
-        [`Button--${props.size.toLowerCase()}`]: !!props.size,
+        [`Button--${size.toLowerCase()}`]: !!size,
         [`Button--hovered`]: isHovered
     });
 
@@ -22,13 +27,15 @@ export default function Button(props) {
         <button
             ref={ hoverRef }
             className={buttonClasses}>
+
             <div className="Button__background">
                 <div className="Button__background-icon">
                     <FontAwesomeIcon icon={ faChevronRight } />
                 </div>
             </div>
+
             <div className="Button__text">
-                { props.children }
+                { children }
             </div>
         </button>
     );

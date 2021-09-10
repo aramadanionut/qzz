@@ -1,8 +1,6 @@
 import React from "react";
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
+import { Link } from 'react-router-dom';
 
-import TextField from "components/common/forms/text-field/TextField";
 import Button from "components/common/buttons/button/Button";
 
 import './Home.scss';
@@ -14,9 +12,11 @@ export default function Home(props) {
             <p className="Home__text">Ready to train your brain?</p>
 
             <div className="Home__button">
-                <Button>
-                    Start playing
-                </Button>
+                <Link to="/login">
+                    <Button>
+                        Start playing
+                    </Button>
+                </Link>
             </div>
         </div>
     );

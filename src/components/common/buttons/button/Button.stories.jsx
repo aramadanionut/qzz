@@ -17,8 +17,14 @@ export default {
   }
 }
 
-export const Primary = (args) => <Button size={ args.size }>Start the quiz</Button>;
+export const Primary = (args) => (
+  <Button
+    size={ args.size }
+    link={ args.link }>
+    Start the quiz
+  </Button>
+);
 
 Primary.args = {
-    size: SIZES.MEDIUM
+  size: SIZES.MEDIUM
 };
