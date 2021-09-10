@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+
 import useFocus from 'hooks/useFocus';
-import './TextField.scss';
 import { POSITIONS } from "utils/constants";
+
+import './TextField.scss';
 
 export default function TextField(props) {
     const {
@@ -23,6 +25,14 @@ export default function TextField(props) {
         [ `TextField--align-${ align.toLowerCase() }` ]: !!align
     });
 
+    const onChange = (value) => {
+        setValue(value);
+
+        if (props.onChange) {
+            props.onChange(value);
+        }
+    }
+
     return (
         <div className={ textFieldContainerClasses }>
             {label &&
@@ -37,7 +47,7 @@ export default function TextField(props) {
                 value={value}
                 className="TextField__input"
                 placeholder={ placeholder }
-                onChange={e => setValue(e.target.value)}>
+                onChange={e => onChange(e.target.value)}>
             </input>
         </div>
     );

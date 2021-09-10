@@ -9,6 +9,14 @@ import './AvatarPicker.scss';
 export default function AvatarPicker(props) {
     const [ option, setOption ] = useState();
 
+    const onChange = (value) => {
+        setOption(value);
+
+        if (props.onChange) {
+            props.onChange(value);
+        }
+    }
+
     return (
         <div className="AvatarPicker">
             {Object
@@ -20,7 +28,7 @@ export default function AvatarPicker(props) {
                         selected={ option === avatar }
                         avatar={ avatar }
                         image={ AVATAR_IMAGES[avatar] }
-                        onSelect={ (option) => setOption(option) }>
+                        onSelect={ (option) => onChange(option) }>
                     </AvatarPickerOption>
                 ))
             }

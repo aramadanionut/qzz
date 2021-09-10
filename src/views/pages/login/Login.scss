@@ -41,7 +41,8 @@
         }
 
         .Login__form__button {
-            margin-top: 32px;
+            box-sizing: border-box;
+            padding-top: 32px;
         }
     }
 }
