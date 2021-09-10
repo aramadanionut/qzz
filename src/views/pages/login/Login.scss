@@ -19,9 +19,28 @@
 
     .Login__form {
         display: flex;
+        flex-direction: column;
+        gap: 32px;
         align-items: center;
         place-content: center;
         text-align: left;
         margin-top: 40px;
+
+        .Login__form__avatar {
+            .Login__form__avatar__label {
+                margin: 0;
+                text-align: center;
+                color: $deep-cyan;
+                font-family: 'Poppins', sans-serif;
+            }
+
+            .Login__form__avatar__picker {
+                margin-top: 16px;
+            }
+        }
+
+        .Login__form__button {
+            margin-top: 32px;
+        }
     }
 }

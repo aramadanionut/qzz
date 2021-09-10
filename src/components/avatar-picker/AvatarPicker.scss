@@ -17,16 +17,20 @@
         width: 50px;
         height: 50px;
 
+        .AvatarPicker__option__input {
+            display: none;
+        }
+
         &:before {
             content: "";
             position: absolute;
-            width: 54px;
-            height: 54px;
-            background: $light-cyan;
+            width: 52px;
+            height: 52px;
+            background: $deep-cyan;
             border-radius: 60px;
             top: 0;
             bottom: 0;
-            left: -2px;
+            left: -1px;
             right: 0;
             margin: auto;
             transform: scale(0.75);
@@ -34,7 +38,7 @@
             transition: all .2s $easeInOutCirc;
         }
 
-        img {
+        .AvatarPicker__option__image {
             position: relative;
             width: 40px;
             height: 40px;
@@ -51,5 +55,12 @@
             }
         }
 
+        &.AvatarPicker__option--selected {
+            &:before {
+                background: $light-cyan;
+                opacity: 1;
+                transform: scale(1.1);
+            }
+        }
     }
 }
