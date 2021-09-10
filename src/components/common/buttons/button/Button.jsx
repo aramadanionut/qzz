@@ -13,7 +13,7 @@ export default function Button(props) {
     const {
         size,
         children,
-        color
+        color = ''
     } = props;
 
     const [ hoverRef, isHovered ] = useHover();

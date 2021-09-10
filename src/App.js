@@ -13,9 +13,9 @@ import Login from "views/pages/login/Login";
 
 function App() {
   return (
+    <Router>
     <div className="App">
         <Main>
-          <Router>
             <Switch>
               <Route exact path="/">
                 <Home />
@@ -24,9 +24,9 @@ function App() {
                 <Login />
               </Route>
             </Switch>
-          </Router>
         </Main>
       </div>
+    </Router>
   );
 }
 
