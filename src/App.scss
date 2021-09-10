@@ -9,8 +9,7 @@
   box-sizing: border-box;
   min-height: 100vh;
   font-family: 'Libre Baskerville', serif;
-  background: $deep-blue; 
-  background: #141E30;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to bottom, #243B55, #141E30);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to bottom, #243B55, #141E30); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  
+  background: rgb(11,44,82);
+  background: linear-gradient(227deg, rgba(11,44,82,1) 0%, rgba(22,65,116,1) 21%, rgba(28,71,121,1) 47%, rgba(28,68,112,1) 67%, rgba(11,44,82,1) 100%);
 }
