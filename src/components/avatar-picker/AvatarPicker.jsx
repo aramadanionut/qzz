@@ -16,6 +16,7 @@ export default function AvatarPicker(props) {
                 .filter((avatar) => avatar !== AVATARS.DEFAULT)
                 .map((avatar) => (
                     <AvatarPickerOption
+                        key={ `avatar-${avatar}` }
                         selected={ option === avatar }
                         avatar={ avatar }
                         image={ AVATAR_IMAGES[avatar] }

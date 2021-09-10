@@ -4,7 +4,9 @@ import Header from './Header';
 
 export default {
   component: Header,
-  title: 'Views/Partials/Header',
+  title: 'Views/Partials/Header'
 }
 
-export const Primary = () => <Header></Header>;
+export const Primary = () => (
+  <Header></Header>
+);
