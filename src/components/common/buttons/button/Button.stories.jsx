@@ -17,7 +17,7 @@ export default {
   }
 }
 
-export const Primary = (args) => <Button size={ args.size }>Click me</Button>;
+export const Primary = (args) => <Button size={ args.size }>Start the quiz</Button>;
 
 Primary.args = {
     size: SIZES.MEDIUM

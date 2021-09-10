@@ -1,33 +1,89 @@
 @import 'assets/scss/easings';
+@import 'assets/scss/colors';
+
+$button-height: 50px;
 
 .Button {
+    position: relative;
+    height: $button-height;
+    line-height: $button-height;
+    padding: 0 32px 0 calc(#{$button-height} + 16px);
     cursor: pointer;
     outline: none;
-    border-radius: 30px;
-    padding: 12px 24px;
     box-shadow: none;
     border: none;
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
-    transition: transform 0.2s $easeInOutSine;
+    background: none;
+    transition: all 0.2s $easeInOutQuint;
+    
+    .Button__background {
+        display: flex;
+        align-items: center;
+        position: absolute;
+        left: 0;
+        width: $button-height;
+        height: $button-height;
+        border-radius: $button-height;
+        background: $deep-cyan;
+        color: white;
+        transition: all 0.3s $easeInOutQuint;
 
-    &.Button--small {
-        font-size: 11px;
-        font-weight: 600;
-        padding: 6px 12px;
+        .Button__background-icon {
+            position: relative;
+            width: $button-height;
+            height: $button-height;
+            line-height: $button-height;
+            transition: all 0.2s $easeInOutQuint;
+
+            &:before {
+                content: "";
+                display: block;
+                width: 16px;
+                height: 2px;
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 10px;
+                margin: auto;
+                opacity: 0;
+                background: white;
+                transform: translateX(-8px);
+                transition: all 0.15s $easeInOutQuint;
+            }
+        }
     }
 
-    &.Button--medium {
-        font-size: 14px;
-        padding: 12px 24px;
+    .Button__text {
+        position: relative;
+        top: 1px;
+        z-index: 2;
+        color: $deep-cyan;
+        text-transform: uppercase;
+        font-size: 12px;
+        transition: all 0.25s $easeInOutQuint;
+        letter-spacing: 1px;
     }
 
-    &.Button--large {
-        font-size: 18px;
-        padding: 20px 32px;
-    }
+    &.Button--hovered {
+        .Button__background {
+            width: 100%;
 
-    &:hover {
-        transform: scale(1.05);
+            .Button__background-icon {
+                transform: translateX(16px);
+
+                &:before {
+                    width: 12px;
+                    opacity: 1;
+                    transform: translateX(0);
+                }
+            }
+        }
+
+        .Button__text {
+            color: white;
+            transform: translateX(8px);
+        }
     }
 }

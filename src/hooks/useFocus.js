@@ -13,15 +13,15 @@ export default function useFocus() {
             const node = ref.current;
             
             if (node) {
-                node.addEventListener("focus", handleFocus);
-                node.addEventListener("blur", handleBlur);
+                node.addEventListener('focus', handleFocus);
+                node.addEventListener('blur', handleBlur);
                 return () => {
-                    node.removeEventListener("focus", handleFocus);
-                    node.removeEventListener("blur", handleBlur);
+                    node.removeEventListener('focus', handleFocus);
+                    node.removeEventListener('blur', handleBlur);
                 };
             }
         },
-        [ref.current]
+        [ ref.current ]
     );
 
     return [ ref, value ];
