@@ -19,9 +19,10 @@
         font-family: 'Libre Baskerville', serif;
         font-weight: 600;
         font-size: 14px;
+        color: white;
     }
 
-    &.Avatar--image-end {
+    &.Avatar--image-end { 
         flex-direction: row-reverse;
     }
 }

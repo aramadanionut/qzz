@@ -9,8 +9,9 @@ import './Header.scss';
 export default function Header(props) {
     return (
         <header className="Header">
+            <div className="Header__logo-push"></div>
             <div className="Header__logo">
-                <Logo size={ SIZES.SMALL }></Logo>
+                <Logo size={ SIZES.MEDIUM }></Logo>
             </div>
             <div className="Header__avatar">
                 <Avatar></Avatar>

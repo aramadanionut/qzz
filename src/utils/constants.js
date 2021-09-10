@@ -18,7 +18,7 @@ export const POSITIONS = keyMirror({
     START: null,
     CENTER: null,
     END: null
-});
+})
 
 export const AVATARS = keyMirror({
     ASTRONAUT: null,

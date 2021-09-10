@@ -7,7 +7,7 @@ import './Avatar.scss';
 import { AVATARS, AVATAR_IMAGES, POSITIONS } from "utils/constants";
 
 export default function Avatar(props) {
-    const AvatarImage = AVATAR_IMAGES[props.image];
+    const avatarImage = AVATAR_IMAGES[props.image];
 
     const avatarClasses = classNames({
         [ 'Avatar' ]: true,
@@ -17,7 +17,7 @@ export default function Avatar(props) {
     return (
         <div className={avatarClasses}>
             <div className="Avatar__image">
-                <AvatarImage></AvatarImage>
+                <img src={avatarImage} alt="User" />
             </div>
             {props.name && 
                 <div className="Avatar__name">
