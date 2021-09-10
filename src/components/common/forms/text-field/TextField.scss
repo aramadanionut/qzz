@@ -3,22 +3,28 @@
 @import 'assets/scss/easings';
 
 .TextField {
+    display: inline-flex;
+    flex-direction: column;
     position: relative;
 
     .TextField__label-container {
         position: relative;
         height: 40px;
+        flex-basis: 40px;
         overflow: hidden;
         
         .TextField__label {
             position: absolute;
             top: 0;
+            left: 0;
+            width: 100%;
             height: 100%;
             line-height: 40px;
             padding-left: 20px;
             font-size: 14px;
             font-family: 'Poppins', sans-serif;
             color: $deep-cyan;
+            box-sizing: border-box;
             transform: translateY(100%);
             opacity: 0;
             transition: all .2s $easeInOutSine;
@@ -38,7 +44,7 @@
         transition: all .2s $easeInOutSine;
     
         &::placeholder {
-            color: darken($deep-cyan, 15%);
+            color: $deep-cyan;
             opacity: 1;
             transition: all .2s $easeInOutSine;
         }
@@ -47,8 +53,39 @@
             border-color: white;
     
             &::placeholder {
-                color: darken(white, 15%);
+                color: white;
             }
+        }
+    }
+
+    &.TextField--align-center {
+        text-align: center;
+
+        .TextField__label-container {
+            .TextField__label {
+                padding-left: 0;
+                text-align: center;
+            }
+        }
+
+        .TextField__input {
+            text-align: center;
+        }
+    }
+
+    &.TextField--align-end {
+        text-align: right;
+
+        .TextField__label-container {
+            .TextField__label {
+                padding-left: 0;
+                padding-right: 20px;
+                text-align: right;
+            }
+        }
+
+        .TextField__input {
+            text-align: right;
         }
     }
 

@@ -14,7 +14,7 @@ export default function Home(props) {
             <div className="Home__button">
                 <Link to="/login">
                     <Button>
-                        Start playing
+                        Start
                     </Button>
                 </Link>
             </div>

@@ -5,6 +5,7 @@ import TextField from "components/common/forms/text-field/TextField";
 import AvatarPicker from "components/avatar-picker/AvatarPicker";
 
 import './Login.scss';
+import { POSITIONS } from "utils/constants";
 
 export default function Login(props) {
     return (
@@ -14,14 +15,15 @@ export default function Login(props) {
             <div className="Login__form">
                 <div className="Login__form__name">
                     <TextField
-                        label="Name"
-                        placeholder="Your name, please">
+                        align={ POSITIONS.CENTER }
+                        label="Username"
+                        placeholder="Your username, please">
                     </TextField>
                 </div>
 
                 <div className="Login__form__avatar">
                     <p className="Login__form__avatar__label">
-                        Select your avatar
+                        Choose your avatar
                     </p>
 
                     <div className="Login__form__avatar__picker">

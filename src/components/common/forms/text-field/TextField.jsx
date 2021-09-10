@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-
 import useFocus from 'hooks/useFocus';
 import './TextField.scss';
+import { POSITIONS } from "utils/constants";
 
 export default function TextField(props) {
     const {
         label,
-        placeholder
+        placeholder,
+        align
     } = props;
 
     const [ value, setValue ] = useState("");
@@ -18,7 +19,8 @@ export default function TextField(props) {
         [ 'TextField' ]: true,
         [ 'TextField--focused' ]: isFocused,
         [ 'TextField--has-label' ]: !!label,
-        [ 'TextField--has-value']: !!value
+        [ 'TextField--has-value']: !!value,
+        [ `TextField--align-${ align.toLowerCase() }` ]: !!align
     });
 
     return (
@@ -26,7 +28,7 @@ export default function TextField(props) {
             {label &&
                 <div className="TextField__label-container">
                     <label htmlFor="" className="TextField__label">
-                        Name
+                        { label }
                     </label>
                 </div>
             }
@@ -43,10 +45,12 @@ export default function TextField(props) {
 
 TextField.propTypes = {
     label: PropTypes.string,
-    placeholder: PropTypes.string
+    placeholder: PropTypes.string,
+    align: PropTypes.oneOf(Object.values(POSITIONS))
 };
 
 TextField.defaultProps = {
     label: null,
-    placeholder: ''
+    placeholder: '',
+    align: POSITIONS.START
 };
