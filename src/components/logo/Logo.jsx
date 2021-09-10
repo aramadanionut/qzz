@@ -7,22 +7,38 @@ import { SIZES } from 'utils/constants';
 
 import './Logo.scss';
 export default function Logo(props) {
+    const {
+        size,
+        showName,
+        showTagline
+    } = props;
+
     const logoClasses = classNames({
         'Logo': true,
-        [`Logo--size-${props.size.toLowerCase()}`]: !!props.size
+        [`Logo--size-${size.toLowerCase()}`]: !!size
     });
 
     return (
         <div className={logoClasses}>
-            <img src={logo} alt="Logo"/>
+            <img className="Logo__image" src={logo} alt="Logo"/>
+            {(showName || showTagline) &&
+                <div className="Logo__text">
+                    {showName && <h1 className="Logo__name">QZZ</h1>}
+                    {showTagline && <h2 className="Logo__tagline">Test Your Brain</h2>}
+                </div>
+            }
         </div>
     );
 }
 
 Logo.propTypes = {
+    showName: PropTypes.bool,
+    showTagline: PropTypes.bool,
     size: PropTypes.oneOf(Object.values(SIZES))
 };
 
 Logo.defaultProps = {
+    showName: true,
+    showTagline: true,
     size: SIZES.SMALL
 };

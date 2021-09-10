@@ -1,23 +1,81 @@
+@import 'assets/scss/fonts';
+@import 'assets/scss/colors';
+
 .Logo {
-    img {
-        max-width: 100px;
+    display: inline-flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 4px;
+    
+    .Logo__image {
+        max-width: 60px;
     }
 
+    .Logo__text {
+        margin-top: 8px;
+        text-align: center;
+
+        .Logo__name {
+            margin: 0;
+            line-height: 1;
+            font-family: 'Bungee', sans-serif;
+            color: $deep-cyan;
+            font-size: 3rem;
+            letter-spacing: 5px;
+        }
+
+        .Logo__tagline {
+            margin: 4px 0 0 0;
+            line-height: 1;
+            font-family: 'Poppins', sans-serif;
+            color: white;
+            font-size: 1rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+    }
+
+
     &.Logo--size-small {
-        img {
-            max-width: 100px;
+        .Logo__image {
+            max-width: 30px;
+        }
+
+        .Logo__text {
+            margin-top: 4px;
+
+            .Logo__name {
+                font-size: 1.5rem;
+            }
+
+            .Logo__tagline {
+                font-size: 0.75rem;
+            }
         }
     }
 
     &.Logo--size-medium {
-        img {
-            max-width: 200px;
+        .Logo__image {
+            max-width: 60px;
         }
     }
 
     &.Logo--size-large {
-        img {
-            max-width: 300px;
+        .Logo__image {
+            max-width: 100px;
+        }
+
+        .Logo__text {
+            margin-top: 4px;
+
+            .Logo__name {
+                font-size: 4rem;
+            }
+
+            .Logo__tagline {
+                font-size: 1.5rem;
+            }
         }
     }
 }

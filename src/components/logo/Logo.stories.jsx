@@ -17,8 +17,16 @@ export default {
   }
 }
 
-export const Primary = (args) => <Logo size={args.size}></Logo>;
+export const Primary = (args) => (
+  <Logo
+    showName={ args.showName }
+    showTagline={ args.showTagline }
+    size={ args.size }>
+  </Logo>
+);
 
 Primary.args = {
+  showName: true,
+  showTagline: true,
   size: SIZES.SMALL
 };
