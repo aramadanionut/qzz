@@ -26,6 +26,7 @@ $button-height: 50px;
         height: $button-height;
         border-radius: $button-height;
         background: $deep-cyan;
+        background: linear-gradient(180deg, $light-cyan 0%, darken($light-cyan, 3%) 20%, $deep-cyan);
         color: white;
         transition: all 0.3s $easeInOutQuint;
 
@@ -59,7 +60,7 @@ $button-height: 50px;
         position: relative;
         top: 1px;
         z-index: 2;
-        color: $deep-cyan;
+        color: $light-cyan;
         text-transform: uppercase;
         font-size: 12px;
         transition: all 0.25s $easeInOutQuint;
