@@ -9,7 +9,7 @@ export default function Home(props) {
     return (
         <div className="Home">
             <h3 className="Home__heading">Welcome!</h3>
-            <p className="Home__text">Ready to train your brain?</p>
+            <p className="Home__text">Ready to put your knowledge to the test?</p>
 
             <div className="Home__button">
                 <Link to="/login">
