@@ -57,7 +57,7 @@ export const QUESTION_DIFFICULTIES = {
     HARD: 'hard'
 };
 
-export const QUESTION_COUNT = [ 10, 15, 20, 25, 30 ];
+export const QUESTION_COUNT = [ 10, 15, 20 ];
 
 export const QUESTION_TYPES = {
     ANY: 'any',
