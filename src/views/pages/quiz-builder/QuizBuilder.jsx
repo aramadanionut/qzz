@@ -1,13 +1,13 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 
-import RadioBlocks from "components/common/forms/radio-blocks/RadioBlocks";
+import { RadioBlocks } from "components/common/forms/radio-blocks/RadioBlocks";
 import Label from "components/common/forms/label/Label";
 import Button from "components/common/buttons/button/Button";
 
 import useFetch from "hooks/useFetch";
 import { QuizService } from "services/quiz.service";
-import { FETCH_STATUSES, QUESTION_COUNT, QUESTION_DIFFICULTIES, QUESTION_TYPES } from "utils/constants";
+import { BUTTON_TYPES, FETCH_STATUSES, QUESTION_COUNT, QUESTION_DIFFICULTIES, QUESTION_TYPES } from "utils/constants";
 import { QUESTION_DIFFICULTIES_LABELS, QUESTION_TYPES_LABELS } from "utils/copy";
 
 import './QuizBuilder.scss';
@@ -15,17 +15,22 @@ import Spinner from "components/spinner/Spinner";
 
 const quizService = new QuizService();
 
-const countOptions = Object.values(QUESTION_COUNT).map((count) => ({ value: count, label: count.toString() }));
+const countOptions = Object.values(QUESTION_COUNT).map((count) => ({ value: count.toString(), label: count.toString() }));
 const typeOptions = Object.values(QUESTION_TYPES).map((type) => ({ value: type, label: QUESTION_TYPES_LABELS[type] }));
 const difficultyOptions = Object.values(QUESTION_DIFFICULTIES).map((difficulty) => ({ value: difficulty, label: QUESTION_DIFFICULTIES_LABELS[difficulty] }));
 
 export default function QuizBuilder(props) {
-    const { register, handleSubmit, watch, formState } = useForm();
+    const { register, handleSubmit, watch, formState } = useForm({ mode: 'onChange '});
 
     const { status, data } = useFetch(quizService.categoryLookupUrl);
+
     const isDataFetched = (status === FETCH_STATUSES.FETCHED);
     const categories = quizService.parseCategories(data);
-    const categoryOptions = categories.map(({ value, label }) => ({ value, label }));
+    const categoryOptions = categories.map(({ value, label }) => ({ value: value.toString(), label }));
+
+    const onSubmit = (data) => {
+        console.log(data, formState);
+    }
 
     return (
         <div className="QuizBuilder">
@@ -41,12 +46,14 @@ export default function QuizBuilder(props) {
             )}
 
             {isDataFetched && (
-                <div className="QuizBuilder__form">
+                <form
+                    className="QuizBuilder__form"
+                    onSubmit={ handleSubmit(onSubmit) }>
                     <div className="QuizBuilder__form__field QuizBuild__form__difficulty">
                         <Label text="How difficult do you want it to be?"></Label>
                         <RadioBlocks
                             options={ difficultyOptions }
-                            register={ register('difficulty', { required: true })}>
+                            { ...register('difficulty', { required: true }) }>
                         </RadioBlocks>
                     </div>
 
@@ -54,7 +61,7 @@ export default function QuizBuilder(props) {
                         <Label text="What kind of questions do you want?"></Label>
                         <RadioBlocks
                             options={ typeOptions }
-                            register={ register('type', { required: true })}>
+                            { ...register('type', { required: true }) }>
                         </RadioBlocks>
                     </div>
 
@@ -62,7 +69,7 @@ export default function QuizBuilder(props) {
                         <Label text="How many questions do you want?"></Label>
                         <RadioBlocks
                             options={ countOptions }
-                            register={ register('count', { required: true })}>
+                            { ...register('count', { required: true }) }>
                         </RadioBlocks>
                     </div>
 
@@ -70,14 +77,16 @@ export default function QuizBuilder(props) {
                         <Label text="Which category would you like?"></Label>
                         <RadioBlocks
                             options={ categoryOptions }
-                            register={ register('category', { required: true })}>
+                            { ...register('category', { required: true }) }>
                         </RadioBlocks>
                     </div>
 
-                    <div className="QuizBuilder__form__button">
-                        <Button>Start quiz</Button>
-                    </div>
-                </div>
+                    {formState.isValid && (
+                        <div className="QuizBuilder__form__button">
+                            <Button type={ BUTTON_TYPES.SUBMIT }>Start quiz</Button>
+                        </div>
+                    )}
+                </form>
             )}
         </div>
     );

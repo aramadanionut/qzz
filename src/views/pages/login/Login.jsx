@@ -13,7 +13,9 @@ import { useStore } from 'hooks/useStore';
 import './Login.scss';
 
 export default function Login(props) {
-    const { register, watch, handleSubmit, formState } = useForm();
+    const { register, watch, handleSubmit, formState } = useForm({
+        mode: 'onChange'
+    });
 
     const history = useHistory();
     const [ user, setUser ] = useStore('user');
@@ -24,6 +26,7 @@ export default function Login(props) {
     }
 
     const username = watch('username');
+    const avatar = watch('avatar');
     
     const onSubmit = ({ username, avatar }) => {
         setUser({ username, avatar });
@@ -32,7 +35,7 @@ export default function Login(props) {
 
     return (
         <div className="Login">
-            <h3 className="Login__heading">Nice to meet you{ username && `, ${username}` }!</h3>
+            <h3 className="Login__heading">Nice to meet you{ username && `, ${avatar} - ${username}` }!</h3>
             <p className="Login__text">Before we start, tell us a bit about yourself</p>
 
             <form

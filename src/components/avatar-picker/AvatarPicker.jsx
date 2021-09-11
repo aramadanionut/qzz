@@ -7,14 +7,14 @@ import { AVATARS, AVATAR_IMAGES } from "utils/constants";
 import './AvatarPicker.scss';
 
 export const AvatarPicker = forwardRef((props, ref) => {
-    const { name } = props;
-    const [ option, setOption ] = useState();
+    const { name, onChange } = props;
+    const [ option, setOption ] = useState(null);
 
-    const onChange = (event) => {
+    const onSelect = (event) => {
         setOption(event.target.value);
 
-        if (props.onChange) {
-            props.onChange(ref ? event : event.target.value);
+        if (onChange) {
+            onChange(ref ? event : event.target.value);
         }
     }
 
@@ -28,10 +28,10 @@ export const AvatarPicker = forwardRef((props, ref) => {
                         ref={ ref }
                         key={ `avatar-${avatar}` }
                         name={ name }
-                        selected={ option === avatar }
-                        avatar={ avatar }
+                        value={ avatar }
                         image={ AVATAR_IMAGES[avatar] }
-                        onChange={ onChange }>
+                        selected={ option === avatar }
+                        onChange={ onSelect }>
                     </AvatarPickerOption>
                 ))
             }
@@ -42,15 +42,11 @@ export const AvatarPicker = forwardRef((props, ref) => {
 const AvatarPickerOption = forwardRef((props, ref) => {
     const {
         name,
-        selected,
-        avatar,
+        value,
         image,
+        selected,
         onChange
     } = props;
-
-    const onSelect = function (event) {
-        onChange(event);
-    }
 
     const avatarPickerOptionClasses = classNames({
         AvatarPicker__option: true,
@@ -60,12 +56,12 @@ const AvatarPickerOption = forwardRef((props, ref) => {
     return (
         <label className={ avatarPickerOptionClasses }>
             <input
-                ref={ ref }
                 type="radio"
-                value={ avatar }
+                ref={ ref }
+                value={ value }
                 name={ name }
                 className="AvatarPicker__option__input"
-                onChange={ onSelect }
+                onChange={ onChange }
             />
             <img className="AvatarPicker__option__image" src={ image } alt="" />
         </label>

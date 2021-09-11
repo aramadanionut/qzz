@@ -1,33 +1,18 @@
-import React, { useState } from "react";
+import React, { forwardRef, useState } from "react";
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 import './RadioBlocks.scss';
 
-export default function RadioBlocks(props) {
-    const {
-        options,
-        onChange,
-        register
-    } = props;
-
-    const name = register && register.name
-        ? register.name
-        : props.name;
-
+export const RadioBlocks = forwardRef((props, ref) => {
+    const { name, options, onChange } = props;
     const [ selected, setSelected ] = useState(null);
 
-    function onSelect(event) {
-        const value = event.target.value;
-
-        setSelected(value);
+    const onSelect = (event) => {
+        setSelected(event.target.value);
 
         if (onChange && typeof onChange === 'function') {
-            onChange(value);
-        }
-
-        if (register && register.onChange) {
-            register.onChange(event);
+            onChange(ref ? event : event.target.value);
         }
     }
 
@@ -35,25 +20,26 @@ export default function RadioBlocks(props) {
         <div className="RadioBlocks">
             { options && options.length && options.map((option) => (
                 <RadioBlock
+                    ref={ ref }
                     key={ `option-${option.value}` }
                     name={ name }
                     value={ option.value }
                     label={ option.label }
                     selected={ option.value === selected }
-                    onSelect={ onSelect }>
+                    onChange={ onSelect }>
                 </RadioBlock>
             ))}
         </div>
     )
-}
+})
 
-function RadioBlock(props) {
+const RadioBlock = forwardRef((props, ref) => {
     const {
         name,
         value,
         label,
         selected,
-        onSelect
+        onChange
     } = props;
 
     const radioBlockClasses = classNames({
@@ -65,18 +51,19 @@ function RadioBlock(props) {
         <label className={ radioBlockClasses }>
             <div className="RadioBlock__wrapper">
                 <input
+                    ref={ ref }
                     type="radio"
                     value={ value }
                     name={ name }
                     className="RadioBlock__input"
-                    onChange={ onSelect }
+                    onChange={ onChange }
                 />
                 <div className="RadioBlock__dot"></div>
                 <div className="RadioBlock__text">{ label }</div>
             </div>
         </label>
     );
-}
+});
 
 RadioBlocks.propTypes = {
     name: PropTypes.string,
