@@ -9,8 +9,7 @@ import { Link } from "react-router-dom";
 import { useStore } from "hooks/useStore";
 
 export default function Header(props) {
-    const [ username ] = useStore('username');
-    const [ avatar ] = useStore('avatar');
+    const [ user ] = useStore('user');
 
     return (
         <header className="Header">
@@ -21,10 +20,10 @@ export default function Header(props) {
                 </Link>
             </div>
             <div className="Header__avatar">
-                {avatar && (
+                {user && user.username && user.avatar && (
                     <Avatar
-                        name={ username }
-                        image={ avatar }
+                        name={ user.username }
+                        image={ user.avatar }
                         imagePosition={ POSITIONS.END }>
                     </Avatar>
                 )}

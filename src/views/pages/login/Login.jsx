@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useHistory } from "react-router-dom";
 
 import Button from "components/common/buttons/button/Button";
 import TextField from "components/common/forms/text-field/TextField";
@@ -11,15 +12,21 @@ import { useStore } from 'hooks/useStore';
 import './Login.scss';
 
 export default function Login(props) {
-    const [ _username, storeUsername ] = useStore('username');
-    const [ _avatar, storeAvatar ] = useStore('avatar');
+    const history = useHistory();
+    const [ user, setUser ] = useStore('user');
 
+    if (user) {
+        history.push('/');
+    }
+    
     const [ username, setUsername ] = useState(null);
     const [ avatar, setAvatar ] = useState(null);
 
     function storeUser() {
-        storeUsername(username);
-        storeAvatar(avatar);
+        setUser({
+            username,
+            avatar
+        });
     }
 
     return (

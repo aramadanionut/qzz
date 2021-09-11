@@ -9,6 +9,7 @@ import './App.scss';
 import Main from 'views/layout/main/Main';
 import Home from 'views/pages/home/Home';
 import Login from "views/pages/login/Login";
+import QuizBuilder from "views/pages/quiz-builder/QuizBuilder";
 
 function App() {
   return (
@@ -21,6 +22,9 @@ function App() {
               </Route>
               <Route exact path="/login">
                 <Login />
+              </Route>
+              <Route exact path="/quiz-builder">
+                <QuizBuilder />
               </Route>
             </Switch>
         </Main>
