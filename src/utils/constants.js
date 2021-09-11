@@ -41,3 +41,9 @@ export const AVATAR_IMAGES = {
     [AVATARS.DEFAULT]: DefaultAvatar
 };
 
+export const DIFFICULTIES = keyMirror({
+    EASY: null,
+    MEDIUM: null,
+    HARD: null
+});
+

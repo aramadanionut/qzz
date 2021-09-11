@@ -6,7 +6,7 @@ import TextField from './TextField';
 
 export default {
   component: TextField,
-  title: 'Components/TextField',
+  title: 'Forms/TextField',
   argTypes: {
     align: {
       options: [ POSITIONS.START, POSITIONS.CENTER, POSITIONS.END ],

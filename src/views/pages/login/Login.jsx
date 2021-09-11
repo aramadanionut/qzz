@@ -31,7 +31,7 @@ export default function Login(props) {
 
     return (
         <div className="Login">
-            <h3 className="Login__header">Nice to meet you!</h3>
+            <h3 className="Login__heading">Nice to meet you!</h3>
             <p className="Login__text">Before we start, tell us a bit about yourself</p>
             <div className="Login__form">
                 <div className="Login__form__name">

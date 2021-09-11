@@ -23,7 +23,7 @@ export default function RadioBlocks(props) {
 
     return (
         <div className="RadioBlocks">
-            { options.map((option) => (
+            { options && options.length && options.map((option) => (
                 <RadioBlock
                     key={ `option-${option.value}` }
                     name={ name }

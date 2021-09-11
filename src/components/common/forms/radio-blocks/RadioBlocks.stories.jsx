@@ -4,7 +4,7 @@ import RadioBlocks from './RadioBlocks';
 
 export default {
   component: RadioBlocks,
-  title: 'Components/RadioBlocks',
+  title: 'Forms/RadioBlocks',
 }
 
 const options = [
