@@ -6,6 +6,7 @@
     display: flex;
     align-items: center;
     place-content: flex-start;
+    flex-flow: wrap;
     gap: 12px;
 
     .RadioBlock {

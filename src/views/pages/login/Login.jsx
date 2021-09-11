@@ -27,6 +27,8 @@ export default function Login(props) {
             username,
             avatar
         });
+
+        history.push('/quiz-builder');
     }
 
     return (
