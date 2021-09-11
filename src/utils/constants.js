@@ -41,9 +41,17 @@ export const AVATAR_IMAGES = {
     [AVATARS.DEFAULT]: DefaultAvatar
 };
 
-export const DIFFICULTIES = keyMirror({
+export const QUESTION_DIFFICULTIES = keyMirror({
     EASY: null,
     MEDIUM: null,
     HARD: null
+});
+
+export const QUESTION_COUNT = [ 10, 15, 20, 25, 30 ];
+
+export const QUESTION_TYPES = keyMirror({
+    ANY: null,
+    SINGLE: null,
+    MULTIPLE: null
 });
 
