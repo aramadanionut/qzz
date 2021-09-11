@@ -1,12 +1,6 @@
 import keyMirror from "keymirror";
 
-import {
-    Avatar01Astronaut,
-    Avatar02Bear,
-    Avatar03Ninja,
-    Avatar04Dog,
-    DefaultAvatar
-} from 'assets/img/avatars/index';
+import { Avatar01Astronaut, Avatar02Bear, Avatar03Ninja, Avatar04Dog, DefaultAvatar } from 'assets/img/avatars/index';
 
 export const COLORS = keyMirror({
     PRIMARY: null,
@@ -36,8 +30,8 @@ export const AVATARS = keyMirror({
 export const AVATAR_IMAGES = {
     [AVATARS.ASTRONAUT]: Avatar01Astronaut,
     [AVATARS.BEAR]: Avatar02Bear,
-    [AVATARS.NINJA]: Avatar03Ninja,
     [AVATARS.DOG]: Avatar04Dog,
+    [AVATARS.NINJA]: Avatar03Ninja,
     [AVATARS.DEFAULT]: DefaultAvatar
 };
 
@@ -55,3 +49,8 @@ export const QUESTION_TYPES = keyMirror({
     MULTIPLE: null
 });
 
+export const FETCH_STATUSES = keyMirror({
+    FETCHING: null,
+    FETCHED: null,
+    FETCH_ERROR: null
+});

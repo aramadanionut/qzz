@@ -10,6 +10,13 @@
         text-align: center;
     }
 
+    .QuizBuilder__spinner {
+        display: flex;
+        align-items: center;
+        place-content: center;
+        padding: 60px;
+    }
+
     .QuizBuilder__form {
         margin-top: 60px;
         max-width: 768px;

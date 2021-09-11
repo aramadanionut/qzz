@@ -1,4 +1,5 @@
 import { useRef, useEffect, useState, useReducer } from 'react';
+import { FETCH_STATUSES } from 'utils/constants';
 
 export default function useFetch(url) {
     const cache = useRef({});
@@ -11,23 +12,23 @@ export default function useFetch(url) {
 
     const [ state, dispatch ] = useReducer((state, action) => {
         switch (action.type) {
-            case 'FETCHING': 
+            case FETCH_STATUSES.FETCHING: 
                 return {
                     ...initialState,
-                    status: 'fetching'
+                    status: FETCH_STATUSES.FETCHING
                 };
             
-            case 'FETCHED': 
+            case FETCH_STATUSES.FETCHED: 
                 return {
                     ...initialState,
-                    status: 'fetched',
+                    status: FETCH_STATUSES.FETCHED,
                     data: action.payload
                 };
 
-            case 'FETCH_ERROR':
+            case FETCH_STATUSES.FETCH_ERROR:
                 return {
                     ...initialState,
-                    status: 'error',
+                    status: FETCH_STATUSES.FETCH_ERROR,
                     error: action.payload
                 };
 
@@ -43,13 +44,13 @@ export default function useFetch(url) {
 
         const fetchData = async () => {
             dispatch({ 
-                type: 'FETCHING'
+                type: FETCH_STATUSES.FETCHING
             });
 
             if (cache.current[url]) {
                 const data = cache.current[url];
                 dispatch({
-                    type: 'FETCHED',
+                    type: FETCH_STATUSES.FETCHED,
                     payload: data
                 });
 
@@ -63,14 +64,14 @@ export default function useFetch(url) {
                     if (cancelRequest) return;
 
                     dispatch({
-                        type: 'FETCHED',
+                        type: FETCH_STATUSES.FETCHED,
                         payload: data
                     });
                 } catch (error) {
                     if (cancelRequest) return;
 
                     dispatch({
-                        type: 'FETCH_ERROR',
+                        type: FETCH_STATUSES.FETCH_ERROR,
                         payload: error.message
                     });
                 }
