@@ -59,3 +59,10 @@ export const BUTTON_TYPES = {
     BUTTON: 'button',
     SUBMIT: 'submit'
 };
+
+export const QUIZ_QUERY_PARAMS_KEYS = {
+    DIFFICULTY: 'difficulty',
+    AMOUNT: 'amount',
+    CATEGORY: 'category',
+    TYPE: 'type'
+};

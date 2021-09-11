@@ -11,6 +11,7 @@ import { BUTTON_TYPES, COLORS, POSITIONS } from "utils/constants";
 import { useStore } from 'hooks/useStore';
 
 import './Login.scss';
+import { LOGIN_FORM } from "utils/forms";
 
 export default function Login(props) {
     const { register, watch, handleSubmit, formState } = useForm({
@@ -25,8 +26,7 @@ export default function Login(props) {
         history.push('/');
     }
 
-    const username = watch('username');
-    const avatar = watch('avatar');
+    const username = watch(LOGIN_FORM.USERNAME);
     
     const onSubmit = ({ username, avatar }) => {
         setUser({ username, avatar });
@@ -35,7 +35,7 @@ export default function Login(props) {
 
     return (
         <div className="Login">
-            <h3 className="Login__heading">Nice to meet you{ username && `, ${avatar} - ${username}` }!</h3>
+            <h3 className="Login__heading">Nice to meet you{ username && `, ${username}` }!</h3>
             <p className="Login__text">Before we start, tell us a bit about yourself</p>
 
             <form
@@ -46,7 +46,7 @@ export default function Login(props) {
                         label="Username"
                         placeholder="Your username, please"
                         align={ POSITIONS.CENTER }
-                        { ...register('username', { required: true }) }>
+                        { ...register(LOGIN_FORM.USERNAME, { required: true }) }>
                     </TextField>
                 </div>
 
@@ -57,7 +57,7 @@ export default function Login(props) {
 
                     <div className="Login__form__avatar__picker">
                         <AvatarPicker
-                            { ...register('avatar', { required: true }) }>
+                            { ...register(LOGIN_FORM.AVATAR, { required: true }) }>
                         </AvatarPicker>
                     </div>
                 </div>

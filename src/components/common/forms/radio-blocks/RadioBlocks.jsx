@@ -5,8 +5,8 @@ import classNames from 'classnames';
 import './RadioBlocks.scss';
 
 export const RadioBlocks = forwardRef((props, ref) => {
-    const { name, options, onChange } = props;
-    const [ selected, setSelected ] = useState(null);
+    const { name, options, onChange, onBlur } = props;
+    const [ selected, setSelected ] = useState();
 
     const onSelect = (event) => {
         setSelected(event.target.value);
@@ -26,7 +26,8 @@ export const RadioBlocks = forwardRef((props, ref) => {
                     value={ option.value }
                     label={ option.label }
                     selected={ option.value === selected }
-                    onChange={ onSelect }>
+                    onChange={ onSelect }
+                    onBlur={ onBlur }>
                 </RadioBlock>
             ))}
         </div>
@@ -39,7 +40,8 @@ const RadioBlock = forwardRef((props, ref) => {
         value,
         label,
         selected,
-        onChange
+        onChange,
+        onBlur
     } = props;
 
     const radioBlockClasses = classNames({
@@ -57,6 +59,7 @@ const RadioBlock = forwardRef((props, ref) => {
                     name={ name }
                     className="RadioBlock__input"
                     onChange={ onChange }
+                    onBlur={ onBlur }
                 />
                 <div className="RadioBlock__dot"></div>
                 <div className="RadioBlock__text">{ label }</div>
