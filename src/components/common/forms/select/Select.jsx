@@ -6,6 +6,7 @@ import './Select.scss';
 
 export const Select = forwardRef((props, ref) => {
     const {
+        type,
         inline,
         name,
         options,
@@ -62,6 +63,8 @@ Select.defaultProps = {
     onChange: () => {}
 };
 
+// SelectOption
+
 const SelectOption = forwardRef((props, ref) => {
     const {
         name,
@@ -95,3 +98,21 @@ const SelectOption = forwardRef((props, ref) => {
         </label>
     );
 });
+
+Select.propTypes = {
+    name: PropTypes.string,
+    value: PropTypes.string,
+    label: PropTypes.string,
+    selected: PropTypes.bool,
+    onChange: PropTypes.func,
+    onBlur: PropTypes.func
+};
+
+Select.defaultProps = {
+    name: null,
+    value: null,
+    label: null,
+    selected: false,
+    onChange: () => {},
+    onBlur: () => {}
+};

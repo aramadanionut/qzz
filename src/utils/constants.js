@@ -26,6 +26,11 @@ export const BUTTON_TYPES = {
     SUBMIT: 'submit'
 };
 
+export const SELECT_TYPES = {
+    SINGLE: 'single',
+    MULTIPLE: 'multiple'
+};
+
 // Avatars
 
 export const AVATARS = keyMirror({
