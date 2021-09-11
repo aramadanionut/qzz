@@ -15,8 +15,9 @@ import Spinner from "components/spinner/Spinner";
 const quizService = new QuizService();
 
 export default function QuizBuilder(props) {
+    
     const url = quizService.categoryLookupUrl;
-    const { status, data, error } = useFetch(url);
+    const { status, data } = useFetch(url);
     const categories = quizService.parseCategories(data);
 
     const countOptions = Object.values(QUESTION_COUNT).map((count) => ({ value: count, label: count.toString() }));

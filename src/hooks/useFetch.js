@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState, useReducer } from 'react';
+import { useRef, useEffect, useReducer } from 'react';
 import { FETCH_STATUSES } from 'utils/constants';
 
 export default function useFetch(url) {

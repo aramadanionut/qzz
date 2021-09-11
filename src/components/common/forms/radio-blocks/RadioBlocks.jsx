@@ -30,7 +30,7 @@ export default function RadioBlocks(props) {
                     value={ option.value }
                     label={ option.label }
                     selected={ option.value === selected }
-                    onSelect={ setSelected }>
+                    onSelect={ onSelect }>
                 </RadioBlock>
             ))}
         </div>
@@ -69,7 +69,16 @@ function RadioBlock(props) {
 }
 
 RadioBlocks.propTypes = {
+    name: PropTypes.string,
+    options: PropTypes.arrayOf(PropTypes.shape({
+        value: PropTypes.oneOfType([ PropTypes.string, PropTypes.number ]).isRequired,
+        label: PropTypes.string.isRequired
+    })),
+    onChange: PropTypes.func
 };
 
 RadioBlocks.defaultProps = {
+    name: null,
+    options: [],
+    onChange: () => {}
 };
