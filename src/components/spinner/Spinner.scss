@@ -1,0 +1,92 @@
+@import 'assets/scss/colors';
+
+.Spinner {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    place-content: center;
+    gap: 16px;
+
+    .Spinner__text {
+        margin: 0;
+        font-family: 'Poppins', sans-serif;
+        color: $light-cyan;
+    }
+
+    .Spinner__cube-grid {
+        width: 100%;
+        height: 100%;
+
+        .Spinner__cube {
+            width: 33%;
+            height: 33%;
+            background-color: $light-cyan;
+            float: left;
+            -webkit-animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out;
+            animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out; 
+            
+            &.Spinner__cube-1 {
+                -webkit-animation-delay: 0.2s;
+                animation-delay: 0.2s;
+                border-top-left-radius: 2px;
+            }
+            &.Spinner__cube-2 {
+                -webkit-animation-delay: 0.3s;
+                animation-delay: 0.3s;
+            }
+            &.Spinner__cube-3 {
+                -webkit-animation-delay: 0.4s;
+                animation-delay: 0.4s;
+                border-top-right-radius: 2px;
+            }
+            &.Spinner__cube-4 {
+                -webkit-animation-delay: 0.1s;
+                animation-delay: 0.1s;
+            }
+            &.Spinner__cube-5 {
+                -webkit-animation-delay: 0.2s;
+                animation-delay: 0.2s;
+            }
+            &.Spinner__cube-6 {
+                -webkit-animation-delay: 0.3s;
+                animation-delay: 0.3s;
+            }
+            &.Spinner__cube-7 {
+                -webkit-animation-delay: 0s;
+                animation-delay: 0s;
+                border-bottom-left-radius: 2px;
+            }
+            &.Spinner__cube-8 {
+                -webkit-animation-delay: 0.1s;
+                animation-delay: 0.1s;
+            }
+            &.Spinner__cube-9 {
+                -webkit-animation-delay: 0.2s;
+                animation-delay: 0.2s;
+                border-bottom-right-radius: 2px;
+            }
+        }
+    }
+}
+
+:global {
+    @-webkit-keyframes sk-cubeGridScaleDelay {
+        0%, 70%, 100% {
+            -webkit-transform: scale3D(1, 1, 1);
+            transform: scale3D(1, 1, 1);
+        } 35% {
+            -webkit-transform: scale3D(0, 0, 1);
+            transform: scale3D(0, 0, 1); 
+        }
+    }
+    
+    @keyframes sk-cubeGridScaleDelay {
+        0%, 70%, 100% {
+            -webkit-transform: scale3D(1, 1, 1);
+            transform: scale3D(1, 1, 1);
+        } 35% {
+            -webkit-transform: scale3D(0, 0, 1);
+            transform: scale3D(0, 0, 1);
+        } 
+    }
+}

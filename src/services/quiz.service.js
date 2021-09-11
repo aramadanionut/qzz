@@ -14,10 +14,12 @@ export class QuizService {
                 return [];
             }
 
-            return data.trivia_categories.map(({ id, name }) => ({
-                value: id,
-                label: name
-            }));
+            return data.trivia_categories
+                .sort((a, b) => a.name.localeCompare(b.name))
+                .map(({ id, name }) => ({
+                    value: id,
+                    label: name
+                }));
         }
     }
 

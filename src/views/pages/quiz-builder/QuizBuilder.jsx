@@ -2,6 +2,7 @@ import React from "react";
 
 import RadioBlocks from "components/common/forms/radio-blocks/RadioBlocks";
 import Label from "components/common/forms/label/Label";
+import Button from "components/common/buttons/button/Button";
 
 import useFetch from "hooks/useFetch";
 import { QuizService } from "services/quiz.service";
@@ -20,7 +21,6 @@ export default function QuizBuilder(props) {
     const countOptions = Object.values(QUESTION_COUNT).map((count) => ({ value: count, label: count.toString() }));
     const typeOptions = Object.values(QUESTION_TYPES).map((type) => ({ value: type, label: QUESTION_TYPES_LABELS[type] }));
     const difficultyOptions = Object.values(QUESTION_DIFFICULTIES).map((difficulty) => ({ value: difficulty, label: QUESTION_DIFFICULTIES_LABELS[difficulty] }));
-
     const categoryOptions = categories.map(({ value, label }) => ({ value, label }));
 
     return (
@@ -54,6 +54,10 @@ export default function QuizBuilder(props) {
                     <RadioBlocks
                         options={ categoryOptions }>
                     </RadioBlocks>
+                </div>
+
+                <div className="QuizBuilder__form__button">
+                    <Button>Start quiz</Button>
                 </div>
             </div>
         </div>
