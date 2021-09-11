@@ -28,7 +28,8 @@ export default function Button(props) {
     return (
         <button
             ref={ hoverRef }
-            className={buttonClasses}>
+            className={buttonClasses}
+            onClick={ props.onClick }>
 
             <div className="Button__background">
                 <div className="Button__background-icon">
@@ -45,10 +46,12 @@ export default function Button(props) {
 
 Button.propTypes = {
     size: PropTypes.oneOf(Object.values(SIZES)),
-    color: PropTypes.oneOf(Object.values(COLORS))
+    color: PropTypes.oneOf(Object.values(COLORS)),
+    onClick: PropTypes.func
 };
 
 Button.defaultProps = {
     size: SIZES.MEDIUM,
-    color: COLORS.PRIMARY
+    color: COLORS.PRIMARY,
+    onClick: () => {}
 };

@@ -11,8 +11,16 @@ import { useStore } from 'hooks/useStore';
 import './Login.scss';
 
 export default function Login(props) {
-    const [ username, setUsername ] = useStore('username');
-    const [ avatar, setAvatar ] = useStore('avatar');
+    const [ _username, storeUsername ] = useStore('username');
+    const [ _avatar, storeAvatar ] = useStore('avatar');
+
+    const [ username, setUsername ] = useState(null);
+    const [ avatar, setAvatar ] = useState(null);
+
+    function storeUser() {
+        storeUsername(username);
+        storeAvatar(avatar);
+    }
 
     return (
         <div className="Login">
@@ -58,7 +66,11 @@ export default function Login(props) {
                                     }
                                 }}
                                 transition={{ duration: 0.4, ease: [0.04, 0.62, 0.23, 0.98] }}>
-                                <Button color={ COLORS.PRIMARY }>Let's go</Button>
+                                <Button
+                                    color={ COLORS.PRIMARY }
+                                    onClick={ storeUser }>
+                                    Let's go
+                                </Button>
                             </motion.div>
                         )}
                     </AnimatePresence>
