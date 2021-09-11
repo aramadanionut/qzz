@@ -1,4 +1,6 @@
 @import 'assets/scss/fonts';
+@import 'assets/scss/easings';
+@import 'assets/scss/colors';
 
 .Avatar {
     display: inline-flex;
@@ -15,15 +17,62 @@
         }
     }
 
-    .Avatar__name {
+    .Avatar__username {
+        position: relative;
         font-family: 'Poppins', serif;
         font-weight: 600;
         font-size: 12px;
         color: white;
         letter-spacing: 1px;
+        
+        .Avatar__username__name {
+            transition: all .2s $easeInOutQuad;
+        }
+
+        .Avatar__username__change-button {
+            position: absolute;
+            top: 0;
+            left: 0;
+            color: $light-cyan;
+            transition: all .2s $easeInOutQuad;
+            background: none;
+            border: none;
+            outline: none;
+            width: auto;
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', serif;
+            opacity: 0;
+            font-weight: 600;
+            font-size: 12px;
+            cursor: pointer;
+        }
+
+    }
+
+    &:hover {
+        .Avatar__username {
+            .Avatar__username__name {
+                transform: translateY(-9px);
+            }
+    
+            .Avatar__username__change-button {
+                transform: translateY(9px);
+                opacity: 1;
+            }
+        }
     }
 
     &.Avatar--image-end { 
         flex-direction: row-reverse;
+
+        .Avatar__username {
+            text-align: right;
+
+            .Avatar__username__change-button {
+                left: auto;
+                right: 0;
+            }
+        }
     }
 }

@@ -60,7 +60,7 @@
                     border-radius: 100%;
                     background: white;
                     transform: scale(0);
-                    transition: all .2s $easeInOutSine;
+                    transition: all .3s $easeInOutSine;
                 }
             }
     
@@ -91,9 +91,9 @@
 
                 .RadioBlock__dot {
                     &:before {
-                        transition: all .2s $easeInOutSine;
+                        transition: all .4s $easeInOutSine;
                         background: $light-cyan;
-                        transform: scale(100);
+                        transform: scale(500);
                     }
 
                     &:after {

@@ -21,17 +21,17 @@ export default function Spinner(props) {
                 <p className="Spinner__text">{ text }</p>
             )}
             <div
-                class="Spinner__cube-grid"
+                className="Spinner__cube-grid"
                 style={ spinnerCubeStyle }>
-                <div class="Spinner__cube Spinner__cube-1"></div>
-                <div class="Spinner__cube Spinner__cube-2"></div>
-                <div class="Spinner__cube Spinner__cube-3"></div>
-                <div class="Spinner__cube Spinner__cube-4"></div>
-                <div class="Spinner__cube Spinner__cube-5"></div>
-                <div class="Spinner__cube Spinner__cube-6"></div>
-                <div class="Spinner__cube Spinner__cube-7"></div>
-                <div class="Spinner__cube Spinner__cube-8"></div>
-                <div class="Spinner__cube Spinner__cube-9"></div>
+                <div className="Spinner__cube Spinner__cube-1"></div>
+                <div className="Spinner__cube Spinner__cube-2"></div>
+                <div className="Spinner__cube Spinner__cube-3"></div>
+                <div className="Spinner__cube Spinner__cube-4"></div>
+                <div className="Spinner__cube Spinner__cube-5"></div>
+                <div className="Spinner__cube Spinner__cube-6"></div>
+                <div className="Spinner__cube Spinner__cube-7"></div>
+                <div className="Spinner__cube Spinner__cube-8"></div>
+                <div className="Spinner__cube Spinner__cube-9"></div>
             </div>
         </div>
     );

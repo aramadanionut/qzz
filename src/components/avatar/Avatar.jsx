@@ -7,11 +7,18 @@ import './Avatar.scss';
 import { AVATARS, AVATAR_IMAGES, POSITIONS } from "utils/constants";
 
 export default function Avatar(props) {
-    const avatarImage = AVATAR_IMAGES[props.image];
+    const {
+        image,
+        imagePosition,
+        name,
+        onChangeUser
+    } = props;
+
+    const avatarImage = AVATAR_IMAGES[image];
 
     const avatarClasses = classNames({
         Avatar: true,
-        [ `Avatar--image-${props.imagePosition.toLowerCase()}` ]: !!props.imagePosition
+        [ `Avatar--image-${imagePosition.toLowerCase()}` ]: !!imagePosition
     });
 
     return (
@@ -19,9 +26,16 @@ export default function Avatar(props) {
             <div className="Avatar__image">
                 <img src={avatarImage} alt="User" />
             </div>
-            {props.name && 
-                <div className="Avatar__name">
-                    { props.name }
+            {name && 
+                <div className="Avatar__username">
+                    <div className="Avatar__username__name">
+                        { name }
+                    </div>
+                    <button
+                        className="Avatar__username__change-button"
+                        onClick={ onChangeUser }>
+                        Change
+                    </button>
                 </div>
             }
         </div>
