@@ -14,7 +14,8 @@ export default function Button(props) {
         type,
         size,
         children,
-        color = ''
+        color = '',
+        onClick
     } = props;
 
     const [ hoverRef, isHovered ] = useHover();
@@ -31,7 +32,7 @@ export default function Button(props) {
             ref={ hoverRef }
             type={ type }
             className={buttonClasses}
-            onClick={ props.onClick }>
+            onClick={ onClick }>
 
             <div className="Button__background">
                 <div className="Button__background-icon">

@@ -1,3 +1,18 @@
 .QuizWizard {
-    max-width: 650px;
+    max-width: 500px;
+    width: 100%;
+
+    .QuizWizard__spinner {
+        text-align: center;
+    }
+
+    .QuizWizard__form {
+        .QuizWizard__form__question {
+            min-height: 340px;
+        }
+
+        .QuizWizard__form__button {
+            text-align: right;
+        }
+    }
 }
