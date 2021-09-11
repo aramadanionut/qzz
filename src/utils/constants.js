@@ -54,3 +54,8 @@ export const FETCH_STATUSES = keyMirror({
     FETCHED: null,
     FETCH_ERROR: null
 });
+
+export const BUTTON_TYPES = {
+    BUTTON: 'button',
+    SUBMIT: 'submit'
+};

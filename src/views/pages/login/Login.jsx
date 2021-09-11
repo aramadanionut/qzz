@@ -7,7 +7,7 @@ import Button from "components/common/buttons/button/Button";
 import { TextField } from "components/common/forms/text-field/TextField";
 import { AvatarPicker } from "components/avatar-picker/AvatarPicker";
 
-import { COLORS, POSITIONS } from "utils/constants";
+import { BUTTON_TYPES, COLORS, POSITIONS } from "utils/constants";
 import { useStore } from 'hooks/useStore';
 
 import './Login.scss';
@@ -18,14 +18,14 @@ export default function Login(props) {
     const history = useHistory();
     const [ user, setUser ] = useStore('user');
 
+    // Redirect to home page is already logged in
     if (user) {
         history.push('/');
     }
 
     const username = watch('username');
-    const avatar = watch('avatar');
     
-    function storeUser() {
+    const onSubmit = ({ username, avatar }) => {
         setUser({ username, avatar });
         history.push('/quiz-builder');
     }
@@ -34,7 +34,10 @@ export default function Login(props) {
         <div className="Login">
             <h3 className="Login__heading">Nice to meet you{ username && `, ${username}` }!</h3>
             <p className="Login__text">Before we start, tell us a bit about yourself</p>
-            <div className="Login__form">
+
+            <form
+                className="Login__form"
+                onSubmit={ handleSubmit(onSubmit) }>
                 <div className="Login__form__name">
                     <TextField
                         label="Username"
@@ -58,7 +61,7 @@ export default function Login(props) {
 
                 <div className="Login__form__button">
                     <AnimatePresence initial={false}>
-                        {(username && avatar) && (
+                        {formState.isValid && (
                             <motion.div
                                 key="content"
                                 initial="collapsed"
@@ -76,15 +79,15 @@ export default function Login(props) {
                                 }}
                                 transition={{ duration: 0.4, ease: [0.04, 0.62, 0.23, 0.98] }}>
                                 <Button
-                                    color={ COLORS.PRIMARY }
-                                    onClick={ storeUser }>
+                                    type={ BUTTON_TYPES.SUBMIT }
+                                    color={ COLORS.PRIMARY }>
                                     Let's go
                                 </Button>
                             </motion.div>
                         )}
                     </AnimatePresence>
                 </div>
-            </div>
+            </form>
         </div>
     );
 }

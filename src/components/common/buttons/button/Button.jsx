@@ -4,13 +4,14 @@ import classNames from 'classnames';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
-import { SIZES, COLORS } from "utils/constants";
+import { SIZES, COLORS, BUTTON_TYPES } from "utils/constants";
 import useHover from "hooks/useHover";
 
 import './Button.scss';
 
 export default function Button(props) {
     const {
+        type,
         size,
         children,
         color = ''
@@ -28,6 +29,7 @@ export default function Button(props) {
     return (
         <button
             ref={ hoverRef }
+            type={ type }
             className={buttonClasses}
             onClick={ props.onClick }>
 
@@ -45,12 +47,14 @@ export default function Button(props) {
 }
 
 Button.propTypes = {
+    type: PropTypes.oneOf([ BUTTON_TYPES.BUTTON, BUTTON_TYPES.SUBMIT ]),
     size: PropTypes.oneOf(Object.values(SIZES)),
     color: PropTypes.oneOf(Object.values(COLORS)),
     onClick: PropTypes.func
 };
 
 Button.defaultProps = {
+    type: BUTTON_TYPES.BUTTON,
     size: SIZES.MEDIUM,
     color: COLORS.PRIMARY,
     onClick: () => {}
