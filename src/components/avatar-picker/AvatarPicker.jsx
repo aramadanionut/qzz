@@ -14,7 +14,7 @@ export const AvatarPicker = forwardRef((props, ref) => {
         setOption(event.target.value);
 
         if (props.onChange) {
-            props.onChange(event);
+            props.onChange(ref ? event : event.target.value);
         }
     }
 

@@ -30,7 +30,7 @@ export const TextField = forwardRef((props, ref) => {
         setValue(event.target.value);
 
         if (props.onChange) {
-            props.onChange(event);
+            props.onChange(ref ? event : event.target.value);
         }
     }
 
