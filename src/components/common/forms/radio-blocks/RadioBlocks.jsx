@@ -5,12 +5,21 @@ import classNames from 'classnames';
 import './RadioBlocks.scss';
 
 export default function RadioBlocks(props) {
-    const [ selected, setSelected ] = useState(null);
-
     const {
         name,
-        options
+        options,
+        onChange
     } = props;
+
+    const [ selected, setSelected ] = useState(null);
+
+    function onSelect(value) {
+        setSelected(value);
+
+        if (onChange && typeof onChange === 'function') {
+            onChange(value);
+        }
+    }
 
     return (
         <div className="RadioBlocks">

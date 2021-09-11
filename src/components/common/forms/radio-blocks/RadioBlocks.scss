@@ -15,7 +15,7 @@
         border: 2px solid $deep-cyan;
         border-radius: 6px;
         cursor: pointer;
-        transition: all .2s $easeInOutCirc;
+        transition: all .2s $easeInOutSine;
 
         .RadioBlock__wrapper {
             position: relative;
@@ -33,14 +33,13 @@
                 position: absolute;
                 width: 10px;
                 height: 10px;
-                // background: $deep-cyan;
                 top: 0;
                 bottom: 0;
                 margin: auto;
                 left: 10px;
                 border: 2px solid $deep-cyan;
                 border-radius: 100%;
-                transition: all .2s $easeInOutCirc;
+                transition: all .2s $easeInOutSine;
     
                 &:before {
                     content: "";
@@ -49,7 +48,7 @@
                     border-radius: 100%;
                     background: darken($deep-cyan, 15%);
                     transform: scale(0);
-                    transition: all .2s $easeInOutCirc;
+                    transition: all .2s $easeInOutSine;
                 }
     
                 &:after {
@@ -60,10 +59,8 @@
                     border-radius: 100%;
                     background: white;
                     transform: scale(0);
-                    transition: all .2s $easeInOutCirc;
+                    transition: all .2s $easeInOutSine;
                 }
-    
-                // transform: scale(30);
             }
     
             .RadioBlock__text {
@@ -93,6 +90,7 @@
 
                 .RadioBlock__dot {
                     &:before {
+                        transition: all .2s $easeInOutSine;
                         background: $light-cyan;
                         transform: scale(100);
                     }
