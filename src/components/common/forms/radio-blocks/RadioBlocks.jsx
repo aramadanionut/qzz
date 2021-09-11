@@ -5,7 +5,14 @@ import classNames from 'classnames';
 import './RadioBlocks.scss';
 
 export const RadioBlocks = forwardRef((props, ref) => {
-    const { name, options, onChange, onBlur } = props;
+    const {
+        inline,
+        name,
+        options,
+        onChange,
+        onBlur
+    } = props;
+
     const [ selected, setSelected ] = useState();
 
     const onSelect = (event) => {
@@ -16,8 +23,13 @@ export const RadioBlocks = forwardRef((props, ref) => {
         }
     }
 
+    const radioBlocksClasses = classNames({
+        RadioBlocks: true,
+        'RadioBlocks--inline': !!inline
+    })
+
     return (
-        <div className="RadioBlocks">
+        <div className={ radioBlocksClasses }>
             { options && options.length && options.map((option) => (
                 <RadioBlock
                     ref={ ref }
@@ -32,7 +44,23 @@ export const RadioBlocks = forwardRef((props, ref) => {
             ))}
         </div>
     )
-})
+});
+
+RadioBlocks.propTypes = {
+    name: PropTypes.string,
+    options: PropTypes.arrayOf(PropTypes.shape({
+        value: PropTypes.oneOfType([ PropTypes.string, PropTypes.number ]).isRequired,
+        label: PropTypes.string.isRequired
+    })),
+    onChange: PropTypes.func
+};
+
+RadioBlocks.defaultProps = {
+    inline: true,
+    name: null,
+    options: [],
+    onChange: () => {}
+};
 
 const RadioBlock = forwardRef((props, ref) => {
     const {
@@ -67,18 +95,3 @@ const RadioBlock = forwardRef((props, ref) => {
         </label>
     );
 });
-
-RadioBlocks.propTypes = {
-    name: PropTypes.string,
-    options: PropTypes.arrayOf(PropTypes.shape({
-        value: PropTypes.oneOfType([ PropTypes.string, PropTypes.number ]).isRequired,
-        label: PropTypes.string.isRequired
-    })),
-    onChange: PropTypes.func
-};
-
-RadioBlocks.defaultProps = {
-    name: null,
-    options: [],
-    onChange: () => {}
-};

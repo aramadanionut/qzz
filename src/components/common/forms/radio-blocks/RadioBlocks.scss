@@ -7,6 +7,8 @@
     align-items: center;
     place-content: flex-start;
     flex-flow: wrap;
+    flex-direction: column;
+    align-items: flex-start;
     gap: 12px;
 
     .RadioBlock {
@@ -17,6 +19,7 @@
         border-radius: 6px;
         cursor: pointer;
         transition: all .2s $easeInOutSine;
+        width: 100%;
 
         .RadioBlock__wrapper {
             position: relative;
@@ -101,6 +104,14 @@
                     }
                 }
             }
+        }
+    }
+
+    &.RadioBlocks--inline {
+        flex-direction: row;
+
+        .RadioBlock {
+            width: auto;
         }
     }
 }
