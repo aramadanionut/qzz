@@ -1,4 +1,4 @@
-import { QUESTION_TYPES, QUESTION_TYPE_VALUES, QUIZ_QUERY_PARAMS_KEYS } from "utils/constants";
+import { QUESTION_TYPES, QUIZ_QUERY_PARAMS_KEYS } from "utils/constants";
 import { buildQueryParams } from "utils/helpers";
 
 export const quizCategoryLookupUrl = 'https://opentdb.com/api_category.php';

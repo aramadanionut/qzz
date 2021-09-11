@@ -8,11 +8,12 @@ export default {
 }
 
 export const Primary = (args) => (
-  <Label
-    text={ args.text }>
+  <Label { ...args }>
   </Label>
 );
 
 Primary.args = {
-    text: 'This is a field label'
+    text: 'This is a field label',
+    serif: false,
+    large: false
 };

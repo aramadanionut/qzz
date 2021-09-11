@@ -7,7 +7,6 @@ import './Select.scss';
 
 export const Select = forwardRef((props, ref) => {
     const {
-        type,
         inline,
         name,
         options,
@@ -49,6 +48,7 @@ export const Select = forwardRef((props, ref) => {
 });
 
 Select.propTypes = {
+    inline: PropTypes.bool,
     name: PropTypes.string,
     options: PropTypes.arrayOf(PropTypes.shape({
         value: PropTypes.oneOfType([ PropTypes.string, PropTypes.number ]).isRequired,

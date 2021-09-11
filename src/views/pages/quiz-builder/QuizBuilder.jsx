@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
 
@@ -18,7 +18,7 @@ import { QUIZ_BUILDER_FORM } from "utils/forms";
 export default function QuizBuilder(props) {
     const history = useHistory();
 
-    const { register, handleSubmit, watch, formState } = useForm({ mode: 'onChange '});
+    const { register, handleSubmit, watch } = useForm({ mode: 'onChange '});
 
     const { status, data } = useFetch(quizCategoryLookupUrl);
 
