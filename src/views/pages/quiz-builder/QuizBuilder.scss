@@ -19,7 +19,8 @@
 
     .QuizBuilder__form {
         margin-top: 60px;
-        max-width: 768px;
+        width: 100%;
+        max-width: 650px;
 
         .QuizBuilder__form__field {
             &:not(:first-child) {

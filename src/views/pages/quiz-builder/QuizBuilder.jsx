@@ -58,6 +58,7 @@ export default function QuizBuilder(props) {
                     <div className="QuizBuilder__form__field QuizBuild__form__difficulty">
                         <Label text="How difficult do you want it to be?"></Label>
                         <Select
+                            inline={ true }
                             options={ difficultyOptions }
                             { ...register(QUIZ_BUILDER_FORM.DIFFICULTY, { required: true }) }>
                         </Select>
@@ -66,6 +67,7 @@ export default function QuizBuilder(props) {
                     <div className="QuizBuilder__form__field QuizBuild__form__type">
                         <Label text="What kind of questions do you want?"></Label>
                         <Select
+                            inline={ true }
                             options={ typeOptions }
                             { ...register(QUIZ_BUILDER_FORM.TYPE, { required: true }) }>
                         </Select>
@@ -74,6 +76,7 @@ export default function QuizBuilder(props) {
                     <div className="QuizBuilder__form__field QuizBuild__form__count">
                         <Label text="How many questions do you want?"></Label>
                         <Select
+                            inline={ true }
                             options={ countOptions }
                             { ...register(QUIZ_BUILDER_FORM.COUNT, { required: true }) }>
                         </Select>
@@ -82,6 +85,7 @@ export default function QuizBuilder(props) {
                     <div className="QuizBuilder__form__field QuizBuild__form__category">
                         <Label text="Which category would you like?"></Label>
                         <Select
+                            inline={ true }
                             options={ categoryOptions }
                             { ...register(QUIZ_BUILDER_FORM.CATEGORY, { required: true }) }>
                         </Select>
