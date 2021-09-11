@@ -7,10 +7,19 @@ export default {
   title: 'Components/RadioBlocks',
 }
 
+const options = [
+  { value: 'easy', label: 'Easy' },
+  { value: 'medium', label: 'Medium' },
+  { value: 'hard', label: 'Hard' },
+];
+
 export const Primary = (args) => (
-  <RadioBlocks>
+  <RadioBlocks
+    options={ args.options }>
   </RadioBlocks>
 );
 
 Primary.args = {
+  options,
+  name: 'difficulty'
 };

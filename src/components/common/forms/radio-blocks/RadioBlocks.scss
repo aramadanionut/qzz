@@ -1,0 +1,107 @@
+@import 'assets/scss/colors';
+@import 'assets/scss/fonts';
+@import 'assets/scss/easings';
+
+.RadioBlocks {
+    display: flex;
+    align-items: center;
+    place-content: flex-start;
+    gap: 12px;
+
+    .RadioBlock {
+        position: relative;
+        display: block;
+        color: $deep-cyan;
+        border: 2px solid $deep-cyan;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: all .2s $easeInOutCirc;
+
+        .RadioBlock__wrapper {
+            position: relative;
+            padding: 12px 16px 12px 32px;
+            overflow: hidden;
+
+            .RadioBlock__input {
+                display: none;
+            }
+    
+            .RadioBlock__dot {
+                display: flex;
+                align-items: center;
+                place-content: center;
+                position: absolute;
+                width: 10px;
+                height: 10px;
+                // background: $deep-cyan;
+                top: 0;
+                bottom: 0;
+                margin: auto;
+                left: 10px;
+                border: 2px solid $deep-cyan;
+                border-radius: 100%;
+                transition: all .2s $easeInOutCirc;
+    
+                &:before {
+                    content: "";
+                    width: 6px;
+                    height: 6px;
+                    border-radius: 100%;
+                    background: darken($deep-cyan, 15%);
+                    transform: scale(0);
+                    transition: all .2s $easeInOutCirc;
+                }
+    
+                &:after {
+                    position: absolute;
+                    content: "";
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 100%;
+                    background: white;
+                    transform: scale(0);
+                    transition: all .2s $easeInOutCirc;
+                }
+    
+                // transform: scale(30);
+            }
+    
+            .RadioBlock__text {
+                position: relative;
+                font-family: 'Poppins', sans-serif;
+                font-size: 14px;
+                font-weight: 600;
+                letter-spacing: 1px;
+            }
+        }
+
+        &:hover {
+            .RadioBlock__wrapper {
+                .RadioBlock__dot {
+                    &:before {
+                        transform: scale(1);
+                    }
+                }
+            }
+        }
+
+        &.RadioBlock--selected {
+            border-color: $light-cyan;
+
+            .RadioBlock__wrapper {
+                color: white;
+
+                .RadioBlock__dot {
+                    &:before {
+                        background: $light-cyan;
+                        transform: scale(100);
+                    }
+
+                    &:after {
+                        transform: scale(1);
+                    }
+                }
+            }
+        }
+    }
+}
