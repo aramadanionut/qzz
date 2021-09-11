@@ -4,29 +4,25 @@ import { useForm } from "react-hook-form";
 import { RadioBlocks } from "components/common/forms/radio-blocks/RadioBlocks";
 import Label from "components/common/forms/label/Label";
 import Button from "components/common/buttons/button/Button";
+import Spinner from "components/spinner/Spinner";
 
 import useFetch from "hooks/useFetch";
 import { QuizService } from "services/quiz.service";
-import { BUTTON_TYPES, FETCH_STATUSES, QUESTION_COUNT, QUESTION_DIFFICULTIES, QUESTION_TYPES } from "utils/constants";
-import { QUESTION_DIFFICULTIES_LABELS, QUESTION_TYPES_LABELS } from "utils/copy";
+import { countOptions, typeOptions, difficultyOptions, buildCategoryOptions } from "services/options.service";
+import { BUTTON_TYPES, FETCH_STATUSES } from "utils/constants";
 
 import './QuizBuilder.scss';
-import Spinner from "components/spinner/Spinner";
 
 const quizService = new QuizService();
 
-const countOptions = Object.values(QUESTION_COUNT).map((count) => ({ value: count.toString(), label: count.toString() }));
-const typeOptions = Object.values(QUESTION_TYPES).map((type) => ({ value: type, label: QUESTION_TYPES_LABELS[type] }));
-const difficultyOptions = Object.values(QUESTION_DIFFICULTIES).map((difficulty) => ({ value: difficulty, label: QUESTION_DIFFICULTIES_LABELS[difficulty] }));
-
 export default function QuizBuilder(props) {
-    const { register, handleSubmit, watch, formState } = useForm({ mode: 'onChange '});
+    const { register, handleSubmit, formState } = useForm({ mode: 'onChange '});
 
     const { status, data } = useFetch(quizService.categoryLookupUrl);
 
     const isDataFetched = (status === FETCH_STATUSES.FETCHED);
     const categories = quizService.parseCategories(data);
-    const categoryOptions = categories.map(({ value, label }) => ({ value: value.toString(), label }));
+    const categoryOptions = buildCategoryOptions(categories);
 
     const onSubmit = (data) => {
         console.log(data, formState);
