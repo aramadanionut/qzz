@@ -1,7 +1,7 @@
 let immediateEvents = {};
 let eventUID = 0;
 
-export default class Dsipatcher {
+export default class Dispatcher {
     static registerImmediate(event) {
         immediateEvents[event] = true;
     }

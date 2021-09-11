@@ -21,11 +21,13 @@ export default function Header(props) {
                 </Link>
             </div>
             <div className="Header__avatar">
-                <Avatar
-                    name={ username }
-                    image={ avatar }
-                    imagePosition={ POSITIONS.END }>
-                </Avatar>
+                {avatar && (
+                    <Avatar
+                        name={ username }
+                        image={ avatar }
+                        imagePosition={ POSITIONS.END }>
+                    </Avatar>
+                )}
             </div>
         </header>
     );

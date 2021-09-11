@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
+
+import Storage from "utils/storage";
 import Dispatcher from 'utils/dispatcher';
 
 let store = {};
-
 const dispatcher = new Dispatcher();
+const storage = new Storage();
 
 function createStore(value) {
     store = value;
@@ -15,11 +17,14 @@ function getStore(key) {
 
 function setStore(key, value) {
     store[key] = value;
+    storage.set(key, value);
     dispatcher.emit('data', store);
 }
 
 function useStore(key) {
-    const [ value, setData ] = useState(store[key]);
+    const [ value, setData ] = useState(() => {
+        return store[key] || storage.get(key) || null;
+    });
 
     useEffect(() => {
         const fn = dispatcher.on('data', (data) => {
