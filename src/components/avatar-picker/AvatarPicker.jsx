@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import { AVATARS, AVATAR_IMAGES, POSITIONS } from "utils/constants";
+import { AVATARS, AVATAR_IMAGES } from "utils/constants";
 
 import './AvatarPicker.scss';
 
@@ -46,7 +46,7 @@ function AvatarPickerOption(props) {
 
     const avatarPickerOptionClasses = classNames({
         AvatarPicker__option: true,
-        [ 'AvatarPicker__option--selected' ]: !!selected
+        'AvatarPicker__option--selected': !!selected
     });
 
     return (
@@ -64,6 +64,7 @@ function AvatarPickerOption(props) {
 }
 
 AvatarPicker.propTypes = {
+    onChange: PropTypes.func
 };
 
 AvatarPicker.defaultProps = {

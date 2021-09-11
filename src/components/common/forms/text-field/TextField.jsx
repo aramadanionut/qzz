@@ -18,10 +18,10 @@ export default function TextField(props) {
     const [ focusRef, isFocused ] = useFocus();
 
     const textFieldContainerClasses = classNames({
-        [ 'TextField' ]: true,
-        [ 'TextField--focused' ]: isFocused,
-        [ 'TextField--has-label' ]: !!label,
-        [ 'TextField--has-value']: !!value,
+        TextField: true,
+        'TextField--focused': isFocused,
+        'TextField--has-label': !!label,
+        'TextField--has-value': !!value,
         [ `TextField--align-${ align.toLowerCase() }` ]: !!align
     });
 

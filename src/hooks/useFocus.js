@@ -20,8 +20,7 @@ export default function useFocus() {
                     node.removeEventListener('blur', handleBlur);
                 };
             }
-        },
-        [ ref.current ]
+        }
     );
 
     return [ ref, value ];
