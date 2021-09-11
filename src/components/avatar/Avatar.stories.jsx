@@ -42,5 +42,5 @@ export const Primary = (args) => (
 
 Primary.args = {
   name: 'John Smith',
-  image: AVATARS.DEFAULT
+  image: AVATARS.NINJA
 };

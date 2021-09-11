@@ -28,5 +28,5 @@ export const Primary = (args) => (
 Primary.args = {
   showName: true,
   showTagline: true,
-  size: SIZES.SMALL
+  size: SIZES.MEDIUM
 };

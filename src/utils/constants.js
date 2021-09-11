@@ -22,8 +22,8 @@ export const POSITIONS = keyMirror({
 export const AVATARS = keyMirror({
     ASTRONAUT: null,
     BEAR: null,
-    NINJA: null,
     DOG: null,
+    NINJA: null,
     DEFAULT: null
 });
 
