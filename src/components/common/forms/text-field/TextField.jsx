@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { forwardRef, useState } from "react";
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
@@ -7,15 +7,16 @@ import { POSITIONS } from "utils/constants";
 
 import './TextField.scss';
 
-export default function TextField(props) {
+export const TextField = forwardRef((props, ref) => {
     const {
+        name,
         label,
         placeholder,
-        align
+        align,
     } = props;
 
     const [ value, setValue ] = useState("");
-    const [ focusRef, isFocused ] = useFocus();
+    const [ _, isFocused ] = useFocus();
 
     const textFieldContainerClasses = classNames({
         TextField: true,
@@ -25,11 +26,11 @@ export default function TextField(props) {
         [ `TextField--align-${ align.toLowerCase() }` ]: !!align
     });
 
-    const onChange = (value) => {
-        setValue(value);
+    const onChange = (event) => {
+        setValue(event.target.value);
 
         if (props.onChange) {
-            props.onChange(value);
+            props.onChange(event);
         }
     }
 
@@ -43,23 +44,25 @@ export default function TextField(props) {
                 </div>
             }
             <input
-                ref={ focusRef }
-                value={value}
+                ref={ ref }
+                name={ name }
                 className="TextField__input"
                 placeholder={ placeholder }
-                onChange={e => onChange(e.target.value)}>
+                onChange={ onChange }>
             </input>
         </div>
     );
-}
+});
 
 TextField.propTypes = {
+    name: PropTypes.string,
     label: PropTypes.string,
     placeholder: PropTypes.string,
     align: PropTypes.oneOf(Object.values(POSITIONS))
 };
 
 TextField.defaultProps = {
+    name: '',
     label: null,
     placeholder: '',
     align: POSITIONS.START

@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
 
 import Button from "components/common/buttons/button/Button";
-import TextField from "components/common/forms/text-field/TextField";
-import AvatarPicker from "components/avatar-picker/AvatarPicker";
+import { TextField } from "components/common/forms/text-field/TextField";
+import { AvatarPicker } from "components/avatar-picker/AvatarPicker";
 
 import { COLORS, POSITIONS } from "utils/constants";
 import { useStore } from 'hooks/useStore';
@@ -12,36 +13,34 @@ import { useStore } from 'hooks/useStore';
 import './Login.scss';
 
 export default function Login(props) {
+    const { register, watch, handleSubmit, formState } = useForm();
+
     const history = useHistory();
     const [ user, setUser ] = useStore('user');
 
     if (user) {
         history.push('/');
     }
+
+    const username = watch('username');
+    const avatar = watch('avatar');
     
-    const [ username, setUsername ] = useState(null);
-    const [ avatar, setAvatar ] = useState(null);
-
     function storeUser() {
-        setUser({
-            username,
-            avatar
-        });
-
+        setUser({ username, avatar });
         history.push('/quiz-builder');
     }
 
     return (
         <div className="Login">
-            <h3 className="Login__heading">Nice to meet you!</h3>
+            <h3 className="Login__heading">Nice to meet you{ username && `, ${username}` }!</h3>
             <p className="Login__text">Before we start, tell us a bit about yourself</p>
             <div className="Login__form">
                 <div className="Login__form__name">
                     <TextField
-                        align={ POSITIONS.CENTER }
                         label="Username"
                         placeholder="Your username, please"
-                        onChange={ setUsername }>
+                        align={ POSITIONS.CENTER }
+                        { ...register('username', { required: true }) }>
                     </TextField>
                 </div>
 
@@ -51,7 +50,8 @@ export default function Login(props) {
                     </p>
 
                     <div className="Login__form__avatar__picker">
-                        <AvatarPicker onChange={ setAvatar }>
+                        <AvatarPicker
+                            { ...register('avatar', { required: true }) }>
                         </AvatarPicker>
                     </div>
                 </div>

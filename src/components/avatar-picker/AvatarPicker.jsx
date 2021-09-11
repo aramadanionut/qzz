@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { forwardRef, useState } from "react";
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
@@ -6,14 +6,15 @@ import { AVATARS, AVATAR_IMAGES } from "utils/constants";
 
 import './AvatarPicker.scss';
 
-export default function AvatarPicker(props) {
+export const AvatarPicker = forwardRef((props, ref) => {
+    const { name } = props;
     const [ option, setOption ] = useState();
 
-    const onChange = (value) => {
-        setOption(value);
+    const onChange = (event) => {
+        setOption(event.target.value);
 
         if (props.onChange) {
-            props.onChange(value);
+            props.onChange(event);
         }
     }
 
@@ -24,25 +25,32 @@ export default function AvatarPicker(props) {
                 .filter((avatar) => avatar !== AVATARS.DEFAULT)
                 .map((avatar) => (
                     <AvatarPickerOption
+                        ref={ ref }
                         key={ `avatar-${avatar}` }
+                        name={ name }
                         selected={ option === avatar }
                         avatar={ avatar }
                         image={ AVATAR_IMAGES[avatar] }
-                        onSelect={ (option) => onChange(option) }>
+                        onChange={ onChange }>
                     </AvatarPickerOption>
                 ))
             }
         </div>
     );
-}
+});
 
-function AvatarPickerOption(props) {
+const AvatarPickerOption = forwardRef((props, ref) => {
     const {
+        name,
         selected,
         avatar,
         image,
-        onSelect
+        onChange
     } = props;
+
+    const onSelect = function (event) {
+        onChange(event);
+    }
 
     const avatarPickerOptionClasses = classNames({
         AvatarPicker__option: true,
@@ -52,16 +60,17 @@ function AvatarPickerOption(props) {
     return (
         <label className={ avatarPickerOptionClasses }>
             <input
+                ref={ ref }
                 type="radio"
                 value={ avatar }
-                name="avatar-picker"
+                name={ name }
                 className="AvatarPicker__option__input"
-                onClick={() => onSelect(avatar) }
+                onChange={ onSelect }
             />
             <img className="AvatarPicker__option__image" src={ image } alt="" />
         </label>
     )
-}
+});
 
 AvatarPicker.propTypes = {
     onChange: PropTypes.func

@@ -6,18 +6,28 @@ import './RadioBlocks.scss';
 
 export default function RadioBlocks(props) {
     const {
-        name,
         options,
-        onChange
+        onChange,
+        register
     } = props;
+
+    const name = register && register.name
+        ? register.name
+        : props.name;
 
     const [ selected, setSelected ] = useState(null);
 
-    function onSelect(value) {
+    function onSelect(event) {
+        const value = event.target.value;
+
         setSelected(value);
 
         if (onChange && typeof onChange === 'function') {
             onChange(value);
+        }
+
+        if (register && register.onChange) {
+            register.onChange(event);
         }
     }
 
@@ -59,7 +69,7 @@ function RadioBlock(props) {
                     value={ value }
                     name={ name }
                     className="RadioBlock__input"
-                    onClick={() => onSelect(value) }
+                    onChange={ onSelect }
                 />
                 <div className="RadioBlock__dot"></div>
                 <div className="RadioBlock__text">{ label }</div>
