@@ -2,6 +2,8 @@ import keyMirror from "keymirror";
 
 import { Avatar01Astronaut, Avatar02Bear, Avatar03Ninja, Avatar04Dog, DefaultAvatar } from 'assets/img/avatars/index';
 
+// Generic
+
 export const COLORS = keyMirror({
     PRIMARY: null,
     SECONDARY: null
@@ -17,7 +19,14 @@ export const POSITIONS = keyMirror({
     START: null,
     CENTER: null,
     END: null
-})
+});
+
+export const BUTTON_TYPES = {
+    BUTTON: 'button',
+    SUBMIT: 'submit'
+};
+
+// Avatars
 
 export const AVATARS = keyMirror({
     ASTRONAUT: null,
@@ -35,30 +44,23 @@ export const AVATAR_IMAGES = {
     [AVATARS.DEFAULT]: DefaultAvatar
 };
 
-export const QUESTION_DIFFICULTIES = keyMirror({
-    EASY: null,
-    MEDIUM: null,
-    HARD: null
-});
+// Question related
+
+export const QUESTION_DIFFICULTIES = {
+    EASY: 'easy',
+    MEDIUM: 'medium',
+    HARD: 'hard'
+};
 
 export const QUESTION_COUNT = [ 10, 15, 20, 25, 30 ];
 
-export const QUESTION_TYPES = keyMirror({
-    ANY: null,
-    SINGLE: null,
-    MULTIPLE: null
-});
-
-export const FETCH_STATUSES = keyMirror({
-    FETCHING: null,
-    FETCHED: null,
-    FETCH_ERROR: null
-});
-
-export const BUTTON_TYPES = {
-    BUTTON: 'button',
-    SUBMIT: 'submit'
+export const QUESTION_TYPES = {
+    ANY: 'any',
+    SINGLE: 'boolean',
+    MULTIPLE: 'multiple'
 };
+
+// Fetch related
 
 export const QUIZ_QUERY_PARAMS_KEYS = {
     DIFFICULTY: 'difficulty',
@@ -66,3 +68,9 @@ export const QUIZ_QUERY_PARAMS_KEYS = {
     CATEGORY: 'category',
     TYPE: 'type'
 };
+
+export const FETCH_STATUSES = keyMirror({
+    FETCHING: null,
+    FETCHED: null,
+    FETCH_ERROR: null
+});

@@ -3,12 +3,13 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 import Label from 'components/common/forms/label/Label';
-import { RadioBlocks } from 'components/common/forms/radio-blocks/RadioBlocks';
+import { Select } from 'components/common/forms/select/Select';
 
 import { QUESTION_TYPES } from 'utils/constants';
 
 export const Question = (props) => {
     const {
+        id,
         type,
         question,
         answers
@@ -17,14 +18,14 @@ export const Question = (props) => {
     return (
         <div className="Question">
             <Label text={ question }></Label>
-            <RadioBlocks
+            <Select
+                name={ id }
                 inline={ false }
                 options={ answers }>
-            </RadioBlocks>
+            </Select>
         </div>
     )
 }
-
 
 Question.propTypes = {
     type: PropTypes.oneOf([ QUESTION_TYPES.SINGLE, QUESTION_TYPES.MULTIPLE ]),

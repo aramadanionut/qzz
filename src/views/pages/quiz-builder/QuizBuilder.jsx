@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 import Label from "components/common/forms/label/Label";
 import Button from "components/common/buttons/button/Button";
 import Spinner from "components/spinner/Spinner";
-import { RadioBlocks } from "components/common/forms/radio-blocks/RadioBlocks";
+import { Select } from "components/common/forms/select/Select";
 
 import useFetch from "hooks/useFetch";
 import { quizCategoryLookupUrl, parseQuizCategories } from "services/quiz.service";
@@ -57,34 +57,34 @@ export default function QuizBuilder(props) {
                     onSubmit={ handleSubmit(onSubmit) }>
                     <div className="QuizBuilder__form__field QuizBuild__form__difficulty">
                         <Label text="How difficult do you want it to be?"></Label>
-                        <RadioBlocks
+                        <Select
                             options={ difficultyOptions }
                             { ...register(QUIZ_BUILDER_FORM.DIFFICULTY, { required: true }) }>
-                        </RadioBlocks>
+                        </Select>
                     </div>
 
                     <div className="QuizBuilder__form__field QuizBuild__form__type">
                         <Label text="What kind of questions do you want?"></Label>
-                        <RadioBlocks
+                        <Select
                             options={ typeOptions }
                             { ...register(QUIZ_BUILDER_FORM.TYPE, { required: true }) }>
-                        </RadioBlocks>
+                        </Select>
                     </div>
 
                     <div className="QuizBuilder__form__field QuizBuild__form__count">
                         <Label text="How many questions do you want?"></Label>
-                        <RadioBlocks
+                        <Select
                             options={ countOptions }
                             { ...register(QUIZ_BUILDER_FORM.COUNT, { required: true }) }>
-                        </RadioBlocks>
+                        </Select>
                     </div>
 
                     <div className="QuizBuilder__form__field QuizBuild__form__category">
                         <Label text="Which category would you like?"></Label>
-                        <RadioBlocks
+                        <Select
                             options={ categoryOptions }
                             { ...register(QUIZ_BUILDER_FORM.CATEGORY, { required: true }) }>
-                        </RadioBlocks>
+                        </Select>
                     </div>
 
                     {formIsValid && (

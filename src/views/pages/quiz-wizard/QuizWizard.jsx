@@ -20,6 +20,8 @@ export default function QuizWizard(props) {
             {questions && questions.map(({ id, type, question, answers }) => (
                 <Question
                     key={ id }
+                    id={ id }
+                    type={ type }
                     question={ question }
                     answers={ answers }>
                 </Question>

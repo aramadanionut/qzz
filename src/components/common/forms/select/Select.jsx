@@ -2,9 +2,9 @@ import React, { forwardRef, useState } from "react";
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import './RadioBlocks.scss';
+import './Select.scss';
 
-export const RadioBlocks = forwardRef((props, ref) => {
+export const Select = forwardRef((props, ref) => {
     const {
         inline,
         name,
@@ -23,15 +23,15 @@ export const RadioBlocks = forwardRef((props, ref) => {
         }
     }
 
-    const radioBlocksClasses = classNames({
-        RadioBlocks: true,
-        'RadioBlocks--inline': !!inline
+    const SelectClasses = classNames({
+        Select: true,
+        'Select--inline': !!inline
     })
 
     return (
-        <div className={ radioBlocksClasses }>
+        <div className={ SelectClasses }>
             { options && options.length && options.map((option) => (
-                <RadioBlock
+                <SelectOption
                     ref={ ref }
                     key={ `option-${option.value}` }
                     name={ name }
@@ -40,13 +40,13 @@ export const RadioBlocks = forwardRef((props, ref) => {
                     selected={ option.value === selected }
                     onChange={ onSelect }
                     onBlur={ onBlur }>
-                </RadioBlock>
+                </SelectOption>
             ))}
         </div>
     )
 });
 
-RadioBlocks.propTypes = {
+Select.propTypes = {
     name: PropTypes.string,
     options: PropTypes.arrayOf(PropTypes.shape({
         value: PropTypes.oneOfType([ PropTypes.string, PropTypes.number ]).isRequired,
@@ -55,14 +55,14 @@ RadioBlocks.propTypes = {
     onChange: PropTypes.func
 };
 
-RadioBlocks.defaultProps = {
+Select.defaultProps = {
     inline: true,
     name: null,
     options: [],
     onChange: () => {}
 };
 
-const RadioBlock = forwardRef((props, ref) => {
+const SelectOption = forwardRef((props, ref) => {
     const {
         name,
         value,
@@ -72,25 +72,25 @@ const RadioBlock = forwardRef((props, ref) => {
         onBlur
     } = props;
 
-    const radioBlockClasses = classNames({
-        RadioBlock: true,
-        'RadioBlock--selected': !!selected
+    const SelectOptionClasses = classNames({
+        SelectOption: true,
+        'SelectOption--selected': !!selected
     });
 
     return (
-        <label className={ radioBlockClasses }>
-            <div className="RadioBlock__wrapper">
+        <label className={ SelectOptionClasses }>
+            <div className="SelectOption__wrapper">
                 <input
                     ref={ ref }
                     type="radio"
                     value={ value }
                     name={ name }
-                    className="RadioBlock__input"
+                    className="SelectOption__input"
                     onChange={ onChange }
                     onBlur={ onBlur }
                 />
-                <div className="RadioBlock__dot"></div>
-                <div className="RadioBlock__text">{ label }</div>
+                <div className="SelectOption__dot"></div>
+                <div className="SelectOption__text">{ label }</div>
             </div>
         </label>
     );

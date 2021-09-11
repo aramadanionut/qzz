@@ -1,10 +1,10 @@
 import React from 'react';
 
-import RadioBlocks from './RadioBlocks';
+import Select from './Select';
 
 export default {
-  component: RadioBlocks,
-  title: 'Forms/RadioBlocks',
+  component: Select,
+  title: 'Forms/Select',
 }
 
 const options = [
@@ -14,9 +14,9 @@ const options = [
 ];
 
 export const Primary = (args) => (
-  <RadioBlocks
+  <Select
     options={ args.options }>
-  </RadioBlocks>
+  </Select>
 );
 
 Primary.args = {

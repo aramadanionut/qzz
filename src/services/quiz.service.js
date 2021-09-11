@@ -1,4 +1,4 @@
-import { QUESTION_TYPES, QUIZ_QUERY_PARAMS_KEYS } from "utils/constants";
+import { QUESTION_TYPES, QUESTION_TYPE_VALUES, QUIZ_QUERY_PARAMS_KEYS } from "utils/constants";
 import { buildQueryParams } from "utils/helpers";
 
 export const quizCategoryLookupUrl = 'https://opentdb.com/api_category.php';
@@ -14,13 +14,13 @@ export const getQuizUrl = (data) => {
     } = data;
     
     const params = {
-        [ QUIZ_QUERY_PARAMS_KEYS.DIFFICULTY ]: difficulty.toLowerCase(),
+        [ QUIZ_QUERY_PARAMS_KEYS.DIFFICULTY ]: difficulty,
         [ QUIZ_QUERY_PARAMS_KEYS.AMOUNT ]: parseInt(count),
         [ QUIZ_QUERY_PARAMS_KEYS.CATEGORY ]: parseInt(category)
     };
 
     if (type !== QUESTION_TYPES.ANY) {
-        params[ QUIZ_QUERY_PARAMS_KEYS.TYPE ] = type.toLowerCase()
+        params[ QUIZ_QUERY_PARAMS_KEYS.TYPE ] = type
     }
 
     return `${baseUrl}?${buildQueryParams(params)}`
