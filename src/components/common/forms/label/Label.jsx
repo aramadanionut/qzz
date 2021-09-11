@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from 'prop-types';
+import SanitizedHTML from 'react-sanitized-html';
 
 import './Label.scss';
 
@@ -10,7 +11,7 @@ export default function Label(props) {
 
     return (
         <label className="Label">
-            { text }
+            <SanitizedHTML html={ text }/>
         </label>
     );
 }

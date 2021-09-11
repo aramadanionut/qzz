@@ -12,11 +12,11 @@ export const parseQuizQuestion = (questions = []) => {
             mapAnswer(correct_answer, true),
             ...incorrect_answers.map(mapAnswer)
         ]);
-
+        
         return {
             id: slugify(question),
             type,
-            question,
+            question: question,
             answers
         };
     })

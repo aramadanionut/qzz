@@ -1,6 +1,7 @@
 import React, { forwardRef, useState } from "react";
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import SanitizedHTML from 'react-sanitized-html';
 
 import './Select.scss';
 
@@ -93,7 +94,9 @@ const SelectOption = forwardRef((props, ref) => {
                     onBlur={ onBlur }
                 />
                 <div className="SelectOption__dot"></div>
-                <div className="SelectOption__text">{ label }</div>
+                <div className="SelectOption__text">
+                    <SanitizedHTML html={ label }/>
+                </div>
             </div>
         </label>
     );
