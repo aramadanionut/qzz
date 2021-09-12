@@ -25,19 +25,19 @@ export default function QuizWizard(props) {
     const quizParams = location.state;
 
     // Form hook
-    const { register, watch, handleSubmit, formState } = useForm({ mode: 'onChange' });
+    const { register, watch, handleSubmit } = useForm({ mode: 'onChange' });
     const answers = watch();
 
     // Fetch hook
     const url = getQuizUrl(quizParams);
     const { status, data } = useFetch(url);
 
-    // Data parsing
+    // Parse fetch data
     const isDataFetched = (status === FETCH_STATUSES.FETCHED);
     const questions = parseQuestions(data);
     const steps = getQuizSteps(questions, answers);
 
-    // Track index
+    // Track current question index
     const [ questionIndex, setQuestionIndex ] = useState(0);
     const isFirstQuestion = questionIndex === 0;
     const isLastQuestion = questionIndex === steps.length - 1;
@@ -48,7 +48,7 @@ export default function QuizWizard(props) {
         'QuizWizard__form__actions--right': !!isFirstQuestion
     });
 
-
+    // isSubmitting and isTimedOut
     const [ isSubmitting, setIsSubmitting ] = useState(false);
     const [ isTimedOut, setIsTimedOut ] = useState(false);
 

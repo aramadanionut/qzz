@@ -2,7 +2,7 @@ import React from 'react';
 
 import { POSITIONS } from 'utils/constants'
 
-import TextField from './TextField';
+import { TextField } from './TextField';
 
 export default {
   component: TextField,
@@ -26,6 +26,7 @@ export const Primary = (args) => (
 );
 
 Primary.args = {
+  name: 'name',
   label: 'Name',
   placeholder: 'Your name, please',
   align: POSITIONS.START

@@ -51,6 +51,7 @@
     
         &:focus {
             border-color: white;
+            color: white;
     
             &::placeholder {
                 color: white;
@@ -86,24 +87,6 @@
 
         .TextField__input {
             text-align: right;
-        }
-    }
-
-    &.TextField--focused {
-        .TextField__label-container {
-            .TextField__label {
-                color: white;
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .TextField__input {
-            color: white;
-            &::placeholder {
-                transform: translateY(-150%);
-                opacity: 0;
-            }
         }
     }
 

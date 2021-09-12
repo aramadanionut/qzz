@@ -16,11 +16,9 @@ export const TextField = forwardRef((props, ref) => {
     } = props;
 
     const [ value, setValue ] = useState("");
-    const [ _, isFocused ] = useFocus();
 
     const textFieldContainerClasses = classNames({
         TextField: true,
-        'TextField--focused': isFocused,
         'TextField--has-label': !!label,
         'TextField--has-value': !!value,
         [ `TextField--align-${ align.toLowerCase() }` ]: !!align
