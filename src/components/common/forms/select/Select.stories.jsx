@@ -14,8 +14,7 @@ const options = [
 ];
 
 export const Primary = (args) => (
-  <Select
-    options={ args.options }>
+  <Select { ...args }>
   </Select>
 );
 

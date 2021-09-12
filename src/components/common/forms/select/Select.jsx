@@ -102,7 +102,7 @@ const SelectOption = forwardRef((props, ref) => {
     );
 });
 
-Select.propTypes = {
+SelectOption.propTypes = {
     name: PropTypes.string,
     value: PropTypes.string,
     label: PropTypes.string,
@@ -111,7 +111,7 @@ Select.propTypes = {
     onBlur: PropTypes.func
 };
 
-Select.defaultProps = {
+SelectOption.defaultProps = {
     name: null,
     value: null,
     label: null,
