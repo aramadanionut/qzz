@@ -90,79 +90,85 @@ export default function QuizWizard(props) {
             )}
 
             {!isSubmitting && isDataFetched && questions && (
-                <form
-                    className="QuizWizard__form"
-                    onSubmit={ handleSubmit(onSubmit(false)) }>
+                <div className="QuizWizard__quiz">
+                    <h3 className="QuizWizard__heading">
+                        Quiz
+                    </h3>
+                    
+                    <form
+                        className="QuizWizard__form"
+                        onSubmit={ handleSubmit(onSubmit(false)) }>
 
-                    {questions && questions.length && (
-                        <div className="QuizWizard__form__questions">
-                            {questions.map(({ id, type, question, answers }, index) => {
-                                if (questionIndex === index) {
-                                    return (
-                                        <div
-                                            key={ id }
-                                            className="QuizWizard__form__question">
-                                            <Question
-                                                id={ id }
-                                                type={ type }
-                                                question={ question }
-                                                answer={ formValues[id] }
-                                                answers={ answers }
-                                                { ...register(id) }>
-                                            </Question>
-                                        </div>
-                                    )
-                                }
-                            })}
+                        {questions && questions.length && (
+                            <div className="QuizWizard__form__questions">
+                                {questions.map(({ id, type, question, answers }, index) => {
+                                    if (questionIndex === index) {
+                                        return (
+                                            <div
+                                                key={ id }
+                                                className="QuizWizard__form__question">
+                                                <Question
+                                                    id={ id }
+                                                    type={ type }
+                                                    question={ question }
+                                                    answer={ formValues[id] }
+                                                    answers={ answers }
+                                                    { ...register(id) }>
+                                                </Question>
+                                            </div>
+                                        )
+                                    }
+                                })}
+                            </div>
+                        )}
+
+                        <div className={ formActionClasses }>
+                            {!isFirstQuestion && (
+                                <Button
+                                    size={ SIZES.SMALL }
+                                    direction={ DIRECTIONS.LEFT }
+                                    onClick={() => setQuestionIndex(questionIndex - 1)}>
+                                    Previous
+                                </Button>
+                            )}
+
+                            {!isLastQuestion && (
+                                <Button
+                                    size={ SIZES.SMALL }
+                                    onClick={() => setQuestionIndex(questionIndex + 1)}>
+                                    Next
+                                </Button>
+                            )}
+
+                            {isLastQuestion && (
+                                <Button
+                                    type={ BUTTON_TYPES.SUBMIT }
+                                    size={ SIZES.SMALL }
+                                    color={ COLORS.SECONDARY }
+                                    direction={ DIRECTIONS.RIGHT }
+                                    onClick={ () => console.log('submitting') }>
+                                    Submit
+                                </Button>
+                            )}
                         </div>
-                    )}
 
-                    <div className={ formActionClasses }>
-                        {!isFirstQuestion && (
-                            <Button
-                                size={ SIZES.SMALL }
-                                direction={ DIRECTIONS.LEFT }
-                                onClick={() => setQuestionIndex(questionIndex - 1)}>
-                                Previous
-                            </Button>
-                        )}
+                        <div className="QuizWizard__form__progress-bar">
+                            <ProgressBar
+                                activeStepIndex={ questionIndex }
+                                steps={ steps }
+                                onChange={ setQuestionIndex }>
+                            </ProgressBar>
+                        </div>
 
-                        {!isLastQuestion && (
-                            <Button
-                                size={ SIZES.SMALL }
-                                onClick={() => setQuestionIndex(questionIndex + 1)}>
-                                Next
-                            </Button>
-                        )}
-
-                        {isLastQuestion && (
-                            <Button
-                                type={ BUTTON_TYPES.SUBMIT }
-                                size={ SIZES.SMALL }
-                                color={ COLORS.SECONDARY }
-                                direction={ DIRECTIONS.RIGHT }
-                                onClick={ () => console.log('submitting') }>
-                                Submit
-                            </Button>
-                        )}
-                    </div>
-
-                    <div className="QuizWizard__form__progress-bar">
-                        <ProgressBar
-                            activeStepIndex={ questionIndex }
-                            steps={ steps }
-                            onChange={ setQuestionIndex }>
-                        </ProgressBar>
-                    </div>
-
-                    <div className="QuizWizard__form__timer">
-                        <Timer
-                            minutes={ QUIZ_MINUTES_PER_QUESTION * count }
-                            seconds={ 0 }
-                            onFinished={ () => onSubmit(true)(formValues) }>
-                        </Timer>
-                    </div>
-                </form>
+                        <div className="QuizWizard__form__timer">
+                            <Timer
+                                minutes={ QUIZ_MINUTES_PER_QUESTION * count }
+                                seconds={ 0 }
+                                onFinished={ () => onSubmit(true)(formValues) }>
+                            </Timer>
+                        </div>
+                    </form>
+                </div>
             )}
         </div>
     )

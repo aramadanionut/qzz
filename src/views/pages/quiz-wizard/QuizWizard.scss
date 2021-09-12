@@ -1,12 +1,24 @@
+@import 'assets/scss/colors';
+
 .QuizWizard {
-    max-width: 500px;
+    max-width: 600px;
     width: 100%;
+
+    .QuizWizard__heading {
+        margin: 0;
+        color: $light-cyan;
+        font-family: 'Bungee', sans-serif;
+        font-size: 2.5rem;
+        text-align: center;
+    }
 
     .QuizWizard__spinner {
         text-align: center;
     }
 
     .QuizWizard__form {
+        margin-top: 32px;
+        
         .QuizWizard__form__questions {
             .QuizWizard__form__question {
                 min-height: 340px;
