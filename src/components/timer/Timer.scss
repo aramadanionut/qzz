@@ -1,0 +1,41 @@
+@import 'assets/scss/colors';
+
+.Timer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    place-content: center;
+    gap: 12px;
+
+    .Timer__countdown {
+        display: inline-flex;
+        align-items: center;
+        place-content: flex-start;
+        font-family: 'Poppins', sans-serif;
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 1;
+        letter-spacing: 2px;
+        color: $light-cyan;
+
+        gap: 2px;
+
+        .Timer__countdown__separator {
+            color: darken($light-cyan, 10%);
+        }
+    }
+
+    .Timer__bar {
+        width: 100%;
+        height: 6px;
+        border-radius: 6px;
+        background: darken($deep-cyan, 18%);
+
+        .Timer__bar__progress {
+            height: 100%;
+            width: 50%;
+            border-radius: 6px;
+            background: lighten($light-cyan, 18%);
+        }
+    }
+}

@@ -7,8 +7,10 @@
     }
 
     .QuizWizard__form {
-        .QuizWizard__form__question {
-            min-height: 340px;
+        .QuizWizard__form__questions {
+            .QuizWizard__form__question {
+                min-height: 340px;
+            }
         }
 
         .QuizWizard__form__actions {
@@ -27,6 +29,10 @@
 
         .QuizWizard__form__progress-bar {
             margin-top: 60px;
+        }
+
+        .QuizWizard__form__timer {
+            margin-top: 16px;
         }
     }
 }

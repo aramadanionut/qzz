@@ -16,6 +16,7 @@ import ProgressBar from "components/progress-bar/ProgressBar";
 
 import './QuizWizard.scss';
 import classNames from "classnames";
+import Timer from "components/timer/Timer";
 
 export default function QuizWizard(props) {
     // Location hook
@@ -60,21 +61,29 @@ export default function QuizWizard(props) {
 
             {isDataFetched && questions && (
                 <div className="QuizWizard__form">
-                    {questions.map(({ id, type, question, answers }, index) => (
-                        questionIndex === index && (
-                            <div
-                                key={ id }
-                                className="QuizWizard__form__question">
-                                <Question
-                                    id={ id }
-                                    type={ type }
-                                    question={ question }
-                                    answers={ answers }
-                                    { ...register(id, { required: true })}>
-                                </Question>
-                            </div>
-                        )
-                    ))}
+                    
+
+                    {questions && questions.length && (
+                        <div className="QuizWizard__form__questions">
+                            {questions.map(({ id, type, question, answers }, index) => {
+                                if (questionIndex === index) {
+                                    return (
+                                        <div
+                                            key={ id }
+                                            className="QuizWizard__form__question">
+                                            <Question
+                                                id={ id }
+                                                type={ type }
+                                                question={ question }
+                                                answers={ answers }
+                                                { ...register(id, { required: true })}>
+                                            </Question>
+                                        </div>
+                                    )
+                                }
+                            })}
+                        </div>
+                    )}
 
                     <div className={ formActionClasses }>
                         {!isFirstQuestion && (
@@ -111,6 +120,10 @@ export default function QuizWizard(props) {
                             steps={ steps }
                             onChange={ setQuestionIndex }>
                         </ProgressBar>
+                    </div>
+
+                    <div className="QuizWizard__form__timer">
+                        <Timer></Timer>
                     </div>
                 </div>
             )}
