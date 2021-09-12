@@ -53,7 +53,8 @@
                     border-radius: 100%;
                     background: darken($deep-cyan, 15%);
                     transform: scale(0);
-                    transition: all .2s $easeInOutSine;
+                    opacity: 0;
+                    transition: opacity .2s $easeInOutQuad, transform .2s $easeInOutSine;
                 }
     
                 &:after {
@@ -95,7 +96,8 @@
 
                 .SelectOption__dot {
                     &:before {
-                        transition: all .4s $easeInOutSine;
+                        opacity: 1;
+                        // transition: all .4s $easeInOutSine;
                         background: $light-cyan;
                         transform: scale(500);
                     }
