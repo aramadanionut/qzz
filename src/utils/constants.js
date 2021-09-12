@@ -15,6 +15,11 @@ export const SIZES = keyMirror({
     LARGE: null
 });
 
+export const DIRECTIONS = keyMirror({
+    LEFT: null,
+    RIGHT: null
+});
+
 export const POSITIONS = keyMirror({
     START: null,
     CENTER: null,

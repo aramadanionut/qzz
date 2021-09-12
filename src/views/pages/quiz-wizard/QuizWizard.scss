@@ -11,8 +11,13 @@
             min-height: 340px;
         }
 
-        .QuizWizard__form__button {
-            text-align: right;
+        .QuizWizard__form__actions {
+            display: flex;
+            place-content: space-between;
+        }
+
+        .QuizWizard__form__progress-bar {
+            margin-top: 30px;
         }
     }
 }

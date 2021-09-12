@@ -4,11 +4,12 @@ import { useLocation } from "react-router-dom";
 import useFetch from "hooks/useFetch";
 import { getQuizUrl } from "services/quiz.service";
 import { parseQuizQuestion } from "services/questions.service";
-import { FETCH_STATUSES } from "utils/constants";
+import { DIRECTIONS, FETCH_STATUSES } from "utils/constants";
 
 import { Question } from "components/question/Question";
 import Spinner from "components/spinner/Spinner";
 import Button from "components/common/buttons/button/Button";
+import ProgressBar from "components/progress-bar/ProgressBar";
 
 import './QuizWizard.scss';
 
@@ -53,8 +54,21 @@ export default function QuizWizard(props) {
                         )
                     ))}
 
-                    <div className="QuizWizard__form__button">
-                        <Button onClick={() => setQuestionIndex(questionIndex + 1)}>Next</Button>
+                    <div className="QuizWizard__form__actions">
+                        <Button
+                            direction={ DIRECTIONS.LEFT }
+                            onClick={() => setQuestionIndex(questionIndex - 1)}>
+                            Previous
+                        </Button>
+                        
+                        <Button
+                            onClick={() => setQuestionIndex(questionIndex + 1)}>
+                            Next
+                        </Button>
+                    </div>
+
+                    <div className="QuizWizard__form__progress-bar">
+                        <ProgressBar></ProgressBar>
                     </div>
                 </div>
             )}

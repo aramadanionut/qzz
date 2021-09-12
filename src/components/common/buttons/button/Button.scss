@@ -35,6 +35,7 @@ $button-height: 50px;
             width: $button-height;
             height: $button-height;
             line-height: $button-height;
+            font-size: 16px;
             transition: all 0.2s $easeInOutQuint;
 
             &:before {
@@ -43,7 +44,7 @@ $button-height: 50px;
                 width: 16px;
                 height: 2px;
                 position: absolute;
-                top: 0;
+                top: -2px;
                 bottom: 0;
                 left: 0;
                 right: 10px;
@@ -78,6 +79,24 @@ $button-height: 50px;
         }
     }
 
+    &.Button--direction-left {
+        padding: 0 calc(#{$button-height} + 16px) 0 32px;
+
+        .Button__background {
+            left: auto;
+            right: 0;
+            place-content: flex-end;
+
+            .Button__background-icon {
+                &:before {
+                    left: 10px;
+                    right: 0;
+                    transform: translateX(8px);
+                }
+            }
+        }
+    }
+
     &.Button--hovered {
         .Button__background {
             width: 100%;
@@ -96,6 +115,25 @@ $button-height: 50px;
         .Button__text {
             color: white;
             transform: translateX(8px);
+        }
+
+        &.Button--direction-left {
+            .Button__background {
+                .Button__background-icon {
+                    transform: translateX(-16px);
+
+                    &:before {
+                        width: 12px;
+                        opacity: 1;
+                        transform: translateX(0);
+                    }
+                }
+            }
+
+            .Button__text {
+                color: white;
+                transform: translateX(-8px);
+            }
         }
     }
 }

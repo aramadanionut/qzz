@@ -7,11 +7,11 @@ export default function ProgressBar(props) {
 
     return (
         <div className="ProgressBar">
-            <div className="ProgressBar__bar">
-            </div>
             <div className="ProgressBar__steps">
                 {steps.map((step) => (
-                    <div className="ProgressBar__step">
+                    <div
+                        key={ `step-${step}` }
+                        className="ProgressBar__step">
                         <div className="ProgressBar__step__dot"></div>
                         <div className="ProgressBar__step__index">{ step }</div>
                     </div>

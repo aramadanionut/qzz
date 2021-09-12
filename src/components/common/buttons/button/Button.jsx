@@ -2,9 +2,9 @@ import React from "react";
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
-import { SIZES, COLORS, BUTTON_TYPES } from "utils/constants";
+import { SIZES, COLORS, BUTTON_TYPES, DIRECTIONS } from "utils/constants";
 import useHover from "hooks/useHover";
 
 import './Button.scss';
@@ -12,6 +12,7 @@ import './Button.scss';
 export default function Button(props) {
     const {
         type,
+        direction,
         size,
         children,
         color = '',
@@ -24,7 +25,8 @@ export default function Button(props) {
         Button: true,
         [`Button--${size.toLowerCase()}`]: !!size,
         [`Button--hovered`]: isHovered,
-        [`Button--${color.toLowerCase()}`]: !!color
+        [`Button--${color.toLowerCase()}`]: !!color,
+        [`Button--direction-${direction.toLowerCase()}`]: !!direction,
     });
 
     return (
@@ -36,7 +38,7 @@ export default function Button(props) {
 
             <div className="Button__background">
                 <div className="Button__background-icon">
-                    <FontAwesomeIcon icon={ faChevronRight } />
+                    <FontAwesomeIcon icon={ direction === DIRECTIONS.RIGHT ? faChevronRight : faChevronLeft } />
                 </div>
             </div>
 
@@ -49,6 +51,7 @@ export default function Button(props) {
 
 Button.propTypes = {
     type: PropTypes.oneOf([ BUTTON_TYPES.BUTTON, BUTTON_TYPES.SUBMIT ]),
+    direction: PropTypes.oneOf([ DIRECTIONS.LEFT, DIRECTIONS.RIGHT ]),
     size: PropTypes.oneOf(Object.values(SIZES)),
     color: PropTypes.oneOf(Object.values(COLORS)),
     onClick: PropTypes.func
@@ -56,6 +59,7 @@ Button.propTypes = {
 
 Button.defaultProps = {
     type: BUTTON_TYPES.BUTTON,
+    direction: DIRECTIONS.RIGHT,
     size: SIZES.MEDIUM,
     color: COLORS.PRIMARY,
     onClick: () => {}

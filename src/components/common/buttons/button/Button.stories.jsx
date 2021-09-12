@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { COLORS, SIZES } from 'utils/constants'
+import { BUTTON_TYPES, COLORS, DIRECTIONS, SIZES } from 'utils/constants'
 
 import Button from './Button';
 
@@ -19,16 +19,24 @@ export default {
       control: {
         type: 'radio'
       }
+    },
+    direction: {
+      options: [ DIRECTIONS.LEFT, DIRECTIONS.RIGHT ],
+      control: {
+        type: 'radio'
+      }
+    },
+    type: {
+      options: [ BUTTON_TYPES.BUTTON, BUTTON_TYPES.SUBMIT ],
+      control: {
+        type: 'radio'
+      }
     }
   }
 }
 
 export const Primary = (args) => (
-  <Button
-    size={ args.size }
-    color={ args.color }>
-    Start the quiz
-  </Button>
+  <Button { ...args }>Start the quiz</Button>
 );
 
 Primary.args = {
