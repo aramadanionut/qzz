@@ -28,7 +28,7 @@
         }
 
         .Timer__countdown__separator {
-            color: darken($light-cyan, 10%);
+            color: transparentize($light-cyan, .6);
         }
 
         .Timer__countdown__minutes,
@@ -59,12 +59,12 @@
             color: $pink;
 
             .Timer__countdown__separator {
-                color: darken($pink, 10%);
+                color: transparentize($pink, .5);
             }
         }
 
         .Timer__bar {
-            background: transparentize($pink, 0.6);
+            background: transparentize($orange, 0.8);
 
             .Timer__bar__progress {
                 background: $pink;
