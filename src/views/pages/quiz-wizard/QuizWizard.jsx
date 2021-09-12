@@ -54,8 +54,6 @@ export default function QuizWizard(props) {
     const [ isSubmitting, setIsSubmitting ] = useState(false);
     const [ isTimedOut, setIsTimedOut ] = useState(false);
 
-    console.log({ formValues, formState });
-
     const onSubmit = (timedOut) => (data) => {
         setIsSubmitting(true);
         setIsTimedOut(timedOut);
@@ -129,13 +127,24 @@ export default function QuizWizard(props) {
                             </Button>
                         )}
 
-                        <Button
-                            type={ isLastQuestion ? BUTTON_TYPES.SUBMIT : BUTTON_TYPES.BUTTON }
-                            color={ isLastQuestion ? COLORS.SECONDARY : COLORS.PRIMARY }
-                            size={ SIZES.SMALL }
-                            onClick={ isLastQuestion ? () => console.log('submitting') : () => setQuestionIndex(questionIndex + 1)}>
-                            { isLastQuestion ? 'Submit' : 'Next' }
-                        </Button>
+                        {!isLastQuestion && (
+                            <Button
+                                size={ SIZES.SMALL }
+                                onClick={() => setQuestionIndex(questionIndex + 1)}>
+                                Next
+                            </Button>
+                        )}
+
+                        {isLastQuestion && (
+                            <Button
+                                type={ BUTTON_TYPES.SUBMIT }
+                                size={ SIZES.SMALL }
+                                color={ COLORS.SECONDARY }
+                                direction={ DIRECTIONS.RIGHT }
+                                onClick={ () => console.log('submitting') }>
+                                Submit
+                            </Button>
+                        )}
                     </div>
 
                     <div className="QuizWizard__form__progress-bar">
