@@ -1,4 +1,5 @@
 import React from "react";
+import Footer from "views/partials/footer/Footer";
 
 import Header from 'views/partials/header/Header';
 
@@ -11,6 +12,7 @@ export default function Main(props) {
             <div className="layout-main-inner">
                 { props.children }
             </div>
+            <Footer></Footer>
         </div>
     );
 }
