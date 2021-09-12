@@ -32,12 +32,17 @@
             height: 12px;
             padding: 6px;
             cursor: pointer;
+            border: none;
+            outline: none;
+            background: none;
+            display: block;
+            box-sizing: content-box;
 
             .ProgressBar__step__dot {
                 width: 100%;
                 height: 100%;
                 border-radius: 100%;
-                background: $light-cyan;
+                background: darken($deep-cyan, 10%);
                 transition: all .1s $easeInOutQuad;
             }
 
@@ -85,6 +90,19 @@
                 .ProgressBar__step__index {
                     transform: scale(1);
                     opacity: 1;
+                }
+            }
+
+            &.ProgressBar__step--active {
+                .ProgressBar__step__dot {
+                    transform: scale(2.2);
+                    background: $deep-cyan;
+                }
+            }
+
+            &.ProgressBar__step--completed {
+                .ProgressBar__step__dot {
+                    background: $light-cyan;
                 }
             }
         }

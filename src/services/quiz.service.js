@@ -24,7 +24,7 @@ export const getQuizUrl = (data) => {
     }
 
     return `${baseUrl}?${buildQueryParams(params)}`
-}
+};
 
 export const parseQuizCategories = (data) => {
     if (!data) {
@@ -43,4 +43,18 @@ export const parseQuizCategories = (data) => {
                 label: name
             }));
     }
-}
+};
+
+export const getQuizSteps = (questions) => {
+    if (!questions || !questions.length) {
+        return [];
+    }
+
+    return questions.map(({ id }, index) => ({
+        id,
+        index,
+        label: index + 1,
+        completed: false,
+        active: false
+    }));
+};

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
 
 import useFetch from "hooks/useFetch";
-import { getQuizUrl } from "services/quiz.service";
+import { getQuizUrl, getQuizSteps } from "services/quiz.service";
 import { parseQuizQuestion } from "services/questions.service";
 import { DIRECTIONS, FETCH_STATUSES } from "utils/constants";
 
@@ -22,6 +22,9 @@ export default function QuizWizard(props) {
 
     const isDataFetched = (status === FETCH_STATUSES.FETCHED);
     const questions = data && data.results && parseQuizQuestion(data.results);
+    const steps = getQuizSteps(questions);
+    
+    console.log(steps);
 
     const [ questionIndex, setQuestionIndex ] = useState(0);
 
@@ -68,7 +71,11 @@ export default function QuizWizard(props) {
                     </div>
 
                     <div className="QuizWizard__form__progress-bar">
-                        <ProgressBar></ProgressBar>
+                        <ProgressBar
+                            activeStepIndex={ questionIndex }
+                            steps={ steps }
+                            onChange={ setQuestionIndex }>
+                        </ProgressBar>
                     </div>
                 </div>
             )}
