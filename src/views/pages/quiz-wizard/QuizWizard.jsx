@@ -26,7 +26,7 @@ export default function QuizWizard(props) {
     const quizParams = location.state;
 
     // Form hook
-    const { register, watch, handleSubmit } = useForm({ mode: 'onChange' });
+    const { register, watch, handleSubmit, formState } = useForm({ mode: 'onChange' });
     const formValues = watch();
 
     // Fetch hook
@@ -53,6 +53,8 @@ export default function QuizWizard(props) {
     // isSubmitting and isTimedOut
     const [ isSubmitting, setIsSubmitting ] = useState(false);
     const [ isTimedOut, setIsTimedOut ] = useState(false);
+
+    console.log({ formValues, formState });
 
     const onSubmit = (timedOut) => (data) => {
         setIsSubmitting(true);
@@ -93,7 +95,6 @@ export default function QuizWizard(props) {
                 <form
                     className="QuizWizard__form"
                     onSubmit={ handleSubmit(onSubmit(false)) }>
-                    
 
                     {questions && questions.length && (
                         <div className="QuizWizard__form__questions">
@@ -109,7 +110,7 @@ export default function QuizWizard(props) {
                                                 question={ question }
                                                 answer={ formValues[id] }
                                                 answers={ answers }
-                                                { ...register(id, { required: true })}>
+                                                { ...register(id) }>
                                             </Question>
                                         </div>
                                     )
