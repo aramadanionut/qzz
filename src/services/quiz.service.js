@@ -69,7 +69,7 @@ export const calculateScore = (correctAnswers, params) => {
     };
 };
 
-export const scoreQuiz = ({ questions, answers, params }) => {
+export const scoreQuiz = ({ questions = [], answers = {}, params = {}}) => {
     const total = questions.length;
     
     const correctAnswers = questions.reduce((acc, question) => {

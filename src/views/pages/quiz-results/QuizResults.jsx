@@ -1,16 +1,24 @@
 import React, { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useHistory, useLocation } from "react-router-dom";
 
 import Spinner from "components/spinner/Spinner";
-
-import './QuizResults.scss';
-import { scoreQuiz } from "services/quiz.service";
 import Score from "components/score/Score";
 import Button from "components/common/buttons/button/Button";
 
+import { scoreQuiz } from "services/quiz.service";
+import { isObjEmpty } from "utils/helpers";
+
+import './QuizResults.scss';
+
 export default function QuizResults(props) {
+    const history = useHistory();
     const location = useLocation();
-    const state = location.state;
+    const state = location.state || {};
+
+    if (isObjEmpty(state)) {
+        history.push('/builder');
+    }
+
     const { questions, answers, quizParams } = state;
 
     const [ isCalculating, setIsCalculating ] = useState(true);

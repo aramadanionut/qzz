@@ -45,4 +45,6 @@ export const sortByKey = (array, key) => {
         if (a[key] > b[key]) return -1;
         return 0;
     });
-}
+};
+
+export const isObjEmpty = (obj) => obj && Object.keys(obj).length === 0 && obj.constructor === Object;
