@@ -35,7 +35,7 @@ export default function Header(props) {
                 <div className="Header__menu__links">
                     <Link
                         className="Header__menu__link"
-                        to="/scoreboard">
+                        to="/leaderboard">
                         <span className="Header__menu__link__text">Leaderboard</span>
                         <FontAwesomeIcon className="Header__menu__link__icon" icon={ faChessQueen }/>
                     </Link>
