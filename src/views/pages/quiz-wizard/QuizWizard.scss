@@ -4,68 +4,90 @@
     max-width: 600px;
     width: 100%;
 
-    .QuizWizard__heading {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        place-content: center;
-        gap: 10px;
-        margin: 0;
-        color: $light-cyan;
-        font-family: 'Bungee', sans-serif;
-        font-size: 2.5rem;
-        line-height: 3rem;
-        text-align: center;
-
-        .QuizWizard__heading__text {
-            display: inline-block;
-        }
-
-        .QuizWizard__heading__difficulty {
-            display: flex;
-            align-items: center;
-            place-content: center;
-            gap: 20px;
-            font-family: 'Poppins', sans-serif;
-            text-transform: uppercase;
-            font-size: .9rem;
-            line-height: 1;
-        }
-    }
-
     .QuizWizard__spinner {
         text-align: center;
     }
 
-    .QuizWizard__form {
-        margin-top: 50px;
-        
-        .QuizWizard__form__questions {
-            .QuizWizard__form__question {
-                min-height: 340px;
-            }
+    .QuizWizard__empty {
+        text-align: center;
+        color: $deep-cyan;
+
+        .QuizWizard__empty__heading {
+            margin: 0;
+            font-size: 14px;
         }
 
-        .QuizWizard__form__actions {
-            display: flex;
-            width: 100%;
-            place-content: space-between;
-
-            &.QuizWizard__form__actions--right {
-                place-content: flex-end;
-            }
-
-            .Button {
-                min-width: 180px;
-            }
+        .QuizWizard__empty__text {
+            margin-top: 10px;
+            font-size: 20px;
         }
 
-        .QuizWizard__form__progress-bar {
-            margin-top: 60px;
-        }
-
-        .QuizWizard__form__timer {
-            margin-top: 16px;
+        .QuizWizard__empty__actions {
+            margin-top: 40px;
         }
     }
+
+    .QuizWizard__quiz {
+        .QuizWizard__heading {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            place-content: center;
+            gap: 10px;
+            margin: 0;
+            color: $light-cyan;
+            font-family: 'Bungee', sans-serif;
+            font-size: 2.5rem;
+            line-height: 3rem;
+            text-align: center;
+    
+            .QuizWizard__heading__text {
+                display: inline-block;
+            }
+    
+            .QuizWizard__heading__difficulty {
+                display: flex;
+                align-items: center;
+                place-content: center;
+                gap: 20px;
+                font-family: 'Poppins', sans-serif;
+                text-transform: uppercase;
+                font-size: .9rem;
+                line-height: 1;
+            }
+        }
+    
+        .QuizWizard__form {
+            margin-top: 50px;
+            
+            .QuizWizard__form__questions {
+                .QuizWizard__form__question {
+                    min-height: 340px;
+                }
+            }
+    
+            .QuizWizard__form__actions {
+                display: flex;
+                width: 100%;
+                place-content: space-between;
+    
+                &.QuizWizard__form__actions--right {
+                    place-content: flex-end;
+                }
+    
+                .Button {
+                    min-width: 180px;
+                }
+            }
+    
+            .QuizWizard__form__progress-bar {
+                margin-top: 60px;
+            }
+    
+            .QuizWizard__form__timer {
+                margin-top: 16px;
+            }
+        }
+    }
+
 }

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useHistory, useLocation } from "react-router-dom";
+import { Link, useHistory, useLocation } from "react-router-dom";
 import { useForm } from "react-hook-form";
 
 import useFetch from "hooks/useFetch";
@@ -98,7 +98,19 @@ export default function QuizWizard(props) {
                 </div>
             )}
 
-            {!isSubmitting && isDataFetched && questions && (
+            {!isSubmitting && isDataFetched && questions && !questions.length && (
+                <div className="QuizWizard__empty">
+                    <p className="QuizWizard__empty__heading">Sorry, I can't think of that many questions.</p>
+                    <p className="QuizWizard__empty__text">Want to try to build a new quiz?</p>
+                    <div className="QuizWizard__empty__actions">
+                        <Link to="/builder">
+                            <Button>Try again</Button>
+                        </Link>
+                    </div>
+                </div>
+            )}
+
+            {!isSubmitting && isDataFetched && questions && questions.length > 0 && (
                 <div className="QuizWizard__quiz">
                     <h3 className="QuizWizard__heading">
                         <span className="QuizWizard__heading__text"> { quizParams.categoryName } </span>
