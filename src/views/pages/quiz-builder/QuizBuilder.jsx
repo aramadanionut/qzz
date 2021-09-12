@@ -45,7 +45,7 @@ export default function QuizBuilder(props) {
                 <div className="QuizBuilder__spinner">
                     <Spinner
                         size={ 40 }
-                        text="Just a moment..">
+                        text="Just a moment">
                     </Spinner>
                 </div>
             )}

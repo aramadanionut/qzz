@@ -16,5 +16,5 @@ export const Primary = (args) => (
 
 Primary.args = {
     size: 40,
-    text: 'Just a moment...'
+    text: 'Just a moment'
 };

@@ -33,7 +33,14 @@ export default function Spinner(props) {
                         <p className="Spinner__heading">{ heading }</p>
                     )}
                     {text && (
-                        <p className="Spinner__text">{ text }</p>
+                        <p className="Spinner__text">
+                            { text }
+                            <span className="Spinner__text__ellipsis">
+                                <span className="Spinner__text__ellipsis__dot Spinner__text__ellipsis__dot-1">.</span>
+                                <span className="Spinner__text__ellipsis__dot Spinner__text__ellipsis__dot-2">.</span>
+                                <span className="Spinner__text__ellipsis__dot Spinner__text__ellipsis__dot-3">.</span>
+                            </span>
+                        </p>
                     )}
                 </div>
             )}

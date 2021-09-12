@@ -36,7 +36,7 @@ export default function QuizResults(props) {
                 <div className="QuizResults__spinner">
                     <Spinner
                         size={ 40 }
-                        text="Let's see here...">
+                        text="Let's see how you did">
                     </Spinner>
                 </div>
             )}

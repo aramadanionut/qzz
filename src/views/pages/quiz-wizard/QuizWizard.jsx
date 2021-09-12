@@ -75,7 +75,7 @@ export default function QuizWizard(props) {
                     <Spinner
                         size={ 40 }
                         heading={ isTimedOut ? "Sorry, time's up" : '' }
-                        text="Submitting your answers...">
+                        text="Checking your answers">
                     </Spinner>
                 </div>
             )}
@@ -84,7 +84,7 @@ export default function QuizWizard(props) {
                 <div className="QuizWizard__spinner">
                     <Spinner
                         size={ 40 }
-                        text="Think of some questions...">
+                        text="Thinking of some questions">
                     </Spinner>
                 </div>
             )}
