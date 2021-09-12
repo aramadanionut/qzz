@@ -12,11 +12,12 @@
         flex-direction: column;
         gap: 8px;
         color: $light-cyan;
+        font-size: 14px;
+        font-weight: 500;
         font-family: 'Poppins', sans-serif;
 
         .Spinner__heading {
             margin: 0;
-            font-size: 14px;
             color: lighten($mid-orange, 5%);
         }
     

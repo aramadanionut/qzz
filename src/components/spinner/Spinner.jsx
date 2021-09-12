@@ -13,16 +13,6 @@ export default function Spinner(props) {
 
     return (
         <div className="Spinner">
-            {(heading || text) && (
-                <div className="Spinner__header">
-                    {heading && (
-                        <p className="Spinner__heading">{ heading }</p>
-                    )}
-                    {text && (
-                        <p className="Spinner__text">{ text }</p>
-                    )}
-                </div>
-            )}
             <div
                 className="Spinner__cube-grid"
                 style={ spinnerCubeStyle }>
@@ -36,6 +26,17 @@ export default function Spinner(props) {
                 <div className="Spinner__cube Spinner__cube-8"></div>
                 <div className="Spinner__cube Spinner__cube-9"></div>
             </div>
+
+            {(heading || text) && (
+                <div className="Spinner__header">
+                    {heading && (
+                        <p className="Spinner__heading">{ heading }</p>
+                    )}
+                    {text && (
+                        <p className="Spinner__text">{ text }</p>
+                    )}
+                </div>
+            )}
         </div>
     );
 };
