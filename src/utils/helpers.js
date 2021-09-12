@@ -38,3 +38,11 @@ export const padStringLeft = (string, pad, length) => {
 export const pluralize = (string, count) => {
     return `${string}${count > 1 ? 's' : ''}`;
 };
+
+export const sortByKey = (array, key) => {
+    return array.sort((a, b) => {
+        if (a[key] < b[key]) return 1;
+        if (a[key] > b[key]) return -1;
+        return 0;
+    });
+}

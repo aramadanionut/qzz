@@ -2,13 +2,17 @@ import React from "react";
 import PropTypes from 'prop-types';
 
 import Avatar from "components/avatar/Avatar";
+import Rating from "components/rating/Rating";
+
 import { AVATARS, QUESTION_DIFFICULTIES } from "utils/constants";
+import { sortByKey } from "utils/helpers";
 
 import './Scoreboard.scss';
-import Rating from "components/rating/Rating";
 
 export default function Scoreboard(props) {
     const { entries } = props;
+
+    const sortedEntries = sortByKey(entries, 'score');
 
     return (
         <div className="Scoreboard">
@@ -17,7 +21,7 @@ export default function Scoreboard(props) {
                 <div className="Scoreboard__heading__difficulty">Difficulty</div>
                 <div className="Scoreboard__heading__score">Score</div>
             </div>
-            {entries.map(({ user, difficulty, score }, index) => (
+            {sortedEntries.map(({ user, difficulty, score }, index) => (
                 <ScoreboardEntry
                     key={ `scoreboard-entry-${index}` }
                     user={ user }
@@ -51,7 +55,8 @@ const ScoreboardEntry = (props) => {
                 />
             </div>
             <div className="Scoreboard__entry__score">
-                { score } points
+                <span className="Scoreboard__entry__score__value">{ score }</span>
+                <span className="Scoreboard__entry__score__label">points</span>
             </div>
         </div>
     )

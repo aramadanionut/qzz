@@ -77,6 +77,18 @@
             font-size: 12px;
             flex-basis: 100px;
             text-align: right;
+            color: $light-cyan;
+
+            .Scoreboard__entry__score__value {
+                display: inline-block;
+                font-weight: 600;
+            }
+
+            .Scoreboard__entry__score__label {
+                display: inline-block;
+                margin-left: 4px;
+                color: transparentize($light-cyan, .5);
+            }
         }
     }
 }
