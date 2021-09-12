@@ -2,6 +2,8 @@ import { useRef, useEffect, useReducer } from 'react';
 import { FETCH_STATUSES } from 'utils/constants';
 
 export default function useFetch(url) {
+
+    // TODO: disable cache for get questions
     const cache = useRef({});
 
     const initialState = {

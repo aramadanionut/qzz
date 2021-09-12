@@ -37,4 +37,4 @@ export const parseQuestions = (data = {}) => {
     cache[key] = questions;
 
     return questions;
-}
+};

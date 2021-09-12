@@ -9,12 +9,13 @@ export const Select = forwardRef((props, ref) => {
     const {
         inline,
         name,
+        value,
         options,
         onChange,
         onBlur
     } = props;
 
-    const [ selected, setSelected ] = useState();
+    const [ selected, setSelected ] = useState(value);
 
     const onSelect = (event) => {
         setSelected(event.target.value);

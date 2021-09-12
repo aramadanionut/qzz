@@ -17,15 +17,14 @@ import { QUIZ_BUILDER_FORM } from "utils/forms";
 
 export default function QuizBuilder(props) {
     const history = useHistory();
-
-    const { register, handleSubmit, watch } = useForm({ mode: 'onChange '});
-
+    const { register, handleSubmit, watch } = useForm({ mode: 'onChange' });
     const { status, data } = useFetch(quizCategoryLookupUrl);
 
     const isDataFetched = (status === FETCH_STATUSES.FETCHED);
     const categories = parseQuizCategories(data);
     const categoryOptions = buildCategoryOptions(categories);
 
+    // TODO: refactor to watch();
     const difficulty = watch(QUIZ_BUILDER_FORM.DIFFICULTY);
     const type = watch(QUIZ_BUILDER_FORM.TYPE);
     const count = watch(QUIZ_BUILDER_FORM.COUNT);
@@ -40,7 +39,6 @@ export default function QuizBuilder(props) {
 
     return (
         <div className="QuizBuilder">
-            <h3 className="QuizBuilder__heading">Build your quiz</h3>
 
             {!isDataFetched && (
                 <div className="QuizBuilder__spinner">
@@ -52,51 +50,58 @@ export default function QuizBuilder(props) {
             )}
 
             {isDataFetched && (
-                <form
-                    className="QuizBuilder__form"
-                    onSubmit={ handleSubmit(onSubmit) }>
-                    <div className="QuizBuilder__form__field QuizBuild__form__difficulty">
-                        <Label text="How difficult do you want it to be?"></Label>
-                        <Select
-                            inline={ true }
-                            options={ difficultyOptions }
-                            { ...register(QUIZ_BUILDER_FORM.DIFFICULTY, { required: true }) }>
-                        </Select>
-                    </div>
-
-                    <div className="QuizBuilder__form__field QuizBuild__form__type">
-                        <Label text="What kind of questions do you want?"></Label>
-                        <Select
-                            inline={ true }
-                            options={ typeOptions }
-                            { ...register(QUIZ_BUILDER_FORM.TYPE, { required: true }) }>
-                        </Select>
-                    </div>
-
-                    <div className="QuizBuilder__form__field QuizBuild__form__count">
-                        <Label text="How many questions do you want?"></Label>
-                        <Select
-                            inline={ true }
-                            options={ countOptions }
-                            { ...register(QUIZ_BUILDER_FORM.COUNT, { required: true }) }>
-                        </Select>
-                    </div>
-
-                    <div className="QuizBuilder__form__field QuizBuild__form__category">
-                        <Label text="Which category would you like?"></Label>
-                        <Select
-                            inline={ true }
-                            options={ categoryOptions }
-                            { ...register(QUIZ_BUILDER_FORM.CATEGORY, { required: true }) }>
-                        </Select>
-                    </div>
-
-                    {formIsValid && (
-                        <div className="QuizBuilder__form__button">
-                            <Button type={ BUTTON_TYPES.SUBMIT }>Start quiz</Button>
+                <div className="QuizBuilder__container">
+                    <h3 className="QuizBuilder__heading">Build your quiz</h3>
+                    
+                    <form
+                        className="QuizBuilder__form"
+                        onSubmit={ handleSubmit(onSubmit) }>
+                        <div className="QuizBuilder__form__field QuizBuild__form__difficulty">
+                            <Label
+                                text="How difficult do you want it to be?"
+                                info="The higher the difficulty, the more points you get">
+                            </Label>
+                            <Select
+                                inline={ true }
+                                options={ difficultyOptions }
+                                { ...register(QUIZ_BUILDER_FORM.DIFFICULTY, { required: true }) }>
+                            </Select>
                         </div>
-                    )}
-                </form>
+
+                        <div className="QuizBuilder__form__field QuizBuild__form__type">
+                            <Label text="What kind of questions do you want?"></Label>
+                            <Select
+                                inline={ true }
+                                options={ typeOptions }
+                                { ...register(QUIZ_BUILDER_FORM.TYPE, { required: true }) }>
+                            </Select>
+                        </div>
+
+                        <div className="QuizBuilder__form__field QuizBuild__form__count">
+                            <Label text="How many questions do you want?"></Label>
+                            <Select
+                                inline={ true }
+                                options={ countOptions }
+                                { ...register(QUIZ_BUILDER_FORM.COUNT, { required: true }) }>
+                            </Select>
+                        </div>
+
+                        <div className="QuizBuilder__form__field QuizBuild__form__category">
+                            <Label text="Which category would you like?"></Label>
+                            <Select
+                                inline={ true }
+                                options={ categoryOptions }
+                                { ...register(QUIZ_BUILDER_FORM.CATEGORY, { required: true }) }>
+                            </Select>
+                        </div>
+
+                        {formIsValid && (
+                            <div className="QuizBuilder__form__button">
+                                <Button type={ BUTTON_TYPES.SUBMIT }>Start quiz</Button>
+                            </div>
+                        )}
+                    </form>
+                </div>
             )}
         </div>
     );

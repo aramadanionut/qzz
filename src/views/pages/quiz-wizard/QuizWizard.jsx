@@ -27,7 +27,7 @@ export default function QuizWizard(props) {
 
     // Form hook
     const { register, watch, handleSubmit } = useForm({ mode: 'onChange' });
-    const answers = watch();
+    const formValues = watch();
 
     // Fetch hook
     const url = getQuizUrl(quizParams);
@@ -37,7 +37,7 @@ export default function QuizWizard(props) {
     // Parse fetch data
     const isDataFetched = (status === FETCH_STATUSES.FETCHED);
     const questions = parseQuestions(data);
-    const steps = getQuizSteps(questions, answers);
+    const steps = getQuizSteps(questions, formValues);
 
     // Track current question index
     const [ questionIndex, setQuestionIndex ] = useState(0);
@@ -107,6 +107,7 @@ export default function QuizWizard(props) {
                                                 id={ id }
                                                 type={ type }
                                                 question={ question }
+                                                answer={ formValues[id] }
                                                 answers={ answers }
                                                 { ...register(id, { required: true })}>
                                             </Question>
@@ -159,7 +160,7 @@ export default function QuizWizard(props) {
                         <Timer
                             minutes={ QUIZ_MINUTES_PER_QUESTION * count }
                             seconds={ 0 }
-                            onFinished={ () => onSubmit(true)(answers) }>
+                            onFinished={ () => onSubmit(true)(formValues) }>
                         </Timer>
                     </div>
                 </form>

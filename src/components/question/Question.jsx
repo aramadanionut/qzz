@@ -10,6 +10,7 @@ export const Question = forwardRef((props, ref) => {
     const {
         id,
         question,
+        answer,
         answers,
         onChange
     } = props;
@@ -18,12 +19,13 @@ export const Question = forwardRef((props, ref) => {
         <div className="Question">
             <Label
                 text={ question }
-                serif={ true }
+                serif={ false }
                 large={ true }>
             </Label>
             <Select
                 ref={ ref }
                 name={ id }
+                value={ answer }
                 inline={ false }
                 options={ answers }
                 onChange={ onChange }>

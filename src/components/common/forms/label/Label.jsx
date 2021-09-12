@@ -6,7 +6,7 @@ import './Label.scss';
 import classNames from "classnames";
 
 export default function Label(props) {
-    const { text, serif, large } = props;
+    const { text, info, serif, large } = props;
 
     const labelClasses = classNames({
         Label: true,
@@ -16,7 +16,8 @@ export default function Label(props) {
 
     return (
         <label className={ labelClasses }>
-            <SanitizedHTML html={ text }/>
+            <span className="Label__text"><SanitizedHTML html={ text }/></span>
+            <span className="Label__info"><SanitizedHTML html={ info }/></span>
         </label>
     );
 }
