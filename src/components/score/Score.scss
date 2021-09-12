@@ -2,11 +2,11 @@
 @import 'assets/scss/easings';
 
 .Score {
-    position: relative;
-    width: 200px;
-    height: 200px;
-
     .Score__counter {
+        position: relative;
+        width: 200px;
+        height: 200px;
+
         .Score__counter__svg {
     
             .Score__counter__svg__circle {

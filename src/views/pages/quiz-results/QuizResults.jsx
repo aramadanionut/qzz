@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 import Spinner from "components/spinner/Spinner";
 
 import './QuizResults.scss';
 import { scoreQuiz } from "services/quiz.service";
 import Score from "components/score/Score";
+import Button from "components/common/buttons/button/Button";
 
 export default function QuizResults(props) {
     const location = useLocation();
@@ -54,6 +55,16 @@ export default function QuizResults(props) {
                         correct={ result.correct }
                         total={ result.total }>
                     </Score>
+                </div>
+            )}
+
+            {!isCalculating && (
+                <div className="QuizResults__actions">
+                    <Link to="/builder">
+                        <Button>
+                            Try again?
+                        </Button>
+                    </Link>
                 </div>
             )}
         </div>

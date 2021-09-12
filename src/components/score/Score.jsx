@@ -6,7 +6,7 @@ import './Score.scss';
 const FULL_CIRCLE_DASHARRAY = 283;
 
 export default function Score(props) {
-    const { score, questionValue, correct, total } = props;
+    const { score, scorePerQuestion, correct, total } = props;
 
     const [ correctCount, setCorrectCount ] = useState(0);
     const [ scoreCount, setScoreCount ] = useState(0);
@@ -26,7 +26,7 @@ export default function Score(props) {
         if (correctCount === correct) return;
     
         const timeoutID = setTimeout(() => {
-            setScoreCount(scoreCount > score ? scoreCount - questionValue : scoreCount + questionValue);
+            setScoreCount(scoreCount > score ? scoreCount - scorePerQuestion : scoreCount + scorePerQuestion);
             setCorrectCount(correctCount > correct ? correctCount - 1 : correctCount + 1);
         }, 100);
     

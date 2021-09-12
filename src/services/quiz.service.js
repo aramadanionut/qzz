@@ -64,8 +64,8 @@ export const calculateScore = (correctAnswers, params) => {
     const difficultyMultiplier = QUIZ_SCORE_DIFFICULTY_MULTIPLIER[difficulty];
 
     return {
-        score: difficultyMultiplier * QUIZ_SCORE_QUESTION_BASE_POINTS,
-        scorePerQuestion: correctAnswers * difficultyMultiplier * QUIZ_SCORE_QUESTION_BASE_POINTS
+        scorePerQuestion: difficultyMultiplier * QUIZ_SCORE_QUESTION_BASE_POINTS,
+        score: correctAnswers * difficultyMultiplier * QUIZ_SCORE_QUESTION_BASE_POINTS
     };
 };
 
