@@ -21,6 +21,7 @@
         cursor: pointer;
         color: transparentize($light-cyan, .2);
         transition: all .2s $easeInOutQuint;
+        text-decoration: none;
 
         &:hover {
             color: $light-cyan;
