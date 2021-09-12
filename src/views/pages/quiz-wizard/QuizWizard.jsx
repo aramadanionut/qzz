@@ -155,8 +155,8 @@ export default function QuizWizard(props) {
 
                     <div className="QuizWizard__form__timer">
                         <Timer
-                            minutes={ 0 }
-                            seconds={ 5 }
+                            minutes={ 15 }
+                            seconds={ 0 }
                             onFinished={ () => onSubmit(true)(answers) }>
                         </Timer>
                     </div>

@@ -29,7 +29,8 @@ export const parseQuestions = (data = {}) => {
             id: slugify(question),
             type,
             question: question,
-            answers
+            answers,
+            correctAnswer: slugify(correct_answer)
         };
     });
 
