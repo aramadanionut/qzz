@@ -7,7 +7,7 @@
         color: $light-cyan;
         font-family: 'Bungee', sans-serif;
         font-size: 2.5rem;
-        text-align: center;
+        // text-align: center;
     }
 
     .QuizBuilder__spinner {
@@ -20,8 +20,8 @@
     .QuizBuilder__form {
         margin-top: 60px;
         width: 100%;
-        max-width: 650px;
-        text-align: center;
+        // max-width: 650px;
+        text-align: left;
 
         .QuizBuilder__form__field {
             &:not(:first-child) {
@@ -29,7 +29,7 @@
             }
 
             .Select {
-                place-content: center;
+                place-content: flex-start;
             }
         }
 

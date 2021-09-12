@@ -22,20 +22,29 @@ export default function ProgressBar(props) {
             'ProgressBar__step--completed': !!completed,
             'ProgressBar__step--active': activeStepIndex === index
         });
-    }
+    };
+
+    const completedCount = steps.reduce((acc, step) => acc += (step.completed ? 1 : 0), 0);
 
     return (
         <div className="ProgressBar">
-            <div className="ProgressBar__steps">
-                {steps.map((step) => (
-                    <button
-                        key={ `step-${step.index}` }
-                        className={ getStepClasses(step) }
-                        onClick={ () => onChange(step.index) }>
-                        <div className="ProgressBar__step__dot"></div>
-                        <div className="ProgressBar__step__index">{ step.label }</div>
-                    </button>
-                ))}
+            <div className="ProgressBar__bar">
+                <div className="ProgressBar__steps">
+                    {steps.map((step) => (
+                        <button
+                            key={ `step-${step.index}` }
+                            className={ getStepClasses(step) }
+                            onClick={ () => onChange(step.index) }>
+                            <div className="ProgressBar__step__dot"></div>
+                            <div className="ProgressBar__step__index">{ step.label }</div>
+                        </button>
+                    ))}
+                </div>
+            </div>
+            <div className="ProgressBar__counter">
+                <div className="ProgressBar__count__completed">{ completedCount }</div>
+                <div className="ProgressBar__count__separator">/</div>
+                <div className="ProgressBar__count__total">{ steps.length }</div>
             </div>
         </div>
     )

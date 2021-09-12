@@ -4,8 +4,8 @@
 .Logo {
     display: inline-flex;
     align-items: center;
-    flex-direction: column;
-    gap: 4px;
+    flex-direction: row;
+    gap: 16px;
     
     .Logo__image {
         max-width: 60px;

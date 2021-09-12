@@ -2,21 +2,17 @@
 @import 'assets/scss/easings';
 
 .ProgressBar {
-    display: inline-block;
     position: relative;
+    display: inline-flex;
+    align-items: center;
     width: 100%;
-    height: 4px;
-    border-radius: 6px;
-    background-color: transparentize($deep-cyan, .9);
+    gap: 12px;
     
     .ProgressBar__bar {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 50%;
-        // height: 100%;
-        background-color: transparentize($light-cyan, 0.3);
+        flex-grow: 1;
+        height: 4px;
         border-radius: 6px;
+        background-color: transparentize($deep-cyan, .9);
     }
 
     .ProgressBar__steps {
@@ -106,6 +102,24 @@
                     opacity: 1;
                 }
             }
+        }
+    }
+
+    .ProgressBar__counter {
+        display: inline-flex;
+        align-items: center;
+        place-content: flex-end;
+        min-width: 50px;
+        font-family: 'Poppins', sans-serif;
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 1;
+        letter-spacing: 2px;
+        color: $light-cyan;
+        gap: 2px;
+
+        .ProgressBar__count__separator {
+            color: transparentize($light-cyan, .6);
         }
     }
 }

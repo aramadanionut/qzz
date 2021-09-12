@@ -23,7 +23,6 @@ export default function Header(props) {
 
     return (
         <header className="Header">
-            <div className="Header__logo-push"></div>
             <div className="Header__logo">
                 <Link to="/">
                     <Logo size={ SIZES.MEDIUM }></Logo>

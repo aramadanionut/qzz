@@ -1,9 +1,7 @@
 import { useRef, useEffect, useReducer } from 'react';
 import { FETCH_STATUSES } from 'utils/constants';
 
-export default function useFetch(url) {
-
-    // TODO: disable cache for get questions
+export default function useFetch(url, useCache) {
     const cache = useRef({});
 
     const initialState = {
@@ -61,7 +59,9 @@ export default function useFetch(url) {
                     const response = await fetch(url);
                     const data = await response.json();
 
-                    cache.current[url] = data;
+                    if (useCache) {
+                        cache.current[url] = data;
+                    }
 
                     if (cancelRequest) return;
 

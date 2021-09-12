@@ -19,8 +19,8 @@ import { pluralize } from "utils/helpers";
 export default function QuizBuilder(props) {
     const history = useHistory();
     const { register, handleSubmit, watch } = useForm({ mode: 'onChange' });
-    const { status, data } = useFetch(quizCategoryLookupUrl);
-
+    
+    const { status, data } = useFetch(quizCategoryLookupUrl, true);
     const isDataFetched = (status === FETCH_STATUSES.FETCHED);
     const categories = parseQuizCategories(data);
     const categoryOptions = buildCategoryOptions(categories);
