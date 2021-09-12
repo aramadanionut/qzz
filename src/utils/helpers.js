@@ -3,14 +3,14 @@ export const buildQueryParams = (params) => {
         .keys(params)
         .map(k => encodeURIComponent(k) + '=' + encodeURIComponent(params[k]))
         .join('&');
-}
+};
 
 export const shuffleArray = (array) => {
     return array
         .map((value) => ({ value, sort: Math.random() }))
         .sort((a, b) => a.sort - b.sort)
         .map(({ value }) => value)
-}
+};
 
 export const slugify = (str) => {
     str = str.replace(/^\s+|\s+$/g, '');
@@ -29,8 +29,12 @@ export const slugify = (str) => {
         .replace(/-+/g, '-');
 
     return str;
-}
+};
 
 export const padStringLeft = (string, pad, length) => {
     return (new Array(length + 1).join(pad) + string).slice(-length);
-}
+};
+
+export const pluralize = (string, count) => {
+    return `${string}${count > 1 ? 's' : ''}`;
+};

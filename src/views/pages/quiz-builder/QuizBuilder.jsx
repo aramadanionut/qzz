@@ -10,10 +10,11 @@ import { Select } from "components/common/forms/select/Select";
 import useFetch from "hooks/useFetch";
 import { quizCategoryLookupUrl, parseQuizCategories } from "services/quiz.service";
 import { countOptions, typeOptions, difficultyOptions, buildCategoryOptions } from "utils/options";
-import { BUTTON_TYPES, FETCH_STATUSES } from "utils/constants";
+import { BUTTON_TYPES, FETCH_STATUSES, QUIZ_MINUTES_PER_QUESTION } from "utils/constants";
 
 import './QuizBuilder.scss';
 import { QUIZ_BUILDER_FORM } from "utils/forms";
+import { pluralize } from "utils/helpers";
 
 export default function QuizBuilder(props) {
     const history = useHistory();
@@ -58,8 +59,8 @@ export default function QuizBuilder(props) {
                         onSubmit={ handleSubmit(onSubmit) }>
                         <div className="QuizBuilder__form__field QuizBuild__form__difficulty">
                             <Label
-                                text="How difficult do you want it to be?"
-                                info="The higher the difficulty, the more points you get">
+                                info="The higher the difficulty, the more points you get"
+                                text="How difficult do you want it to be?">
                             </Label>
                             <Select
                                 inline={ true }
@@ -69,7 +70,10 @@ export default function QuizBuilder(props) {
                         </div>
 
                         <div className="QuizBuilder__form__field QuizBuild__form__type">
-                            <Label text="What kind of questions do you want?"></Label>
+                            <Label
+                                info="More choices, more points"
+                                text="What type of questions do you want?">
+                            </Label>
                             <Select
                                 inline={ true }
                                 options={ typeOptions }
@@ -78,7 +82,10 @@ export default function QuizBuilder(props) {
                         </div>
 
                         <div className="QuizBuilder__form__field QuizBuild__form__count">
-                            <Label text="How many questions do you want?"></Label>
+                            <Label
+                                info={ `You will get ${QUIZ_MINUTES_PER_QUESTION} ${pluralize('minute', QUIZ_MINUTES_PER_QUESTION)} for each question`}
+                                text="How many questions do you want?">                                    
+                            </Label>
                             <Select
                                 inline={ true }
                                 options={ countOptions }
@@ -87,7 +94,9 @@ export default function QuizBuilder(props) {
                         </div>
 
                         <div className="QuizBuilder__form__field QuizBuild__form__category">
-                            <Label text="Which category would you like?"></Label>
+                            <Label
+                                text="Which category are you interested in?">
+                            </Label>
                             <Select
                                 inline={ true }
                                 options={ categoryOptions }

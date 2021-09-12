@@ -82,6 +82,7 @@
             .SelectOption__wrapper {
                 .SelectOption__dot {
                     &:before {
+                        opacity: 1;
                         transform: scale(1);
                     }
                 }

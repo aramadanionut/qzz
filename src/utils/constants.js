@@ -56,7 +56,7 @@ export const AVATAR_IMAGES = {
 
 // Quiz related
 
-export const QUIZ_MINUTES_PER_QUESTION = 2;
+export const QUIZ_MINUTES_PER_QUESTION = 1;
 
 // Question related
 
