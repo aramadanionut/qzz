@@ -7,7 +7,7 @@ import useFetch from "hooks/useFetch";
 import { getQuizUrl, getQuizSteps } from "services/quiz.service";
 import { parseQuestions } from "services/question.service";
 
-import { BUTTON_TYPES, COLORS, DIRECTIONS, FETCH_STATUSES, QUIZ_MINUTES_PER_QUESTION, SIZES } from "utils/constants";
+import { BUTTON_TYPES, COLORS, DIRECTIONS, FETCH_STATUSES, QUESTION_DIFFICULTIES, QUIZ_MINUTES_PER_QUESTION, SIZES } from "utils/constants";
 
 import { Question } from "components/question/Question";
 import Spinner from "components/spinner/Spinner";
@@ -18,12 +18,18 @@ import './QuizWizard.scss';
 import classNames from "classnames";
 import Timer from "components/timer/Timer";
 import { QUIZ_BUILDER_FORM } from "utils/forms";
+import { isObjEmpty } from "utils/helpers";
+import Rating from "components/rating/Rating";
 
 export default function QuizWizard(props) {
     // History and location hooks
     const history = useHistory();
     const location = useLocation();
     const quizParams = location.state;
+
+    if (isObjEmpty(quizParams)) {
+        history.push('/builder');
+    }
 
     // Form hook
     const { register, watch, handleSubmit, formState } = useForm({ mode: 'onChange' });
@@ -53,6 +59,9 @@ export default function QuizWizard(props) {
     // isSubmitting and isTimedOut
     const [ isSubmitting, setIsSubmitting ] = useState(false);
     const [ isTimedOut, setIsTimedOut ] = useState(false);
+
+    const ratingValue = Object.values(QUESTION_DIFFICULTIES).indexOf(quizParams[QUIZ_BUILDER_FORM.DIFFICULTY]) + 1;
+    const ratingsCount = Object.values(QUESTION_DIFFICULTIES).length;
 
     const onSubmit = (timedOut) => (data) => {
         setIsSubmitting(true);
@@ -92,9 +101,18 @@ export default function QuizWizard(props) {
             {!isSubmitting && isDataFetched && questions && (
                 <div className="QuizWizard__quiz">
                     <h3 className="QuizWizard__heading">
-                        Quiz
+                        <span className="QuizWizard__heading__text"> { quizParams.categoryName } </span>
+                        <span className="QuizWizard__heading__difficulty">
+                            Difficulty
+                            <Rating
+                                size={ 6 }
+                                value={ ratingValue }
+                                total={ ratingsCount }
+                            />
+                        </span>
                     </h3>
-                    
+
+
                     <form
                         className="QuizWizard__form"
                         onSubmit={ handleSubmit(onSubmit(false)) }>

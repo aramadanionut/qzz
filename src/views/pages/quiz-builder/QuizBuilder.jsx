@@ -25,17 +25,15 @@ export default function QuizBuilder(props) {
     const categories = parseQuizCategories(data);
     const categoryOptions = buildCategoryOptions(categories);
 
-    // TODO: refactor to watch();
-    const difficulty = watch(QUIZ_BUILDER_FORM.DIFFICULTY);
-    const type = watch(QUIZ_BUILDER_FORM.TYPE);
-    const count = watch(QUIZ_BUILDER_FORM.COUNT);
-    const category = watch(QUIZ_BUILDER_FORM.CATEGORY);
-
-    // TODO: implement proper validation using formState.isValid
-    const formIsValid = difficulty && type && count && category;
+    const formValues = watch();
+    const formIsValid = Object.values(formValues).every(x => !!x);
 
     const onSubmit = (data) => {
-        history.push('/quiz', data);
+        const { label } = categoryOptions.find((option) => option.value === data[QUIZ_BUILDER_FORM.CATEGORY]);
+        history.push('/quiz', {
+            ...data,
+            categoryName: label
+        });
     };
 
     return (
