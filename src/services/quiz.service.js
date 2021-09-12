@@ -45,7 +45,7 @@ export const parseQuizCategories = (data) => {
     }
 };
 
-export const getQuizSteps = (questions) => {
+export const getQuizSteps = (questions, answers = {}) => {
     if (!questions || !questions.length) {
         return [];
     }
@@ -54,7 +54,7 @@ export const getQuizSteps = (questions) => {
         id,
         index,
         label: index + 1,
-        completed: false,
+        completed: !!answers[id],
         active: false
     }));
 };

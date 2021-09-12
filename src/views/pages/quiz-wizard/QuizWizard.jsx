@@ -27,10 +27,15 @@ export default function QuizWizard(props) {
 
     const isDataFetched = (status === FETCH_STATUSES.FETCHED);
     const questions = parseQuestions(data);
-    const steps = getQuizSteps(questions);
+    const answers = watch();
+
+    const steps = getQuizSteps(questions, answers);
 
     const [ questionIndex, setQuestionIndex ] = useState(0);
     const isLastQuestion = questionIndex === steps.length - 1;
+
+
+    console.log(answers);
 
     return (
         <div className="QuizWizard">
