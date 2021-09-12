@@ -45,7 +45,11 @@ export default function QuizWizard(props) {
     const formActionClasses = classNames({
         QuizWizard__form__actions: true,
         'QuizWizard__form__actions--right': !!isFirstQuestion
-    })
+    });
+
+    const onSubmit = () => {
+        console.log(answers);
+    }
 
     return (
         <div className="QuizWizard">
@@ -123,7 +127,7 @@ export default function QuizWizard(props) {
                     </div>
 
                     <div className="QuizWizard__form__timer">
-                        <Timer></Timer>
+                        <Timer onFinished={ onSubmit }></Timer>
                     </div>
                 </div>
             )}

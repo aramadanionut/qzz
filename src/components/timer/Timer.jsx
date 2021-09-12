@@ -11,12 +11,18 @@ function str_pad_left(string,pad,length) {
 }
 
 export default function Timer(props) {
-    const { minutes, seconds } = props;
+    const { minutes, seconds, onFinished } = props;
     const duration = minutes * 60 + seconds;
     const [ timeLeft, setTimeLeft ] = useState(duration);
 
     useEffect(() => {
-        if (!timeLeft) return;
+        if (!timeLeft) {
+            if (onFinished && typeof onFinished === 'function') {
+                onFinished();
+            }
+
+            return;
+        }
     
         const timeoutID = setTimeout(() => {
           setTimeLeft(timeLeft - 1);
