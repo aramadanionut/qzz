@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
+import { useForm } from "react-hook-form";
 
 import useFetch from "hooks/useFetch";
+
 import { getQuizUrl, getQuizSteps } from "services/quiz.service";
-import { parseQuizQuestion } from "services/questions.service";
-import { DIRECTIONS, FETCH_STATUSES } from "utils/constants";
+import { parseQuestions } from "services/questions.service";
+
+import { COLORS, DIRECTIONS, FETCH_STATUSES, SIZES } from "utils/constants";
 
 import { Question } from "components/question/Question";
 import Spinner from "components/spinner/Spinner";
@@ -17,16 +20,17 @@ export default function QuizWizard(props) {
     const location = useLocation();
     const quizParams = location.state;
 
+    const { register, watch, handleSubmit, formState } = useForm({ mode: 'onChange' });
+
     const url = getQuizUrl(quizParams);
     const { status, data } = useFetch(url);
 
     const isDataFetched = (status === FETCH_STATUSES.FETCHED);
-    const questions = data && data.results && parseQuizQuestion(data.results);
+    const questions = parseQuestions(data);
     const steps = getQuizSteps(questions);
-    
-    console.log(steps);
 
     const [ questionIndex, setQuestionIndex ] = useState(0);
+    const isLastQuestion = questionIndex === steps.length - 1;
 
     return (
         <div className="QuizWizard">
@@ -51,7 +55,8 @@ export default function QuizWizard(props) {
                                     id={ id }
                                     type={ type }
                                     question={ question }
-                                    answers={ answers }>
+                                    answers={ answers }
+                                    { ...register(id, { required: true })}>
                                 </Question>
                             </div>
                         )
@@ -59,15 +64,29 @@ export default function QuizWizard(props) {
 
                     <div className="QuizWizard__form__actions">
                         <Button
+                            size={ SIZES.SMALL }
                             direction={ DIRECTIONS.LEFT }
                             onClick={() => setQuestionIndex(questionIndex - 1)}>
                             Previous
                         </Button>
-                        
-                        <Button
-                            onClick={() => setQuestionIndex(questionIndex + 1)}>
-                            Next
-                        </Button>
+
+                        {!isLastQuestion && (
+                            <Button
+                                size={ SIZES.SMALL }
+                                onClick={() => setQuestionIndex(questionIndex + 1)}>
+                                Next
+                            </Button>
+                        )}
+
+                        {isLastQuestion && (
+                            <Button
+                                size={ SIZES.SMALL }
+                                color={ COLORS.SECONDARY }
+                                direction={ DIRECTIONS.RIGHT }
+                                onClick={ () => console.log('submitting') }>
+                                Submit
+                            </Button>
+                        )}
                     </div>
 
                     <div className="QuizWizard__form__progress-bar">

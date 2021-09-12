@@ -6,11 +6,15 @@ const mapAnswer = (answer, correct = false) => ({
     correct
 });
 
-export const parseQuizQuestion = (questions = []) => {
-    return questions.map(({ question, correct_answer, incorrect_answers, type }) => {
+export const parseQuestions = (data = {}) => {
+    if (!data || !data.results) {
+        return [];
+    }
+
+    return data.results.map(({ question, correct_answer, incorrect_answers, type }) => {
         const answers = shuffleArray([
             mapAnswer(correct_answer, true),
-            ...incorrect_answers.map(mapAnswer)
+            ...incorrect_answers.map((answer) => mapAnswer(answer, false))
         ]);
         
         return {
