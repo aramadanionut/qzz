@@ -43,14 +43,16 @@ export default function QuizResults(props) {
 
             setResult(result);
 
-            leaderboard.push({
-                user,
-                difficulty: quizParams.difficulty,
-                score: result.score,
-            });
-
-            // TODO: add update to useStore
-            setLeaderboard(leaderboard);
+            if (result.score > 0) {
+                leaderboard.push({
+                    user,
+                    difficulty: quizParams.difficulty,
+                    score: result.score,
+                });
+    
+                // TODO: add update to useStore
+                setLeaderboard(leaderboard);
+            }
 
             setIsCalculating(false);
         }, 1000);
