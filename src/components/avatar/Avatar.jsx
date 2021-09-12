@@ -11,6 +11,7 @@ export default function Avatar(props) {
         image,
         imagePosition,
         name,
+        canChange,
         onChangeUser
     } = props;
 
@@ -18,6 +19,7 @@ export default function Avatar(props) {
 
     const avatarClasses = classNames({
         Avatar: true,
+        'Avatar--can-change': !!canChange,
         [ `Avatar--image-${imagePosition.toLowerCase()}` ]: !!imagePosition
     });
 
@@ -31,11 +33,13 @@ export default function Avatar(props) {
                     <div className="Avatar__username__name">
                         { name }
                     </div>
-                    <button
-                        className="Avatar__username__change-button"
-                        onClick={ onChangeUser }>
-                        Change
-                    </button>
+                    {canChange && (
+                        <button
+                            className="Avatar__username__change-button"
+                            onClick={ onChangeUser }>
+                            Change
+                        </button>
+                    )}
                 </div>
             }
         </div>
@@ -43,12 +47,14 @@ export default function Avatar(props) {
 }
 
 Avatar.propTypes = {
+    canChange: PropTypes.bool,
     name: PropTypes.string,
     image: PropTypes.oneOf(Object.values(AVATARS)),
     imagePosition: PropTypes.oneOf([ POSITIONS.START, POSITIONS.END ])
 };
 
 Avatar.defaultProps = {
+    canChange: false,
     name: null,
     image: AVATARS.DEFAULT,
     imagePosition: POSITIONS.START

@@ -51,14 +51,16 @@
     }
 
     &:hover {
-        .Avatar__username {
-            .Avatar__username__name {
-                transform: translateY(-9px);
-            }
-    
-            .Avatar__username__change-button {
-                transform: translateY(9px);
-                opacity: 1;
+        &.Avatar--can-change {
+            .Avatar__username {
+                .Avatar__username__name {
+                    transform: translateY(-9px);
+                }
+        
+                .Avatar__username__change-button {
+                    transform: translateY(9px);
+                    opacity: 1;
+                }
             }
         }
     }

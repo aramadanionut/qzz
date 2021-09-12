@@ -34,6 +34,7 @@ export default function Header(props) {
                         name={ user.username }
                         image={ user.avatar }
                         imagePosition={ POSITIONS.END }
+                        canChange={ true }
                         onChangeUser={ onChangeUser }>
                     </Avatar>
                 )}
