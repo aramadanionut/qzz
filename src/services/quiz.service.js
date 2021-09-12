@@ -70,8 +70,5 @@ export const scoreQuiz = ({ questions, answers, params }) => {
         return acc;
     }, 0);
 
-    return {
-        correct,
-        total
-    };
+    return { correct, total };
 };

@@ -14,7 +14,11 @@ export default function Score(props) {
     const scoreStrokeAnimationDuration = (correct + 1) * 100;
 
     useEffect(() => {
-        setScoreStrokeDash(correct / total * FULL_CIRCLE_DASHARRAY);
+        const timeoutID = setTimeout(() => {
+            setScoreStrokeDash(correct / total * FULL_CIRCLE_DASHARRAY);
+        }, 100);
+
+        return () => clearTimeout(timeoutID);
     }, []);
 
     useEffect(() => {

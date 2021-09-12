@@ -16,7 +16,7 @@ export default function QuizResults(props) {
     const [ result, setResult ] = useState({ correct: 0, total: 0 });
 
     useEffect(() => {
-        setTimeout(() => {
+        const timeoutID = setTimeout(() => {
             const result = scoreQuiz({
                 questions,
                 answers,
@@ -24,9 +24,10 @@ export default function QuizResults(props) {
             });
 
             setResult(result);
-
             setIsCalculating(false);
         }, 1000);
+
+        return () => clearTimeout(timeoutID);
     }, [])
 
     return (
