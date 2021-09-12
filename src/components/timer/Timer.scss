@@ -1,4 +1,5 @@
 @import 'assets/scss/colors';
+@import 'assets/scss/easings';
 
 .Timer {
     display: flex;
@@ -10,7 +11,8 @@
     .Timer__countdown {
         display: inline-flex;
         align-items: center;
-        place-content: flex-start;
+        place-content: flex-end;
+        min-width: 50px;
         font-family: 'Poppins', sans-serif;
         font-size: 12px;
         font-weight: 500;
@@ -20,22 +22,53 @@
 
         gap: 2px;
 
+        .Timer__countdown__minutes,
+        .Timer__countdown__seconds {
+            min-width: 20px;
+        }
+
         .Timer__countdown__separator {
             color: darken($light-cyan, 10%);
+        }
+
+        .Timer__countdown__minutes,
+        .Timer__countdown__seconds,
+        .Timer__countdown__separator {
+            transition: all .2s $easeInOutCirc;
         }
     }
 
     .Timer__bar {
         width: 100%;
         height: 6px;
-        border-radius: 6px;
+        border-radius: 30px;
         background: darken($deep-cyan, 18%);
+        transition: background-color .2s $easeInOutCirc;;
 
         .Timer__bar__progress {
             height: 100%;
             width: 50%;
-            border-radius: 6px;
+            border-radius: 30px;
             background: lighten($light-cyan, 18%);
+            transition: width .1s $easeInOutQuint, background-color .2s $easeInOutCirc;;
+        }
+    }
+
+    &.Timer--endgame {
+        .Timer__countdown {
+            color: $pink;
+
+            .Timer__countdown__separator {
+                color: darken($pink, 10%);
+            }
+        }
+
+        .Timer__bar {
+            background: darken($pink, 18%);
+
+            .Timer__bar__progress {
+                background: lighten($pink, 5%);
+            }
         }
     }
 }

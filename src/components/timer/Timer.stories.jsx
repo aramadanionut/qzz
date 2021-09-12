@@ -8,8 +8,7 @@ export default {
 }
 
 export const Primary = (args) => (
-  <Timer { ...args }>
-  </Timer>
+  <Timer { ...args }></Timer>
 );
 
 Primary.args = {

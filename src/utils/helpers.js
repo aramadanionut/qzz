@@ -30,3 +30,7 @@ export const slugify = (str) => {
 
     return str;
 }
+
+export const padStringLeft = (string, pad, length) => {
+    return (new Array(length + 1).join(pad) + string).slice(-length);
+}
