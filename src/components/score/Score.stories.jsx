@@ -13,6 +13,8 @@ export const Primary = (args) => (
 )
 
 Primary.args = {
+    score: 100,
+    questionValue: 10,
     correct: 10,
     total: 20
 };

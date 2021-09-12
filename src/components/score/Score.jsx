@@ -6,9 +6,10 @@ import './Score.scss';
 const FULL_CIRCLE_DASHARRAY = 283;
 
 export default function Score(props) {
-    const { correct, total } = props;
+    const { score, questionValue, correct, total } = props;
 
-    const [ count, setCount ] = useState(0);
+    const [ correctCount, setCorrectCount ] = useState(0);
+    const [ scoreCount, setScoreCount ] = useState(0);
     const [ scoreStrokeDash, setScoreStrokeDash ] = useState(0);
 
     const scoreStrokeAnimationDuration = (correct + 1) * 100;
@@ -19,49 +20,59 @@ export default function Score(props) {
         }, 100);
 
         return () => clearTimeout(timeoutID);
-    }, [ correct, total ]);
+    }, [ correct, score, total ]);
 
     useEffect(() => {
-        if (count === correct) return;
+        if (correctCount === correct) return;
     
         const timeoutID = setTimeout(() => {
-            setCount(count > correct ? count - 1 : count + 1);
+            setScoreCount(scoreCount > score ? scoreCount - questionValue : scoreCount + questionValue);
+            setCorrectCount(correctCount > correct ? correctCount - 1 : correctCount + 1);
         }, 100);
     
         return () => clearTimeout(timeoutID);
-    }, [ correct, count ]);
+    }, [ correct, score, correctCount ]);
 
     return (
         <div className="Score">
-            <div className="Score__svg">
-                <svg
-                    className="Score__svg__base"
-                    viewBox="0 0 100 100"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <g className="Score__svg__circle">
-                        <circle className="Score__svg__circle__elapsed" cx="50" cy="50" r="45" />
-                        <path
-                            style={{
-                                transitionDuration: `${scoreStrokeAnimationDuration}ms`,
-                                strokeDasharray: `${scoreStrokeDash} ${FULL_CIRCLE_DASHARRAY}`
-                            }}
-                            strokeDasharray={ `${scoreStrokeDash} ${FULL_CIRCLE_DASHARRAY}` }
-                            className="Score__svg__circle__remaining"
-                            d="
-                            M 50, 50
-                            m -45, 0
-                            a 45,45 0 1,0 90,0
-                            a 45,45 0 1,0 -90,0
-                            ">
-                        </path>
-                    </g>
-                </svg>
+            <div className="Score__counter">
+                <div className="Score__counter__svg">
+                    <svg
+                        className="Score__counter__svg__base"
+                        viewBox="0 0 100 100"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <g className="Score__counter__svg__circle">
+                            <circle className="Score__counter__svg__circle__elapsed" cx="50" cy="50" r="45" />
+                            <path
+                                style={{
+                                    transitionDuration: `${scoreStrokeAnimationDuration}ms`,
+                                    strokeDasharray: `${scoreStrokeDash} ${FULL_CIRCLE_DASHARRAY}`
+                                }}
+                                strokeDasharray={ `${scoreStrokeDash} ${FULL_CIRCLE_DASHARRAY}` }
+                                className="Score__counter__svg__circle__remaining"
+                                d="
+                                M 50, 50
+                                m -45, 0
+                                a 45,45 0 1,0 90,0
+                                a 45,45 0 1,0 -90,0
+                                ">
+                            </path>
+                        </g>
+                    </svg>
+                </div>
+
+                <div className="Score__counter__value">
+                    <div className="Score__counter__value__correct">{ correctCount }</div>
+                    <div className="Score__counter__value__count">out of</div>
+                    <div className="Score__counter__value__total">{ total }</div>
+                </div>
             </div>
 
-            <div className="Score__value">
-                <div className="Score__value__correct">{ count }</div>
-                <div className="Score__value__count">out of</div>
-                <div className="Score__value__total">{ total }</div>
+            <div className="Score__total">
+                <div className="Score__total__value">
+                    { scoreCount }
+                </div>
+                <div className="Score__total__label">points</div>
             </div>
         </div>
     );

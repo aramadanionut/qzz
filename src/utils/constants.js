@@ -54,10 +54,6 @@ export const AVATAR_IMAGES = {
     [AVATARS.DEFAULT]: DefaultAvatar
 };
 
-// Quiz related
-
-export const QUIZ_MINUTES_PER_QUESTION = 1;
-
 // Question related
 
 export const QUESTION_DIFFICULTIES = {
@@ -72,6 +68,18 @@ export const QUESTION_TYPES = {
     ANY: 'any',
     SINGLE: 'boolean',
     MULTIPLE: 'multiple'
+};
+
+// Quiz related
+
+export const QUIZ_MINUTES_PER_QUESTION = 1;
+
+export const QUIZ_SCORE_QUESTION_BASE_POINTS = 10;
+
+export const QUIZ_SCORE_DIFFICULTY_MULTIPLIER = {
+    [ QUESTION_DIFFICULTIES.EASY ]: 1,
+    [ QUESTION_DIFFICULTIES.MEDIUM ]: 1.5,
+    [ QUESTION_DIFFICULTIES.HARD ]: 2
 };
 
 // Fetch related

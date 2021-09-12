@@ -1,4 +1,4 @@
-import { QUESTION_TYPES, QUIZ_QUERY_PARAMS_KEYS } from "utils/constants";
+import { QUESTION_TYPES, QUIZ_QUERY_PARAMS_KEYS, QUIZ_SCORE_DIFFICULTY_MULTIPLIER, QUIZ_SCORE_QUESTION_BASE_POINTS } from "utils/constants";
 import { buildQueryParams } from "utils/helpers";
 
 export const quizCategoryLookupUrl = 'https://opentdb.com/api_category.php';
@@ -59,10 +59,20 @@ export const getQuizSteps = (questions, answers = {}) => {
     }));
 };
 
+export const calculateScore = (correctAnswers, params) => {
+    const { difficulty } = params;
+    const difficultyMultiplier = QUIZ_SCORE_DIFFICULTY_MULTIPLIER[difficulty];
+
+    return {
+        score: difficultyMultiplier * QUIZ_SCORE_QUESTION_BASE_POINTS,
+        scorePerQuestion: correctAnswers * difficultyMultiplier * QUIZ_SCORE_QUESTION_BASE_POINTS
+    };
+};
+
 export const scoreQuiz = ({ questions, answers, params }) => {
     const total = questions.length;
     
-    const correct = questions.reduce((acc, question) => {
+    const correctAnswers = questions.reduce((acc, question) => {
         if (question.correctAnswer === answers[question.id]) {
             acc++;
         }
@@ -70,5 +80,12 @@ export const scoreQuiz = ({ questions, answers, params }) => {
         return acc;
     }, 0);
 
-    return { correct, total };
+    const { score, scorePerQuestion } = calculateScore(correctAnswers, params);
+
+    return {
+        correct: correctAnswers,
+        total,
+        score,
+        scorePerQuestion
+    };
 };

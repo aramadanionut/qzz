@@ -13,7 +13,12 @@ export default function QuizResults(props) {
     const { questions, answers, quizParams } = state;
 
     const [ isCalculating, setIsCalculating ] = useState(true);
-    const [ result, setResult ] = useState({ correct: 0, total: 0 });
+    const [ result, setResult ] = useState({
+        score: 0,
+        scorePerQuestion: 0,
+        correct: 0,
+        total: 0
+    });
 
     useEffect(() => {
         const timeoutID = setTimeout(() => {
@@ -44,6 +49,8 @@ export default function QuizResults(props) {
             {!isCalculating && (
                 <div className="QuizResults__score">
                     <Score
+                        score={ result.score }
+                        scorePerQuestion={ result.scorePerQuestion }
                         correct={ result.correct }
                         total={ result.total }>
                     </Score>

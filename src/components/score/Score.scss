@@ -6,73 +6,82 @@
     width: 200px;
     height: 200px;
 
-    .Score__svg {
-
-        .Score__svg__circle {
-            fill: none;
-            stroke: none;
-
-            .Score__svg__circle__elapsed {
-                stroke-width: 7px;
-                stroke: transparentize($deep-cyan, .8);
-            }
-
-            .Score__svg__circle__remaining {
-                stroke-dasharray: 0 283;
-                stroke-width: 7px;
-                stroke-linecap: round;
-                transform: rotate(90deg);
-                transform-origin: center;
-                transition: all .5s $easeInOutQuint;
-                stroke: $light-cyan;
+    .Score__counter {
+        .Score__counter__svg {
+    
+            .Score__counter__svg__circle {
+                fill: none;
+                stroke: none;
+    
+                .Score__counter__svg__circle__elapsed {
+                    stroke-width: 7px;
+                    stroke: transparentize($deep-cyan, .8);
+                }
+    
+                .Score__counter__svg__circle__remaining {
+                    stroke-dasharray: 0 283;
+                    stroke-width: 7px;
+                    stroke-linecap: round;
+                    transform: rotate(90deg);
+                    transform-origin: center;
+                    transition: all .5s $easeInOutQuint;
+                    stroke: $light-cyan;
+                }
             }
         }
-    }
-
-    .Score__value {
-        position: absolute;
-        width: 100px;
-        height: 100px;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        margin: auto;
-        color: white;
-        font-family: 'Bungee', sans-serif;
-        line-height: 1;
-        text-align: center;
-
-        .Score__value__correct {
-            font-size: 50px;
-            color: $light-cyan;
-        }
-
-        .Score__value__count {
-            font-size: 12px;
+    
+        .Score__counter__value {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
             color: white;
-        }
-
-        .Score__value__total {
-            font-size: 34px;
-            color: $deep-cyan;
-        }
-
-        .Score__value__correct,
-        .Score__value__count,
-        .Score__value__total {
-            margin: 0;
+            font-family: 'Bungee', sans-serif;
+            line-height: 1;
+            text-align: center;
+    
+            .Score__counter__value__correct {
+                font-size: 50px;
+                color: $light-cyan;
+            }
+    
+            .Score__counter__value__count {
+                font-size: 12px;
+                color: white;
+            }
+    
+            .Score__counter__value__total {
+                font-size: 34px;
+                color: $deep-cyan;
+            }
+    
+            .Score__counter__value__correct,
+            .Score__counter__value__count,
+            .Score__counter__value__total {
+                margin: 0;
+            }
         }
     }
-}
 
-:global {
-    // @keyframes countdown {
-    //     from {
-    //       stroke-dashoffset: 0px;
-    //     }
-    //     to {
-    //       stroke-dashoffset: 113px;
-    //     }
-    // }
+    .Score__total {
+        margin-top: 32px;
+        font-family: 'Bungee', sans-serif;
+        
+        text-align: center;
+        line-height: 1;
+
+        .Score__total__value {
+            color: $light-cyan;
+            font-size: 60px;
+        }
+
+        .Score__total__label {
+            font-size: 30px;
+            color: transparentize($deep-cyan, .5);
+        }
+    }
 }
