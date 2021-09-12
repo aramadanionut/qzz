@@ -44,6 +44,7 @@
                 border-radius: 100%;
                 background: darken($deep-cyan, 10%);
                 transition: all .1s $easeInOutQuad;
+                transform: scale(0.8);
             }
 
             .ProgressBar__step__index {
@@ -95,7 +96,7 @@
 
             &.ProgressBar__step--active {
                 .ProgressBar__step__dot {
-                    transform: scale(2.2);
+                    transform: scale(1.5);
                     background: $deep-cyan;
                 }
             }
