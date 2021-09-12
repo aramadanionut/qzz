@@ -9,7 +9,7 @@ import { Select } from "components/common/forms/select/Select";
 
 import useFetch from "hooks/useFetch";
 import { quizCategoryLookupUrl, parseQuizCategories } from "services/quiz.service";
-import { countOptions, typeOptions, difficultyOptions, buildCategoryOptions } from "services/options.service";
+import { countOptions, typeOptions, difficultyOptions, buildCategoryOptions } from "utils/options";
 import { BUTTON_TYPES, FETCH_STATUSES } from "utils/constants";
 
 import './QuizBuilder.scss';
@@ -35,7 +35,7 @@ export default function QuizBuilder(props) {
     const formIsValid = difficulty && type && count && category;
 
     const onSubmit = (data) => {
-        history.push('/quiz-wizard', data);
+        history.push('/quiz', data);
     };
 
     return (

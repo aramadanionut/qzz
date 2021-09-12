@@ -58,3 +58,7 @@ export const getQuizSteps = (questions, answers = {}) => {
         active: false
     }));
 };
+
+export const scoreQuiz = ({ questions, answers, params }) => {
+
+};

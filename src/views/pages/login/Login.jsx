@@ -28,7 +28,7 @@ export default function Login(props) {
     
     const onSubmit = ({ username, avatar }) => {
         setUser({ username, avatar });
-        history.push('/quiz-builder');
+        history.push('/builder');
     }
 
     return (

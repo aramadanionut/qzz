@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import { useForm } from "react-hook-form";
 
 import useFetch from "hooks/useFetch";
 
 import { getQuizUrl, getQuizSteps } from "services/quiz.service";
-import { parseQuestions } from "services/questions.service";
+import { parseQuestions } from "services/question.service";
 
-import { COLORS, DIRECTIONS, FETCH_STATUSES, SIZES } from "utils/constants";
+import { BUTTON_TYPES, COLORS, DIRECTIONS, FETCH_STATUSES, SIZES } from "utils/constants";
 
 import { Question } from "components/question/Question";
 import Spinner from "components/spinner/Spinner";
@@ -19,7 +19,8 @@ import classNames from "classnames";
 import Timer from "components/timer/Timer";
 
 export default function QuizWizard(props) {
-    // Location hook
+    // History and location hooks
+    const history = useHistory();
     const location = useLocation();
     const quizParams = location.state;
 
@@ -47,24 +48,49 @@ export default function QuizWizard(props) {
         'QuizWizard__form__actions--right': !!isFirstQuestion
     });
 
-    const onSubmit = () => {
-        console.log(answers);
+
+    const [ isSubmitting, setIsSubmitting ] = useState(false);
+    const [ isTimedOut, setIsTimedOut ] = useState(false);
+
+    const onSubmit = (timedOut) => (data) => {
+        setIsSubmitting(true);
+        setIsTimedOut(timedOut);
+
+        setTimeout(() => {
+            history.push('/results', {
+                answers: data,
+                questions,
+                quizParams
+            });
+        }, 1500);
     }
 
     return (
         <div className="QuizWizard">
 
-            {!isDataFetched && (
+            {isSubmitting && (
                 <div className="QuizWizard__spinner">
                     <Spinner
                         size={ 100 }
-                        text="Think of some questions..">
+                        heading={ isTimedOut ? "Sorry, time's up" : '' }
+                        text="Submitting your answers...">
                     </Spinner>
                 </div>
             )}
 
-            {isDataFetched && questions && (
-                <div className="QuizWizard__form">
+            {!isSubmitting && !isDataFetched && (
+                <div className="QuizWizard__spinner">
+                    <Spinner
+                        size={ 100 }
+                        text="Think of some questions...">
+                    </Spinner>
+                </div>
+            )}
+
+            {!isSubmitting && isDataFetched && questions && (
+                <form
+                    className="QuizWizard__form"
+                    onSubmit={ handleSubmit(onSubmit(false)) }>
                     
 
                     {questions && questions.length && (
@@ -109,6 +135,7 @@ export default function QuizWizard(props) {
 
                         {isLastQuestion && (
                             <Button
+                                type={ BUTTON_TYPES.SUBMIT }
                                 size={ SIZES.SMALL }
                                 color={ COLORS.SECONDARY }
                                 direction={ DIRECTIONS.RIGHT }
@@ -127,9 +154,13 @@ export default function QuizWizard(props) {
                     </div>
 
                     <div className="QuizWizard__form__timer">
-                        <Timer onFinished={ onSubmit }></Timer>
+                        <Timer
+                            minutes={ 0 }
+                            seconds={ 5 }
+                            onFinished={ () => onSubmit(true)(answers) }>
+                        </Timer>
                     </div>
-                </div>
+                </form>
             )}
         </div>
     )

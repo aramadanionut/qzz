@@ -11,6 +11,7 @@ import Home from 'views/pages/home/Home';
 import Login from "views/pages/login/Login";
 import QuizBuilder from "views/pages/quiz-builder/QuizBuilder";
 import QuizWizard from "views/pages/quiz-wizard/QuizWizard";
+import QuizResults from "views/pages/quiz-results/QuizResults";
 
 function App() {
   return (
@@ -24,11 +25,14 @@ function App() {
               <Route exact path="/login">
                 <Login />
               </Route>
-              <Route exact path="/quiz-builder">
+              <Route exact path="/builder">
                 <QuizBuilder />
               </Route>
-              <Route exact path="/quiz-wizard">
+              <Route exact path="/quiz">
                 <QuizWizard />
+              </Route>
+              <Route exact path="/results">
+                <QuizResults />
               </Route>
             </Switch>
         </Main>

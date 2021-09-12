@@ -5,12 +5,24 @@
     flex-direction: column;
     align-items: center;
     place-content: center;
-    gap: 16px;
+    gap: 24px;
 
-    .Spinner__text {
-        margin: 0;
-        font-family: 'Poppins', sans-serif;
+    .Spinner__header {
+        display: inline-flex;
+        flex-direction: column;
+        gap: 8px;
         color: $light-cyan;
+        font-family: 'Poppins', sans-serif;
+
+        .Spinner__heading {
+            margin: 0;
+            font-size: 14px;
+            color: lighten($mid-orange, 5%);
+        }
+    
+        .Spinner__text {
+            margin: 0;
+        }
     }
 
     .Spinner__cube-grid {

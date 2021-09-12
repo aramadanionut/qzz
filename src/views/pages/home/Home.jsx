@@ -15,7 +15,7 @@ export default function Home(props) {
             <p className="Home__text">Ready to put your knowledge to the test?</p>
 
             <div className="Home__button">
-                <Link to={ user ? "/quiz-builder" : "/login" }>
+                <Link to={ user ? "/builder" : "/login" }>
                     <Button>
                         Start
                     </Button>

@@ -4,10 +4,7 @@ import PropTypes from 'prop-types';
 import './Spinner.scss';
 
 export default function Spinner(props) {
-    const {
-        size,
-        text
-    } = props;
+    const { size, heading, text } = props;
 
     const spinnerCubeStyle = {
         width: size,
@@ -15,9 +12,16 @@ export default function Spinner(props) {
     };
 
     return (
-        <div className="Spinner" >
-            {text && (
-                <p className="Spinner__text">{ text }</p>
+        <div className="Spinner">
+            {(heading || text) && (
+                <div className="Spinner__header">
+                    {heading && (
+                        <p className="Spinner__heading">{ heading }</p>
+                    )}
+                    {text && (
+                        <p className="Spinner__text">{ text }</p>
+                    )}
+                </div>
             )}
             <div
                 className="Spinner__cube-grid"
@@ -38,10 +42,12 @@ export default function Spinner(props) {
 
 Spinner.propTypes = {
     size: PropTypes.number,
-    text: PropTypes.string
+    heading: PropTypes.string,
+    text: PropTypes.string,
 };
 
 Spinner.defaultProps = {
     size: 60,
-    text: ''
+    heading: '',
+    text: '',
 };
