@@ -7,7 +7,7 @@ import useFetch from "hooks/useFetch";
 import { getQuizUrl, getQuizSteps } from "services/quiz.service";
 import { parseQuestions } from "services/question.service";
 
-import { BUTTON_TYPES, COLORS, DIRECTIONS, FETCH_STATUSES, SIZES } from "utils/constants";
+import { BUTTON_TYPES, COLORS, DIRECTIONS, FETCH_STATUSES, QUIZ_MINUTES_PER_QUESTION, SIZES } from "utils/constants";
 
 import { Question } from "components/question/Question";
 import Spinner from "components/spinner/Spinner";
@@ -17,6 +17,7 @@ import ProgressBar from "components/progress-bar/ProgressBar";
 import './QuizWizard.scss';
 import classNames from "classnames";
 import Timer from "components/timer/Timer";
+import { QUIZ_BUILDER_FORM } from "utils/forms";
 
 export default function QuizWizard(props) {
     // History and location hooks
@@ -30,6 +31,7 @@ export default function QuizWizard(props) {
 
     // Fetch hook
     const url = getQuizUrl(quizParams);
+    const count = quizParams[QUIZ_BUILDER_FORM.COUNT];
     const { status, data } = useFetch(url);
 
     // Parse fetch data
@@ -155,7 +157,7 @@ export default function QuizWizard(props) {
 
                     <div className="QuizWizard__form__timer">
                         <Timer
-                            minutes={ 15 }
+                            minutes={ QUIZ_MINUTES_PER_QUESTION * count }
                             seconds={ 0 }
                             onFinished={ () => onSubmit(true)(answers) }>
                         </Timer>

@@ -54,6 +54,10 @@ export const AVATAR_IMAGES = {
     [AVATARS.DEFAULT]: DefaultAvatar
 };
 
+// Quiz related
+
+export const QUIZ_MINUTES_PER_QUESTION = 2;
+
 // Question related
 
 export const QUESTION_DIFFICULTIES = {

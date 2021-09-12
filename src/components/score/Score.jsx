@@ -19,17 +19,17 @@ export default function Score(props) {
         }, 100);
 
         return () => clearTimeout(timeoutID);
-    }, []);
+    }, [ correct, total ]);
 
     useEffect(() => {
         if (count === correct) return;
     
         const timeoutID = setTimeout(() => {
-            setCount(count + 1);
+            setCount(count > correct ? count - 1 : count + 1);
         }, 100);
     
         return () => clearTimeout(timeoutID);
-    }, [count]);
+    }, [ correct, count ]);
 
     return (
         <div className="Score">
