@@ -92,7 +92,8 @@ export default function QuizBuilder(props) {
                         </div>
 
                         <div className="QuizBuilder__form__field QuizBuild__form__category">
-                            <Label
+                            <Label  
+                                info="There are only a finite number of questions, so some categories might not have enough questions for a quiz"
                                 text="Which category are you interested in?">
                             </Label>
                             <Select

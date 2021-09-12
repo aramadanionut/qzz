@@ -2,14 +2,6 @@
 @import 'assets/scss/fonts'; 
 
 .QuizBuilder {
-    .QuizBuilder__heading {
-        margin: 0;
-        color: $light-cyan;
-        font-family: 'Bungee', sans-serif;
-        font-size: 2.5rem;
-        text-align: center;
-    }
-
     .QuizBuilder__spinner {
         display: flex;
         align-items: center;
@@ -17,24 +9,37 @@
         padding: 60px;
     }
 
-    .QuizBuilder__form {
-        margin-top: 60px;
+    .QuizBuilder__container {
+        max-width: 600px;
         width: 100%;
-        text-align: left;
-
-        .QuizBuilder__form__field {
-            &:not(:first-child) {
-                margin-top: 40px;
-            }
-
-            .Select {
-                place-content: flex-start;
-            }
+        
+        .QuizBuilder__heading {
+            margin: 0;
+            color: $light-cyan;
+            font-family: 'Bungee', sans-serif;
+            font-size: 2.5rem;
+            text-align: center;
         }
 
-        .QuizBuilder__form__button {
-            text-align: right;
+        .QuizBuilder__form {
             margin-top: 60px;
+            width: 100%;
+            text-align: left;
+    
+            .QuizBuilder__form__field {
+                &:not(:first-child) {
+                    margin-top: 40px;
+                }
+    
+                .Select {
+                    place-content: flex-start;
+                }
+            }
+    
+            .QuizBuilder__form__button {
+                text-align: right;
+                margin-top: 60px;
+            }
         }
     }
 }

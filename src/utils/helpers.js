@@ -36,7 +36,7 @@ export const padStringLeft = (string, pad, length) => {
 };
 
 export const pluralize = (string, count) => {
-    return `${string}${count > 1 ? 's' : ''}`;
+    return `${string}${count > 1 || count < 1 ? 's' : ''}`;
 };
 
 export const sortByKey = (array, key) => {
