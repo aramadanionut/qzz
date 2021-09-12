@@ -15,15 +15,15 @@ export const Primary = (args) => (
 
 Primary.args = {
     entries: [
-        {
-            user: { name: 'danarama', avatar: AVATARS.ASTRONAUT },
-            difficulty: QUESTION_DIFFICULTIES.EASY,
-            score: 100
-        },
-        {
-            user: { name: 'ronaoros', avatar: AVATARS.DOG },
-            difficulty: QUESTION_DIFFICULTIES.MEDIUM,
-            score: 200
-        }
+        // {
+        //     user: { name: 'danarama', avatar: AVATARS.ASTRONAUT },
+        //     difficulty: QUESTION_DIFFICULTIES.EASY,
+        //     score: 100
+        // },
+        // {
+        //     user: { name: 'ronaoros', avatar: AVATARS.DOG },
+        //     difficulty: QUESTION_DIFFICULTIES.MEDIUM,
+        //     score: 200
+        // }
     ]
 };

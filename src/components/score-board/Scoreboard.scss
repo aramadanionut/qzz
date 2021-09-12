@@ -5,89 +5,104 @@
     flex-direction: column;
     gap: 12px;
 
-    .Scoreboard__heading {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        gap: 12px;
-        flex-grow: 1;
-        color: $deep-cyan;
-        font-size: 12px;
-        font-weight: 600;
-        font-family: 'Poppins', sans-serif;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        padding-bottom: 10px;
-        border-bottom: 1px solid transparentize($deep-cyan, .95);
+    .Scoreboard__empty {
+        text-align: center;
 
-        .Scoreboard__heading__avatar,
-        .Scoreboard__heading__difficulty,
-        .Scoreboard__heading__score {
-            flex-grow: 1;
+        .Scoreboard__empty__text {
+            font-family: 'Poppins', sans-serif;
+            color: $deep-cyan;
         }
 
-        .Scoreboard__heading__avatar {
-            flex-basis: 200px;
-        }
-
-        .Scoreboard__heading__difficulty {
-            flex-basis: 100px;
-            text-align: center;
-        }
-
-        .Scoreboard__heading__score {
-            flex-basis: 100px;
-            text-align: right;
+        .Scoreboard__empty__actions {
+            margin-top: 32px;
         }
     }
 
-    .Scoreboard__entry {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        gap: 12px;
-        flex-grow: 1;
-        color: white;
-        font-family: 'Poppins', sans-serif;
-        font-size: 0;
-        padding-bottom: 10px;
-        border-bottom: 1px solid transparentize($deep-cyan, .95);
-
-        &:last-child {
-            border-bottom: none;
-        }
-
-        .Scoreboard__entry__avatar,
-        .Scoreboard__entry__difficulty,
-        .Scoreboard__entry__score {
+    .Scoreboard__entries {
+        .Scoreboard__heading {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 12px;
             flex-grow: 1;
-        }
-
-        .Scoreboard__entry__avatar {
-            flex-basis: 200px;
-        }
-
-        .Scoreboard__entry__difficulty {
+            color: $deep-cyan;
             font-size: 12px;
-            flex-basis: 100px;
-            text-align: center;
-        }   
-
-        .Scoreboard__entry__score {
-            font-size: 12px;
-            flex-basis: 100px;
-            text-align: right;
-            color: $light-cyan;
-
-            .Scoreboard__entry__score__value {
-                display: inline-block;
-                font-weight: 600;
+            font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid transparentize($deep-cyan, .95);
+    
+            .Scoreboard__heading__avatar,
+            .Scoreboard__heading__difficulty,
+            .Scoreboard__heading__score {
+                flex-grow: 1;
             }
-
-            .Scoreboard__entry__score__label {
-                display: inline-block;
-                margin-left: 4px;
-                color: transparentize($light-cyan, .5);
+    
+            .Scoreboard__heading__avatar {
+                flex-basis: 200px;
+            }
+    
+            .Scoreboard__heading__difficulty {
+                flex-basis: 100px;
+                text-align: center;
+            }
+    
+            .Scoreboard__heading__score {
+                flex-basis: 100px;
+                text-align: right;
+            }
+        }
+    
+        .Scoreboard__entry {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 12px;
+            flex-grow: 1;
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0;
+            padding-bottom: 10px;
+            border-bottom: 1px solid transparentize($deep-cyan, .95);
+    
+            &:last-child {
+                border-bottom: none;
+            }
+    
+            .Scoreboard__entry__avatar,
+            .Scoreboard__entry__difficulty,
+            .Scoreboard__entry__score {
+                flex-grow: 1;
+            }
+    
+            .Scoreboard__entry__avatar {
+                flex-basis: 200px;
+            }
+    
+            .Scoreboard__entry__difficulty {
+                font-size: 12px;
+                flex-basis: 100px;
+                text-align: center;
+            }   
+    
+            .Scoreboard__entry__score {
+                font-size: 12px;
+                flex-basis: 100px;
+                text-align: right;
+                color: $light-cyan;
+    
+                .Scoreboard__entry__score__value {
+                    display: inline-block;
+                    font-weight: 600;
+                }
+    
+                .Scoreboard__entry__score__label {
+                    display: inline-block;
+                    margin-left: 4px;
+                    color: transparentize($light-cyan, .5);
+                }
             }
         }
     }
