@@ -23,28 +23,10 @@
                 stroke-linecap: round;
                 transform: rotate(90deg);
                 transform-origin: center;
-                transition: all .5s $easeInOutCirc;
+                transition: all .5s $easeInOutQuint;
                 stroke: $light-cyan;
             }
         }
-
-        // width: 100%;
-        // height: 100%;
-
-        // svg {
-        //     width: 200px;
-        //     height: 200px;
-
-        //     circle {
-        //         stroke-dasharray: 200px;
-        //         stroke-dashoffset: 0px;
-        //         stroke-linecap: round;
-        //         stroke-width: 10px;
-        //         stroke: $light-cyan;
-        //         fill: none;
-        //         animation: countdown 10s linear infinite forwards;
-        //       }
-        // }
     }
 
     .Score__value {

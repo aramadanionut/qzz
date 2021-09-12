@@ -12,6 +12,7 @@ function str_pad_left(string,pad,length) {
 
 export default function Timer(props) {
     const { minutes, seconds, onFinished } = props;
+    
     const duration = minutes * 60 + seconds;
     const [ timeLeft, setTimeLeft ] = useState(duration);
 

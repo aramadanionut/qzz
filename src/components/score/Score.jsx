@@ -7,8 +7,11 @@ const FULL_CIRCLE_DASHARRAY = 283;
 
 export default function Score(props) {
     const { correct, total } = props;
+
     const [ count, setCount ] = useState(0);
     const [ scoreStrokeDash, setScoreStrokeDash ] = useState(0);
+
+    const scoreStrokeAnimationDuration = (correct + 1) * 100;
 
     useEffect(() => {
         setScoreStrokeDash(correct / total * FULL_CIRCLE_DASHARRAY);
@@ -19,12 +22,10 @@ export default function Score(props) {
     
         const timeoutID = setTimeout(() => {
             setCount(count + 1);
-        }, 50);
+        }, 100);
     
         return () => clearTimeout(timeoutID);
     }, [count]);
-
-    const scoreStrokeAnimationDuration = correct * 100;
 
     return (
         <div className="Score">
