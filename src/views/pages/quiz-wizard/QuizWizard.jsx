@@ -15,27 +15,36 @@ import Button from "components/common/buttons/button/Button";
 import ProgressBar from "components/progress-bar/ProgressBar";
 
 import './QuizWizard.scss';
+import classNames from "classnames";
 
 export default function QuizWizard(props) {
+    // Location hook
     const location = useLocation();
     const quizParams = location.state;
 
+    // Form hook
     const { register, watch, handleSubmit, formState } = useForm({ mode: 'onChange' });
+    const answers = watch();
 
+    // Fetch hook
     const url = getQuizUrl(quizParams);
     const { status, data } = useFetch(url);
 
+    // Data parsing
     const isDataFetched = (status === FETCH_STATUSES.FETCHED);
     const questions = parseQuestions(data);
-    const answers = watch();
-
     const steps = getQuizSteps(questions, answers);
 
+    // Track index
     const [ questionIndex, setQuestionIndex ] = useState(0);
+    const isFirstQuestion = questionIndex === 0;
     const isLastQuestion = questionIndex === steps.length - 1;
 
-
-    console.log(answers);
+    // Classes
+    const formActionClasses = classNames({
+        QuizWizard__form__actions: true,
+        'QuizWizard__form__actions--right': !!isFirstQuestion
+    })
 
     return (
         <div className="QuizWizard">
@@ -67,13 +76,15 @@ export default function QuizWizard(props) {
                         )
                     ))}
 
-                    <div className="QuizWizard__form__actions">
-                        <Button
-                            size={ SIZES.SMALL }
-                            direction={ DIRECTIONS.LEFT }
-                            onClick={() => setQuestionIndex(questionIndex - 1)}>
-                            Previous
-                        </Button>
+                    <div className={ formActionClasses }>
+                        {!isFirstQuestion && (
+                            <Button
+                                size={ SIZES.SMALL }
+                                direction={ DIRECTIONS.LEFT }
+                                onClick={() => setQuestionIndex(questionIndex - 1)}>
+                                Previous
+                            </Button>
+                        )}
 
                         {!isLastQuestion && (
                             <Button
