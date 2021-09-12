@@ -5,6 +5,7 @@ import Avatar from "components/avatar/Avatar";
 import { AVATARS, QUESTION_DIFFICULTIES } from "utils/constants";
 
 import './Scoreboard.scss';
+import Rating from "components/rating/Rating";
 
 export default function Scoreboard(props) {
     const { entries } = props;
@@ -31,6 +32,9 @@ export default function Scoreboard(props) {
 const ScoreboardEntry = (props) => {
     const { user, difficulty, score } = props;
 
+    const ratingValue = Object.values(QUESTION_DIFFICULTIES).indexOf(difficulty) + 1;
+    const ratingsCount = Object.values(QUESTION_DIFFICULTIES).length;
+
     return (
         <div className="Scoreboard__entry">
             <div className="Scoreboard__entry__avatar">
@@ -40,7 +44,11 @@ const ScoreboardEntry = (props) => {
                 />
             </div>
             <div className="Scoreboard__entry__difficulty">
-                { difficulty }
+                <Rating
+                    size={ 6 }
+                    value={ ratingValue }
+                    total={ ratingsCount }
+                />
             </div>
             <div className="Scoreboard__entry__score">
                 { score } points

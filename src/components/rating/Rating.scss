@@ -1,0 +1,22 @@
+@import 'assets/scss/colors';
+
+.Rating {
+    display: inline-flex;
+    align-items: center;
+    place-content: flex-start;
+    gap: 4px;
+
+    .Rating__block {
+        display: block;
+        width: 16px;
+        height: 32px;
+        border-radius: 2px;
+        border: 2px solid transparentize($deep-cyan, .8);
+        background: transparentize($deep-cyan, .8);
+
+        &.Rating__block--active {
+            border-color: $light-cyan;
+            background: $light-cyan;
+        }
+    }
+}
