@@ -5,7 +5,8 @@
     }
 
     .Select {
-        margin-top: 24px;
+        max-width: 350px;
+        margin: 24px auto 0;
 
         .SelectOption {
             .SelectOption__wrapper {
