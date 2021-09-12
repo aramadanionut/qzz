@@ -1,0 +1,18 @@
+.Question {
+    .Label {
+        text-align: center;
+        letter-spacing: 2px;
+    }
+
+    .Select {
+        margin-top: 24px;
+
+        .SelectOption {
+            .SelectOption__wrapper {
+                .SelectOption__text {
+                    letter-spacing: 1.5px;
+                }
+            }
+        }
+    }
+}

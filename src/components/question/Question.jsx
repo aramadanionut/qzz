@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import Label from 'components/common/forms/label/Label';
 import { Select } from 'components/common/forms/select/Select';
 
+import './Question.scss';
+
 export const Question = forwardRef((props, ref) => {
     const {
         id,
