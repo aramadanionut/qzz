@@ -33,6 +33,7 @@ export default function ProgressBar(props) {
                     {steps.map((step) => (
                         <button
                             key={ `step-${step.index}` }
+                            type="button"
                             className={ getStepClasses(step) }
                             onClick={ () => onChange(step.index) }>
                             <div className="ProgressBar__step__dot"></div>
