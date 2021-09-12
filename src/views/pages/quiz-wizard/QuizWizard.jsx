@@ -73,7 +73,7 @@ export default function QuizWizard(props) {
             {isSubmitting && (
                 <div className="QuizWizard__spinner">
                     <Spinner
-                        size={ 100 }
+                        size={ 40 }
                         heading={ isTimedOut ? "Sorry, time's up" : '' }
                         text="Submitting your answers...">
                     </Spinner>
@@ -83,7 +83,7 @@ export default function QuizWizard(props) {
             {!isSubmitting && !isDataFetched && (
                 <div className="QuizWizard__spinner">
                     <Spinner
-                        size={ 100 }
+                        size={ 40 }
                         text="Think of some questions...">
                     </Spinner>
                 </div>

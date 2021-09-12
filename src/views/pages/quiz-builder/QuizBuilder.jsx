@@ -44,7 +44,7 @@ export default function QuizBuilder(props) {
             {!isDataFetched && (
                 <div className="QuizBuilder__spinner">
                     <Spinner
-                        size={ 100 }
+                        size={ 40 }
                         text="Just a moment..">
                     </Spinner>
                 </div>

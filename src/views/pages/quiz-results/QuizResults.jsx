@@ -35,7 +35,7 @@ export default function QuizResults(props) {
             {isCalculating && (
                 <div className="QuizResults__spinner">
                     <Spinner
-                        size={ 100 }
+                        size={ 40 }
                         text="Let's see here...">
                     </Spinner>
                 </div>
