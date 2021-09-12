@@ -12,12 +12,13 @@ import { useStore } from 'hooks/useStore';
 
 import './Login.scss';
 import { LOGIN_FORM } from "utils/forms";
+import { STORE_KEYS } from "utils/store-keys";
 
 export default function Login(props) {
     const history = useHistory();
 
     const { register, watch, handleSubmit, formState } = useForm({ mode: 'onChange' });
-    const [ user, setUser ] = useStore('user');
+    const [ user, setUser ] = useStore(STORE_KEYS.USER);
 
     // Redirect to home page is already logged in
     if (user) {

@@ -64,7 +64,7 @@ const ScoreboardEntry = (props) => {
         <div className="Scoreboard__entry">
             <div className="Scoreboard__entry__avatar">
                 <Avatar
-                    name={ user.name }
+                    name={ user.username }
                     image={ user.avatar }
                 />
             </div>
@@ -85,7 +85,7 @@ const ScoreboardEntry = (props) => {
 
 Scoreboard.propTypes = {
     entries: PropTypes.arrayOf(PropTypes.shape({
-        user: PropTypes.shape({ name: PropTypes.string, avatar: PropTypes.oneOf(Object.values(AVATARS))}),
+        user: PropTypes.shape({ username: PropTypes.string, avatar: PropTypes.oneOf(Object.values(AVATARS))}),
         difficulty: PropTypes.oneOf(Object.values(QUESTION_DIFFICULTIES)),
         score: PropTypes.number
     }))

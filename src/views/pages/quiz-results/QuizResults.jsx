@@ -9,6 +9,8 @@ import { scoreQuiz } from "services/quiz.service";
 import { isObjEmpty } from "utils/helpers";
 
 import './QuizResults.scss';
+import { STORE_KEYS } from "utils/store-keys";
+import { useStore } from "hooks/useStore";
 
 export default function QuizResults(props) {
     const history = useHistory();
@@ -21,6 +23,8 @@ export default function QuizResults(props) {
 
     const { questions, answers, quizParams } = state;
 
+    const [ user ] = useStore(STORE_KEYS.USER);
+    const [ leaderboard, setLeaderboard ] = useStore(STORE_KEYS.LEADERBOARD, []);
     const [ isCalculating, setIsCalculating ] = useState(true);
     const [ result, setResult ] = useState({
         score: 0,
@@ -38,6 +42,16 @@ export default function QuizResults(props) {
             });
 
             setResult(result);
+
+            leaderboard.push({
+                user,
+                difficulty: quizParams.difficulty,
+                score: result.score,
+            });
+
+            // TODO: add update to useStore
+            setLeaderboard(leaderboard);
+
             setIsCalculating(false);
         }, 1000);
 

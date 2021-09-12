@@ -4,17 +4,20 @@ import { Link, useHistory } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChessQueen } from '@fortawesome/free-solid-svg-icons';
 
+import { useStore } from "hooks/useStore";
+
 import Logo from 'components/logo/Logo';
 import Avatar from 'components/avatar/Avatar';
+
 import { POSITIONS, SIZES } from 'utils/constants';
+import { STORE_KEYS } from "utils/store-keys";
 
 import './Header.scss';
-import { useStore } from "hooks/useStore";
 
 export default function Header(props) {
     const history = useHistory();
 
-    const [ user, setUser ] = useStore('user');
+    const [ user, setUser ] = useStore(STORE_KEYS.USER);
 
     const onChangeUser = function() {
         setUser(null);

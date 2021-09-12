@@ -1,6 +1,9 @@
 @import 'assets/scss/colors';
 
 .Leaderboard {
+    width: 100%;
+    max-width: 500px;
+
     .Leaderboard__heading {
         margin: 0;
         color: $light-cyan;

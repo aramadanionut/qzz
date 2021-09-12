@@ -4,6 +4,7 @@ import Storage from "utils/storage";
 import Dispatcher from 'utils/dispatcher';
 
 let store = {};
+
 const dispatcher = new Dispatcher();
 const storage = new Storage();
 
@@ -21,9 +22,9 @@ function setStore(key, value) {
     dispatcher.emit('data', store);
 }
 
-function useStore(key) {
+function useStore(key, initialValue) {
     const [ value, setData ] = useState(() => {
-        return store[key] || storage.get(key) || null;
+        return store[key] || storage.get(key) || initialValue || null;
     });
 
     useEffect(() => {
