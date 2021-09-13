@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useHistory, useLocation } from "react-router-dom";
 
 import Spinner from "components/spinner/Spinner";
@@ -62,6 +62,7 @@ export default function QuizResults(props) {
         }, 1000);
 
         return () => clearTimeout(timeoutID);
+    // eslint-disable-next-line react-hooks/exhaustive-deps        
     }, []);
 
     return (
