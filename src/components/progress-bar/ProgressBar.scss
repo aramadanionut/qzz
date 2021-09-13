@@ -10,14 +10,14 @@
     
     .ProgressBar__bar {
         flex-grow: 1;
-        height: 6px;
+        height: 2px;
         border-radius: 6px;
         background-color: transparentize($deep-cyan, .9);
     }
 
     .ProgressBar__steps {
         position: relative;
-        top: -9px;
+        top: -11px;
         display: flex;
         place-content: space-between;
         width: 100%;
