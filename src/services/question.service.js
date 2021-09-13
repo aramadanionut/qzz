@@ -1,4 +1,5 @@
-import { slugify, shuffleArray } from "utils/helpers";
+import { QUESTION_TYPES } from "utils/constants";
+import { slugify, shuffleArray, sortByKey } from "utils/helpers";
 
 const cache = {};
 
@@ -20,11 +21,15 @@ export const parseQuestions = (data = {}) => {
     }
 
     const questions = data.results.map(({ question, correct_answer, incorrect_answers, type }) => {
-        const answers = shuffleArray([
+        const allAnswers = [
             mapAnswer(correct_answer, true),
             ...incorrect_answers.map((answer) => mapAnswer(answer, false))
-        ]);
-        
+        ];
+
+        let answers = type === QUESTION_TYPES.BOOLEAN
+            ? sortByKey(allAnswers, 'value', 'desc')
+            : shuffleArray(allAnswers);
+
         return {
             id: slugify(question),
             type,

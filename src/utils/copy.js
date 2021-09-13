@@ -8,6 +8,6 @@ export const QUESTION_DIFFICULTIES_LABELS = {
 
 export const QUESTION_TYPES_LABELS = {
     [ QUESTION_TYPES.ANY ]: 'Any',
-    [ QUESTION_TYPES.SINGLE ]: 'True / False',
+    [ QUESTION_TYPES.BOOLEAN ]: 'True / False',
     [ QUESTION_TYPES.MULTIPLE ]: 'Multiple Choice',
 }

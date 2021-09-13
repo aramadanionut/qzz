@@ -6,7 +6,7 @@ export const buildQueryParams = (params) => {
 };
 
 export const shuffleArray = (array) => {
-    return array
+    return [ ...array ]
         .map((value) => ({ value, sort: Math.random() }))
         .sort((a, b) => a.sort - b.sort)
         .map(({ value }) => value)
@@ -39,10 +39,10 @@ export const pluralize = (string, count) => {
     return `${string}${count > 1 || count < 1 ? 's' : ''}`;
 };
 
-export const sortByKey = (array, key) => {
+export const sortByKey = (array, key, dir = 'asc') => {
     return array.sort((a, b) => {
-        if (a[key] < b[key]) return 1;
-        if (a[key] > b[key]) return -1;
+        if (a[key] < b[key]) return (dir === 'asc' ? -1 : 1);
+        if (a[key] > b[key]) return (dir === 'asc' ? 1 : -1);
         return 0;
     });
 };

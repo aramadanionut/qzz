@@ -66,7 +66,7 @@ export const QUESTION_COUNT = [ 10, 15, 20 ];
 
 export const QUESTION_TYPES = {
     ANY: 'any',
-    SINGLE: 'boolean',
+    BOOLEAN: 'boolean',
     MULTIPLE: 'multiple'
 };
 
