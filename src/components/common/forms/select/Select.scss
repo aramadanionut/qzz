@@ -57,7 +57,7 @@
                     background: darken($light-cyan, 5%);
                     transform: scale(0);
                     opacity: 0;
-                    transition: opacity .2s $easeInOutQuad, transform .2s $easeInOutSine;
+                    transition: opacity .2s $easeInOutCirc, transform .15s $easeInOutSine;
                 }
     
                 &:after {
@@ -103,9 +103,9 @@
                 .SelectOption__dot {
                     &:before {
                         opacity: 1;
-                        // transition: all .4s $easeInOutSine;
                         background: $light-cyan;
-                        transform: scale(300);
+                        transform: scale(250);
+                        transition: opacity .3s $easeInOutCirc, transform .3s $easeInOutSine;
                     }
 
                     &:after {
