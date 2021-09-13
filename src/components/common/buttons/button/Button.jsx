@@ -12,6 +12,7 @@ import './Button.scss';
 
 export default function Button(props) {
     const {
+        simple,
         type,
         direction,
         size,
@@ -24,8 +25,9 @@ export default function Button(props) {
     
     const buttonClasses = classNames({
         Button: true,
+        'Button--simple': !!simple,
+        'Button--hovered': isHovered,
         [`Button--${size.toLowerCase()}`]: !!size,
-        [`Button--hovered`]: isHovered,
         [`Button--${color.toLowerCase()}`]: !!color,
         [`Button--direction-${direction.toLowerCase()}`]: !!direction,
     });
@@ -51,6 +53,7 @@ export default function Button(props) {
 }
 
 Button.propTypes = {
+    simple: PropTypes.bool,
     type: PropTypes.oneOf([ BUTTON_TYPES.BUTTON, BUTTON_TYPES.SUBMIT ]),
     direction: PropTypes.oneOf([ DIRECTIONS.LEFT, DIRECTIONS.RIGHT ]),
     size: PropTypes.oneOf(Object.values(SIZES)),
@@ -59,6 +62,7 @@ Button.propTypes = {
 };
 
 Button.defaultProps = {
+    simple: false,
     type: BUTTON_TYPES.BUTTON,
     direction: DIRECTIONS.RIGHT,
     size: SIZES.MEDIUM,

@@ -40,6 +40,7 @@ export const Primary = (args) => (
 );
 
 Primary.args = {
+  simple: false,
   size: SIZES.MEDIUM,
   color: COLORS.PRIMARY
 };

@@ -98,6 +98,10 @@
 
                 .QuizWizard__form__actions {
                     margin-top: 32px;
+
+                    .Button {
+                        min-width: auto;
+                    }
                 }
             }
         }

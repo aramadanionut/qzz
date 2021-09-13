@@ -180,29 +180,32 @@ export default function QuizWizard(props) {
                         <div className={ formActionClasses }>
                             {!isFirstQuestion && (
                                 <Button
+                                    simple={ windowSize.isMobile }
                                     size={ SIZES.SMALL }
                                     direction={ DIRECTIONS.LEFT }
                                     onClick={() => goToQuestion(questionIndex - 1)}>
-                                    { windowSize.isMobile ? '' : 'Previous' }
+                                    Previous
                                 </Button>
                             )}
 
                             {!isLastQuestion && (
                                 <Button
+                                    simple={ windowSize.isMobile }
                                     size={ SIZES.SMALL }
                                     onClick={() => goToQuestion(questionIndex + 1)}>
-                                    { windowSize.isMobile ? '' : 'Next' }
+                                    Next
                                 </Button>
                             )}
 
                             {isLastQuestion && (
                                 <Button
+                                    simple={ windowSize.isMobile }
                                     type={ BUTTON_TYPES.SUBMIT }
                                     size={ SIZES.SMALL }
                                     color={ COLORS.SECONDARY }
                                     direction={ DIRECTIONS.RIGHT }
                                     onClick={ () => console.log('submitting') }>
-                                    { windowSize.isMobile ? '' : 'Submit' }
+                                    Submit
                                 </Button>
                             )}
                         </div>

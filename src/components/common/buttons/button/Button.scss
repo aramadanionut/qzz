@@ -22,6 +22,7 @@ $button-height: 50px;
         align-items: center;
         position: absolute;
         left: 0;
+        top: 0;
         width: $button-height;
         height: $button-height;
         border-radius: $button-height;
@@ -116,6 +117,38 @@ $button-height: 50px;
                     left: 10px;
                     right: 0;
                     transform: translateX(8px);
+                }
+            }
+        }
+    }
+
+    &.Button--simple {
+        &.Button--direction-left {
+            padding-left: 0;
+        }
+
+        &.Button--direction-right {
+            padding-right: 0;
+        }
+
+        .Button__text {
+            display: none;
+        }
+
+        &.Button--hovered {
+            .Button__background {
+                width: auto;
+
+                .Button__background-icon {
+                    transform: translateX(4px);
+                }
+            }
+
+            &.Button--direction-left {
+                .Button__background {
+                    .Button__background-icon {
+                        transform: translateX(-4px);
+                    }
                 }
             }
         }
