@@ -8,12 +8,14 @@
         color: $light-cyan;
         font-family: 'Bungee', sans-serif;
         font-size: 2.5rem;
+        line-height: 3rem;
     }
 
     .Login__text {
         color: white;
-        font-family: 'Libre Baskerville', serif;
+        font-family: 'Poppins', serif;
         font-size: 1.2rem;
+        line-height: 1.5rem;
     }
 
     .Login__form {
@@ -42,6 +44,16 @@
         .Login__form__button {
             box-sizing: border-box;
             padding-top: 32px;
+        }
+    }
+
+    &.Login--mobile {
+        .Login__heading {
+            font-size: 2rem;
+        }
+
+        .Login__text {
+            font-size: 1rem;
         }
     }
 }
