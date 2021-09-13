@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from 'prop-types';
+import { Link } from "react-router-dom";
 
 import Avatar from "components/avatar/Avatar";
 import Rating from "components/rating/Rating";
@@ -7,13 +8,14 @@ import Button from "components/common/buttons/button/Button";
 
 import { AVATARS, QUESTION_DIFFICULTIES } from "utils/constants";
 import { sortByKey } from "utils/helpers";
+import { useStore } from "hooks/useStore";
 
 import './Scoreboard.scss';
-import { Link } from "react-router-dom";
 
 export default function Scoreboard(props) {
     const { entries } = props;
 
+    const [ user ] = useStore('user');
     const sortedEntries = sortByKey(entries || [], 'score', 'desc').filter((entry) => !!entry.score);
     const hasEntries = sortedEntries.length > 0;
 
@@ -26,7 +28,7 @@ export default function Scoreboard(props) {
                         <p>Now's your time to shine!</p>
                     </div>
                     <div className="Scoreboard__empty__actions">
-                        <Link to="/builder">
+                        <Link to={ user ? "/builder" : "/login" }>
                             <Button>Play</Button>
                         </Link>
                     </div>
