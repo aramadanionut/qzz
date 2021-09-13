@@ -1,6 +1,6 @@
 import keyMirror from "keymirror";
 
-import { Avatar01Astronaut, Avatar02Bear, Avatar03Ninja, Avatar04Dog, DefaultAvatar } from 'assets/img/avatars/index';
+import { Avatar01Astronaut, Avatar02Bear, Avatar03Ninja, Avatar04Dog, Avatar05Cat, DefaultAvatar } from 'assets/img/avatars/index';
 
 // Generic
 
@@ -40,8 +40,9 @@ export const SELECT_TYPES = {
 
 export const AVATARS = keyMirror({
     ASTRONAUT: null,
-    BEAR: null,
+    CAT: null,
     DOG: null,
+    BEAR: null,
     NINJA: null,
     DEFAULT: null
 });
@@ -49,8 +50,9 @@ export const AVATARS = keyMirror({
 export const AVATAR_IMAGES = {
     [AVATARS.ASTRONAUT]: Avatar01Astronaut,
     [AVATARS.BEAR]: Avatar02Bear,
-    [AVATARS.DOG]: Avatar04Dog,
     [AVATARS.NINJA]: Avatar03Ninja,
+    [AVATARS.DOG]: Avatar04Dog,
+    [AVATARS.CAT]: Avatar05Cat,
     [AVATARS.DEFAULT]: DefaultAvatar
 };
 
