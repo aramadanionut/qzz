@@ -11,6 +11,10 @@
         .Scoreboard__empty__text {
             font-family: 'Poppins', sans-serif;
             color: $deep-cyan;
+            line-height: 1.5rem;
+            p {
+                margin: 0;
+            }
         }
 
         .Scoreboard__empty__actions {

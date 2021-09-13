@@ -14,7 +14,7 @@ import { Link } from "react-router-dom";
 export default function Scoreboard(props) {
     const { entries } = props;
 
-    const sortedEntries = sortByKey(entries, 'score', 'desc').filter((entry) => !!entry.score);
+    const sortedEntries = sortByKey(entries || [], 'score', 'desc').filter((entry) => !!entry.score);
     const hasEntries = sortedEntries.length > 0;
 
     return (
@@ -22,7 +22,8 @@ export default function Scoreboard(props) {
             {!hasEntries && (
                 <div className="Scoreboard__empty">
                     <div className="Scoreboard__empty__text">
-                        The scoreboard is empty, now's your time to shine!
+                        <p>The scoreboard is empty.</p>
+                        <p>Now's your time to shine!</p>
                     </div>
                     <div className="Scoreboard__empty__actions">
                         <Link to="/builder">
