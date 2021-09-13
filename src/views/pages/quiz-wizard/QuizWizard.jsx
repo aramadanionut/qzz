@@ -21,6 +21,8 @@ import Timer from "components/timer/Timer";
 import Rating from "components/rating/Rating";
 
 import './QuizWizard.scss';
+import useModal from "hooks/useModal";
+import Modal from "components/modal/Modal";
 
 export default function QuizWizard(props) {
     // Window size hook
@@ -107,8 +109,16 @@ export default function QuizWizard(props) {
         }, 1500);
     };
 
+    const {isShowing, toggle} = useModal();
+
     return (
         <div className="QuizWizard">
+
+            <button className="button-default" onClick={toggle}>Show Modal</button>
+
+            <Modal isShowing={ isShowing } hide={ toggle }>
+                <p> Test </p>
+            </Modal>
 
             {isSubmitting && (
                 <div className="QuizWizard__spinner">
