@@ -30,6 +30,8 @@
         align-items: center;
         flex-direction: column;
         place-content: center;
+        max-width: 90%;
+        max-height: 90%;
         gap: 20px;
         background: darken($deep-cyan, 10%);
         background: rgb(11,44,82);
@@ -68,6 +70,7 @@
                 margin: 0;
                 font-weight: 500;
                 font-size: 14px;
+                line-height: 1.5rem;
             }
     
             .Modal__content__message {
@@ -75,6 +78,7 @@
                 margin-top: 8px;
                 font-size: 18px;
                 font-weight: 600;
+                line-height: 1.5rem;
             }
     
             .Modal__content__warning {
@@ -83,6 +87,7 @@
                 font-size: 18px;
                 color: $mid-orange;
                 font-weight: 600;
+                line-height: 1.5rem;
             }
         }
 
