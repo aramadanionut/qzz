@@ -98,3 +98,5 @@ export const FETCH_STATUSES = keyMirror({
     FETCHED: null,
     FETCH_ERROR: null
 });
+
+export const MOBILE_BREAKPOINT = 768;

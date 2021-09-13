@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChessQueen, faSignInAlt } from '@fortawesome/free-solid-svg-icons';
 
 import { useStore } from "hooks/useStore";
+import useWindowSize from "hooks/useWindowSize";
 
 import Logo from 'components/logo/Logo';
 import Avatar from 'components/avatar/Avatar';
@@ -16,8 +17,8 @@ import './Header.scss';
 
 export default function Header(props) {
     const history = useHistory();
-
     const [ user ] = useStore(STORE_KEYS.USER);
+    const windowSize = useWindowSize();
 
     const onChangeUser = function() {
         history.push('/login');
@@ -27,7 +28,12 @@ export default function Header(props) {
         <header className="Header">
             <div className="Header__logo">
                 <Link to="/">
-                    <Logo size={ SIZES.MEDIUM }></Logo>
+                    <Logo
+                        size={ SIZES.MEDIUM }
+                        showName={ !windowSize.isMobile }
+                        showTagline={ !windowSize.isMobile }
+                        >
+                    </Logo>
                 </Link>
             </div>
             <div className="Header__menu">
