@@ -62,32 +62,13 @@ export default function Login(props) {
                 </div>
 
                 <div className="Login__form__button">
-                    <AnimatePresence initial={false}>
-                        {formState.isValid && (
-                            <motion.div
-                                key="content"
-                                initial="collapsed"
-                                animate="open"
-                                exit="collapsed"
-                                variants={{
-                                    open: {
-                                        opacity: 1,
-                                        height: "auto",
-                                    },
-                                    collapsed: {
-                                        opacity: 0,
-                                        height: 0,
-                                    }
-                                }}
-                                transition={{ duration: 0.4, ease: [0.04, 0.62, 0.23, 0.98] }}>
-                                <Button
-                                    type={ BUTTON_TYPES.SUBMIT }
-                                    color={ COLORS.PRIMARY }>
-                                    Let's go
-                                </Button>
-                            </motion.div>
-                        )}
-                    </AnimatePresence>
+                    {formState.isValid && (
+                        <Button
+                            type={ BUTTON_TYPES.SUBMIT }
+                            color={ COLORS.PRIMARY }>
+                            Let's go
+                        </Button>
+                    )}
                 </div>
             </form>
         </div>

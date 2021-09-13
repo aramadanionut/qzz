@@ -2,7 +2,7 @@ import React from "react";
 import { Link, useHistory } from "react-router-dom";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChessQueen } from '@fortawesome/free-solid-svg-icons';
+import { faChessQueen, faSignInAlt } from '@fortawesome/free-solid-svg-icons';
 
 import { useStore } from "hooks/useStore";
 
@@ -42,6 +42,14 @@ export default function Header(props) {
                         <span className="Header__menu__link__text">Leaderboard</span>
                         <FontAwesomeIcon className="Header__menu__link__icon" icon={ faChessQueen }/>
                     </Link>
+                    {!user && (
+                        <Link
+                            className="Header__menu__link"
+                            to="/login">
+                            <span className="Header__menu__link__text">Login</span>
+                            <FontAwesomeIcon className="Header__menu__link__icon" icon={ faSignInAlt }/>
+                        </Link>
+                    )}
                 </div>
                 <div className="Header__menu__avatar">
                     {user && user.username && user.avatar && (

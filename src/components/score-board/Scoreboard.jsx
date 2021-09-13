@@ -14,7 +14,7 @@ import { Link } from "react-router-dom";
 export default function Scoreboard(props) {
     const { entries } = props;
 
-    const sortedEntries = sortByKey(entries, 'score');
+    const sortedEntries = sortByKey(entries, 'score', 'desc').filter((entry) => !!entry.score);
     const hasEntries = sortedEntries.length > 0;
 
     return (
