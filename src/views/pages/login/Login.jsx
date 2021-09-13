@@ -1,7 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
 
 import Button from "components/common/buttons/button/Button";
 import { TextField } from "components/common/forms/text-field/TextField";
@@ -18,12 +17,7 @@ export default function Login(props) {
     const history = useHistory();
 
     const { register, watch, handleSubmit, formState } = useForm({ mode: 'onChange' });
-    const [ user, setUser ] = useStore(STORE_KEYS.USER);
-
-    // Redirect to home page is already logged in
-    if (user) {
-        history.push('/');
-    }
+    const [ setUser ] = useStore(STORE_KEYS.USER);
 
     const username = watch(LOGIN_FORM.USERNAME);
     

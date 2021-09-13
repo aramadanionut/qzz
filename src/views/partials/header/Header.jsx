@@ -17,14 +17,10 @@ import './Header.scss';
 export default function Header(props) {
     const history = useHistory();
 
-    const [ user, setUser ] = useStore(STORE_KEYS.USER);
+    const [ user ] = useStore(STORE_KEYS.USER);
 
     const onChangeUser = function() {
-        setUser(null);
-
-        setTimeout(() => {
-            history.push('/login');
-        }, 0);
+        history.push('/login');
     }
 
     return (
