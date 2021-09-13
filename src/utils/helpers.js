@@ -48,3 +48,10 @@ export const sortByKey = (array, key, dir = 'asc') => {
 };
 
 export const isObjEmpty = (obj) => obj && Object.keys(obj).length === 0 && obj.constructor === Object;
+
+export const countValues = (obj) => {
+    return Object.values(obj).reduce((acc, value) => {
+        if (!!value) acc++;
+        return acc
+    }, 0);
+}

@@ -60,6 +60,30 @@
 
         .Modal__content {
             padding: 16px 32px;
+            color: $deep-cyan;
+            text-align: center;
+            font-family: 'Poppins', sans-serif;
+
+            .Modal__content__heading {
+                margin: 0;
+                font-weight: 500;
+                font-size: 14px;
+            }
+    
+            .Modal__content__message {
+                margin: 0;
+                margin-top: 8px;
+                font-size: 18px;
+                font-weight: 600;
+            }
+    
+            .Modal__content__warning {
+                margin: 0;
+                margin-top: 32px;
+                font-size: 18px;
+                color: $mid-orange;
+                font-weight: 600;
+            }
         }
 
         .Modal__footer {

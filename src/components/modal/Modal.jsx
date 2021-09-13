@@ -12,6 +12,9 @@ import SimpleButton from 'components/common/buttons/simple-button/SimpleButton';
 
 const Modal = (props) => {
     const {
+        heading,
+        message,
+        warning,
         isShowing,
         hide,
         children,
@@ -41,7 +44,19 @@ const Modal = (props) => {
                             </div>
                         </div>
                         <div className="Modal__content">
+                            {heading && (
+                                <p className="Modal__content__heading">{ heading }</p>
+                            )}
+                            
                             { children }
+
+                            {message && (
+                                <p className="Modal__content__message">{ message }</p>
+                            )}
+
+                            {warning && (
+                                <p className="Modal__content__warning">{ warning }</p>
+                            )}
                         </div>
                         {hasFooter && (
                             <div className="Modal__footer">

@@ -11,7 +11,7 @@ import { parseQuestions } from "services/question.service";
 
 import { BUTTON_TYPES, COLORS, DIRECTIONS, FETCH_STATUSES, QUESTION_DIFFICULTIES, QUIZ_MINUTES_PER_QUESTION, SIZES } from "utils/constants";
 import { QUIZ_BUILDER_FORM } from "utils/forms";
-import { isObjEmpty } from "utils/helpers";
+import { countValues, isObjEmpty } from "utils/helpers";
 
 import { Question } from "components/question/Question";
 import Spinner from "components/spinner/Spinner";
@@ -92,11 +92,24 @@ export default function QuizWizard(props) {
     // isSubmitting and isTimedOut
     const [ isSubmitting, setIsSubmitting ] = useState(false);
     const [ isTimedOut, setIsTimedOut ] = useState(false);
+    const { isShowing, toggle } = useModal();
 
     const ratingValue = Object.values(QUESTION_DIFFICULTIES).indexOf(quizParams[QUIZ_BUILDER_FORM.DIFFICULTY]) + 1;
     const ratingsCount = Object.values(QUESTION_DIFFICULTIES).length;
 
+    const completedQuestions = countValues(formValues);
+    const totalQuestions = questions.length;
+
     const onSubmit = (timedOut) => (data) => {
+        if (completedQuestions < totalQuestions) {
+            toggle();
+            return;
+        }
+
+        triggerSubmit(timedOut, data);
+    };
+
+    const triggerSubmit = (timedOut, data) => {
         setIsSubmitting(true);
         setIsTimedOut(timedOut);
 
@@ -109,15 +122,22 @@ export default function QuizWizard(props) {
         }, 1500);
     };
 
-    const {isShowing, toggle} = useModal();
-
     return (
         <div className="QuizWizard">
 
-            <button className="button-default" onClick={toggle}>Show Modal</button>
-
-            <Modal isShowing={ isShowing } hide={ toggle }>
-                <p> Test </p>
+            <Modal
+                heading="Wait, you're not finished!"
+                message={ `You've only completed ${completedQuestions} out of ${totalQuestions} questions.` }
+                warning="Are you sure you want to submit?"
+                confirmText="Yes"
+                cancelText="No"
+                isShowing={ isShowing }
+                hide={ toggle }
+                onConfirm={ () => {
+                    toggle();
+                    triggerSubmit(false, formValues);
+                }}
+                onCancel={ toggle }>
             </Modal>
 
             {isSubmitting && (
@@ -234,7 +254,7 @@ export default function QuizWizard(props) {
                                 inline={ !windowSize.isMobile }
                                 minutes={ QUIZ_MINUTES_PER_QUESTION * count }
                                 seconds={ 0 }
-                                onFinished={ () => onSubmit(true)(formValues) }>
+                                onFinished={ () => triggerSubmit(true)(formValues) }>
                             </Timer>
                         </div>
                     </form>
