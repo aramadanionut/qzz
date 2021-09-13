@@ -1,7 +1,7 @@
 import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
+    BrowserRouter as Router,
+    Switch,
+    Route,
 } from "react-router-dom";
 
 import './App.scss';
@@ -14,36 +14,46 @@ import QuizBuilder from "views/pages/quiz-builder/QuizBuilder";
 import QuizWizard from "views/pages/quiz-wizard/QuizWizard";
 import QuizResults from "views/pages/quiz-results/QuizResults";
 import Leaderboard from "views/pages/leaderboard/Leaderboard";
+import useWindowSize from "hooks/useWindowSize";
+import classNames from "classnames";
 
 function App() {
-  return (
-    <Router>
-    <div className="App">
-        <Main>
-            <Switch>
-              <Route exact path="/">
-                <Home />
-              </Route>
-              <Route exact path="/login">
-                <Login />
-              </Route>
-              <Route exact path="/builder">
-                <QuizBuilder />
-              </Route>
-              <Route exact path="/quiz">
-                <QuizWizard />
-              </Route>
-              <Route exact path="/results">
-                <QuizResults />
-              </Route>
-              <Route exact path="/leaderboard">
-                <Leaderboard />
-              </Route>
-            </Switch>
-        </Main>
-      </div>
-    </Router>
-  );
-}
+    const windowSize = useWindowSize();
+    
+    const appClasses = classNames({
+        App: true,
+        'App--mobile': windowSize.isMobile,
+    });
 
-export default App;
+    return (
+        <Router>
+            <div className={ appClasses }>
+            <Main>
+                <Switch>
+                    <Route exact path="/">
+                        <Home />
+                    </Route>
+                    <Route exact path="/login">
+                        <Login />
+                    </Route>
+                    <Route exact path="/builder">
+                        <QuizBuilder />
+                    </Route>
+                    <Route exact path="/quiz">
+                        <QuizWizard />
+                    </Route>
+                    <Route exact path="/results">
+                        <QuizResults />
+                    </Route>
+                    <Route exact path="/leaderboard">
+                        <Leaderboard />
+                    </Route>
+                </Switch>
+            </Main>
+            </div>
+        </Router>
+        );
+    }
+    
+    export default App;
+    

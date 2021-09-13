@@ -1,27 +1,31 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { Link, useHistory, useLocation } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import classNames from "classnames";
 
 import useFetch from "hooks/useFetch";
+import useWindowSize from "hooks/useWindowSize";
 
 import { getQuizUrl, getQuizSteps } from "services/quiz.service";
 import { parseQuestions } from "services/question.service";
 
 import { BUTTON_TYPES, COLORS, DIRECTIONS, FETCH_STATUSES, QUESTION_DIFFICULTIES, QUIZ_MINUTES_PER_QUESTION, SIZES } from "utils/constants";
+import { QUIZ_BUILDER_FORM } from "utils/forms";
+import { isObjEmpty } from "utils/helpers";
 
 import { Question } from "components/question/Question";
 import Spinner from "components/spinner/Spinner";
 import Button from "components/common/buttons/button/Button";
 import ProgressBar from "components/progress-bar/ProgressBar";
-
-import './QuizWizard.scss';
-import classNames from "classnames";
 import Timer from "components/timer/Timer";
-import { QUIZ_BUILDER_FORM } from "utils/forms";
-import { isObjEmpty } from "utils/helpers";
 import Rating from "components/rating/Rating";
 
+import './QuizWizard.scss';
+
 export default function QuizWizard(props) {
+    // Window size hook
+    const windowSize = useWindowSize();
+
     // History and location hooks
     const history = useHistory();
     const location = useLocation();
@@ -68,9 +72,19 @@ export default function QuizWizard(props) {
     }, [ isDataFetched, goToQuestion ]);
 
     // Classes
+    const formClasses = classNames({
+        QuizWizard__form: true,
+        'QuizWizard__form--mobile': windowSize.isMobile
+    });
+
     const formActionClasses = classNames({
         QuizWizard__form__actions: true,
         'QuizWizard__form__actions--right': !!isFirstQuestion
+    });
+
+    const formProgressBarClasses = classNames({
+        'QuizWizard__form__progress-bar': true,
+        'QuizWizard__form__progress-bar--vertical': windowSize.isMobile
     });
 
     // isSubmitting and isTimedOut
@@ -91,7 +105,7 @@ export default function QuizWizard(props) {
                 quizParams
             });
         }, 1500);
-    }
+    };
 
     return (
         <div className="QuizWizard">
@@ -143,7 +157,7 @@ export default function QuizWizard(props) {
 
 
                     <form
-                        className="QuizWizard__form"
+                        className={ formClasses }
                         onSubmit={ handleSubmit(onSubmit(false)) }>
 
                         {questions && questions.length && selectedQuestion && (
@@ -169,7 +183,7 @@ export default function QuizWizard(props) {
                                     size={ SIZES.SMALL }
                                     direction={ DIRECTIONS.LEFT }
                                     onClick={() => goToQuestion(questionIndex - 1)}>
-                                    Previous
+                                    { windowSize.isMobile ? '' : 'Previous' }
                                 </Button>
                             )}
 
@@ -177,7 +191,7 @@ export default function QuizWizard(props) {
                                 <Button
                                     size={ SIZES.SMALL }
                                     onClick={() => goToQuestion(questionIndex + 1)}>
-                                    Next
+                                    { windowSize.isMobile ? '' : 'Next' }
                                 </Button>
                             )}
 
@@ -188,13 +202,14 @@ export default function QuizWizard(props) {
                                     color={ COLORS.SECONDARY }
                                     direction={ DIRECTIONS.RIGHT }
                                     onClick={ () => console.log('submitting') }>
-                                    Submit
+                                    { windowSize.isMobile ? '' : 'Submit' }
                                 </Button>
                             )}
                         </div>
 
-                        <div className="QuizWizard__form__progress-bar">
+                        <div className={ formProgressBarClasses }>
                             <ProgressBar
+                                inline={ !windowSize.isMobile }
                                 activeStepIndex={ questionIndex }
                                 steps={ steps }
                                 onChange={ goToQuestion }>
@@ -203,6 +218,7 @@ export default function QuizWizard(props) {
 
                         <div className="QuizWizard__form__timer">
                             <Timer
+                                inline={ !windowSize.isMobile }
                                 minutes={ QUIZ_MINUTES_PER_QUESTION * count }
                                 seconds={ 0 }
                                 onFinished={ () => onSubmit(true)(formValues) }>

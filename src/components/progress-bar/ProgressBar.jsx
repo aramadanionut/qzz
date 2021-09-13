@@ -6,10 +6,19 @@ import './ProgressBar.scss';
 
 export default function ProgressBar(props) {
     const {
+        canNavigate,
+        inline,
+        vertical,
         activeStepIndex,
         steps,
         onChange
     } = props;
+
+    const progressBarClasses = classNames({
+        ProgressBar: true,
+        'ProgressBar--vertical': !!vertical,
+        'ProgressBar--inline': !!inline,
+    });
 
     const getStepClasses = (step) => {
         const {
@@ -26,8 +35,14 @@ export default function ProgressBar(props) {
 
     const completedCount = steps.reduce((acc, step) => acc += (step.completed ? 1 : 0), 0);
 
+    const onChangeStep = (index) => {
+        if (canNavigate && onChange && typeof onChange === 'function') {
+            onChange(index)
+        }
+    };
+
     return (
-        <div className="ProgressBar">
+        <div className={ progressBarClasses }>
             <div className="ProgressBar__bar">
                 <div className="ProgressBar__steps">
                     {steps.map((step) => (
@@ -35,7 +50,7 @@ export default function ProgressBar(props) {
                             key={ `step-${step.index}` }
                             type="button"
                             className={ getStepClasses(step) }
-                            onClick={ () => onChange(step.index) }>
+                            onClick={ () => onChangeStep(step.index) }>
                             <div className="ProgressBar__step__dot"></div>
                         </button>
                     ))}
@@ -51,11 +66,17 @@ export default function ProgressBar(props) {
 };
 
 ProgressBar.propTypes = {
+    canNavigate: PropTypes.bool,
+    vertical: PropTypes.bool,
+    inline: PropTypes.bool,
     activeStepIndex: PropTypes.number,
     steps: PropTypes.array,
 };
 
 ProgressBar.defaultProps = {
+    canNavigate: true,
+    vertical: false,
+    inline: true,
     activeStepIndex: 0,
     steps: []
 };

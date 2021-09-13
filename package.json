@@ -23,6 +23,7 @@
     "react-sanitized-html": "^2.0.0",
     "react-scripts": "4.0.3",
     "sanitize-html": "^2.5.0",
+    "storybook-addon-state": "^1.0.3",
     "storybook-react-router": "^1.0.8",
     "web-vitals": "^1.1.2"
   },

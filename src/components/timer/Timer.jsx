@@ -7,7 +7,12 @@ import { padStringLeft } from 'utils/helpers';
 import './Timer.scss';
 
 export default function Timer(props) {
-    const { minutes, seconds, onFinished } = props;
+    const {
+        inline,
+        minutes,
+        seconds,
+        onFinished
+    } = props;
     
     const duration = minutes * 60 + seconds;
     const [ timeLeft, setTimeLeft ] = useState(duration);
@@ -37,6 +42,7 @@ export default function Timer(props) {
     
     const timerClasses = classNames({
         Timer: true,
+        'Timer--inline': !!inline,
         'Timer--endgame': elapsedPercentage > 75 
     });
 
@@ -58,11 +64,13 @@ export default function Timer(props) {
 }
 
 Timer.propTypes = {
+    inline: PropTypes.bool,
     minutes: PropTypes.number,
     seconds: PropTypes.number
 };
 
 Timer.defaultProps = {
+    inline: true,
     minutes: 1,
     seconds: 0
 };

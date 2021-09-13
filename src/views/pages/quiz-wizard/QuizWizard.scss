@@ -58,8 +58,9 @@
         }
     
         .QuizWizard__form {
+            position: relative;
             margin-top: 50px;
-            
+
             .QuizWizard__form__questions {
                 .QuizWizard__form__question {
                     min-height: 380px;
@@ -86,6 +87,18 @@
     
             .QuizWizard__form__timer {
                 margin-top: 16px;
+            }
+
+            &.QuizWizard__form--mobile {
+                .QuizWizard__form__questions {
+                    .QuizWizard__form__question {
+                        min-height: 0;
+                    }
+                }
+
+                .QuizWizard__form__actions {
+                    margin-top: 32px;
+                }
             }
         }
     }

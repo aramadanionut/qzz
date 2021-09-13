@@ -3,8 +3,8 @@
 
 .Timer {
     display: flex;
-    flex-direction: row;
-    align-items: center;
+    flex-direction: column-reverse;
+    align-items: flex-end;
     place-content: center;
     gap: 12px;
 
@@ -53,6 +53,12 @@
             background: $light-cyan;
             transition: width .1s $easeInOutQuint, background-color .2s $easeInOutCirc;;
         }
+    }
+
+    &.Timer--inline {
+        flex-direction: row;
+        align-items: center;
+        gap: 12px;
     }
 
     &.Timer--endgame {
