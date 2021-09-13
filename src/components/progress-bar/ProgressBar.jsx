@@ -2,9 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
+import useWindowSize from 'hooks/useWindowSize';
+
 import './ProgressBar.scss';
 
 export default function ProgressBar(props) {
+    const windowSize = useWindowSize();
+
     const {
         canNavigate,
         inline,
@@ -16,6 +20,7 @@ export default function ProgressBar(props) {
 
     const progressBarClasses = classNames({
         ProgressBar: true,
+        'ProgressBar--mobile': !!windowSize.isMobile,
         'ProgressBar--vertical': !!vertical,
         'ProgressBar--inline': !!inline,
     });

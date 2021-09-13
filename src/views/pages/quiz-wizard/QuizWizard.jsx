@@ -44,6 +44,7 @@ export default function QuizWizard(props) {
     // Fetch hook
     const url = getQuizUrl(quizParams);
     const count = quizParams[QUIZ_BUILDER_FORM.COUNT];
+
     const { status, data } = useFetch(url);
 
     // Parse fetch data
@@ -55,6 +56,7 @@ export default function QuizWizard(props) {
     const [ selectedQuestion, setSelectedQuestion ] = useState(null);
     const [ questionIndex, setQuestionIndex ] = useState(0);
 
+    // Track first / last question
     const isFirstQuestion = questionIndex === 0;
     const isLastQuestion = questionIndex === steps.length - 1;
 
@@ -92,7 +94,7 @@ export default function QuizWizard(props) {
     // isSubmitting and isTimedOut
     const [ isSubmitting, setIsSubmitting ] = useState(false);
     const [ isTimedOut, setIsTimedOut ] = useState(false);
-    const { isShowing, toggle } = useModal();
+    const [ isModalVisible, showModal, hideModal ] = useModal();
 
     const ratingValue = Object.values(QUESTION_DIFFICULTIES).indexOf(quizParams[QUIZ_BUILDER_FORM.DIFFICULTY]) + 1;
     const ratingsCount = Object.values(QUESTION_DIFFICULTIES).length;
@@ -102,7 +104,7 @@ export default function QuizWizard(props) {
 
     const onSubmit = (timedOut) => (data) => {
         if (completedQuestions < totalQuestions) {
-            toggle();
+            showModal();
             return;
         }
 
@@ -131,13 +133,13 @@ export default function QuizWizard(props) {
                 warning="Are you sure you want to submit?"
                 confirmText="Yes"
                 cancelText="No"
-                isShowing={ isShowing }
-                hide={ toggle }
+                isShowing={ isModalVisible }
+                hide={ hideModal }
                 onConfirm={ () => {
-                    toggle();
+                    hideModal();
                     triggerSubmit(false, formValues);
                 }}
-                onCancel={ toggle }>
+                onCancel={ hideModal }>
             </Modal>
 
             {isSubmitting && (

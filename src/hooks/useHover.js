@@ -23,5 +23,8 @@ export default function useHover() {
         }
     );
         
-    return [ ref, value ];
+    return [
+        ref,
+        value
+    ];
 }

@@ -13,7 +13,7 @@
     .ProgressBar__bar {
         flex-grow: 1;
         width: 100%;
-        height: 2px;
+        height: 6px;
         border-radius: 6px;
         background-color: transparentize($deep-cyan, .9);
 
@@ -26,8 +26,8 @@
     
             .ProgressBar__step {
                 position: relative;
-                width: 12px;
-                height: 12px;
+                width: 16px;
+                height: 16px;
                 padding: 6px;
                 cursor: pointer;
                 border: none;
@@ -63,7 +63,7 @@
     
                 &.ProgressBar__step--active {
                     .ProgressBar__step__dot {
-                        transform: scale(1.5);
+                        transform: scale(1.3);
                     }
                 }
     
@@ -72,10 +72,18 @@
                         background: lighten($light-cyan, 18%);
                     }
                 }
-    
+
                 &:hover {
                     .ProgressBar__step__dot {
-                        transform: scale(2.2);
+                        transform: scale(1.8);
+                    }
+                }
+    
+                &:not(.ProgressBar__step--completed) {
+                    &:hover {
+                        .ProgressBar__step__dot {
+                            background: darken($deep-cyan, 10%);
+                        }
                     }
                 }
             }
@@ -131,6 +139,18 @@
                         padding-bottom: 0;
                     }
                 }
+            }
+        }
+    }
+
+    &.ProgressBar--mobile {
+        .ProgressBar__steps {
+            top: -8px;
+
+            .ProgressBar__step {
+                width: 10px;
+                height: 10px;
+                padding: 6px 3px;
             }
         }
     }
