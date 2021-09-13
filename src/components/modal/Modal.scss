@@ -8,7 +8,7 @@
     width: 100vw;
     height: 100vh;
     background-color: #000;
-    opacity: .5;
+    opacity: .4;
 }
 
 .Modal__container {
@@ -26,8 +26,13 @@
     outline: 0;
     
     .Modal {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        place-content: center;
+        gap: 20px;
         background: darken($deep-cyan, 10%);
-        padding: 32px 60px;
+        background: rgb(11,44,82);
         border-radius: 6px;
         box-shadow:
             0 2.8px 2.2px rgba(0, 0, 0, 0.02),
@@ -39,15 +44,35 @@
         ;
 
         .Modal__header {
+            display: flex;
+            align-items: center;
+            place-content: flex-end;
+            width: 100%;
+            padding: 8px 8px 0 8px;
+            box-sizing: border-box;
 
+            .IconButton {
+                &:hover {
+                    transform: rotate(90deg);
+                }
+            }
         }
 
-        .Modal__contet {
-
+        .Modal__content {
+            padding: 16px 32px;
         }
 
         .Modal__footer {
-            
+            display: flex;
+            align-items: center;
+            flex-direction: row-reverse;
+            place-content: flex-start;
+            width: 100%;
+            box-sizing: border-box;
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            padding: 0 16px 16px;
+            gap: 12px;
         }
     }
 }

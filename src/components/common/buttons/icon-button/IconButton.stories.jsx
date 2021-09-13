@@ -12,7 +12,7 @@ const ICONS = {
 
 export default {
   component: IconButton,
-  title: 'Components/IconButton',
+  title: 'Buttons/IconButton',
   argTypes: {
     icon: {
       options: Object.keys(ICONS),

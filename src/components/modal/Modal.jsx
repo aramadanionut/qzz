@@ -3,12 +3,27 @@ import { createPortal } from 'react-dom';
 
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
+import IconButton from 'components/common/buttons/icon-button/IconButton';
+import Button from 'components/common/buttons/button/Button';
+
 import './Modal.scss';
+import { COLORS, DIRECTIONS, SIZES } from 'utils/constants';
+import SimpleButton from 'components/common/buttons/simple-button/SimpleButton';
 
 const Modal = (props) => {
-    const { isShowing, hide, children } = props;
+    const {
+        isShowing,
+        hide,
+        children,
+        onConfirm,
+        confirmText,
+        onCancel,
+        cancelText
+    } = props;
 
-    if (!isShowing) return null
+    const hasFooter = (onConfirm || onCancel);
+
+    if (!isShowing) return null;
 
     return (
         createPortal(
@@ -18,18 +33,34 @@ const Modal = (props) => {
                     <div className="Modal">
                         <div className="Modal__header">
                             <div className="Modal__header__close">
-
+                                <IconButton
+                                    size={ 16 }
+                                    icon={ faTimes }
+                                    onClick={ hide }
+                                />
                             </div>
-                            <button type="button" className="modal-close-button" data-dismiss="modal" aria-label="Close" onClick={hide}>
-                                <span aria-hidden="true">&times;</span>
-                            </button>
                         </div>
                         <div className="Modal__content">
                             { children }
                         </div>
-                        <div className="Modal__footer">
-                            Footer
-                        </div>
+                        {hasFooter && (
+                            <div className="Modal__footer">
+                                {onConfirm && (
+                                    <SimpleButton
+                                        onClick={ onConfirm }>
+                                        { confirmText || 'Ok' }
+                                    </SimpleButton>
+                                )}
+                                {onCancel && (
+                                    <SimpleButton
+                                        direction={ DIRECTIONS.LEFT }
+                                        color={ COLORS.SECONDARY}
+                                        onClick={ onCancel }>
+                                        { cancelText || 'Cancel' }
+                                    </SimpleButton>
+                                )}
+                            </div>
+                        )}
                     </div>
                 </div>
             </React.Fragment>, document.body

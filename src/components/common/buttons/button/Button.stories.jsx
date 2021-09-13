@@ -6,7 +6,7 @@ import Button from './Button';
 
 export default {
   component: Button,
-  title: 'Components/Button',
+  title: 'Buttons/Button',
   argTypes: {
     size: {
       options: [ SIZES.SMALL, SIZES.MEDIUM, SIZES.LARGE ],
