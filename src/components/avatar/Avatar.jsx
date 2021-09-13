@@ -2,11 +2,14 @@ import React from "react";
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import './Avatar.scss';
-
+import useWindowSize from "hooks/useWindowSize";
 import { AVATARS, AVATAR_IMAGES, POSITIONS } from "utils/constants";
 
+import './Avatar.scss';
+
 export default function Avatar(props) {
+    const windowSize = useWindowSize();
+
     const {
         image,
         imagePosition,
@@ -19,12 +22,15 @@ export default function Avatar(props) {
 
     const avatarClasses = classNames({
         Avatar: true,
+        'Avatar--mobile': !!windowSize.isMobile,
         'Avatar--can-change': !!canChange,
         [ `Avatar--image-${imagePosition.toLowerCase()}` ]: !!imagePosition
     });
 
     return (
-        <div className={avatarClasses}>
+        <button
+            className={avatarClasses}
+            onClick={ onChangeUser }>
             <div className="Avatar__image">
                 <img src={avatarImage} alt="User" />
             </div>
@@ -34,15 +40,13 @@ export default function Avatar(props) {
                         { name }
                     </div>
                     {canChange && (
-                        <button
-                            className="Avatar__username__change-button"
-                            onClick={ onChangeUser }>
+                        <div className="Avatar__username__change-button">
                             Change
-                        </button>
+                        </div>
                     )}
                 </div>
             }
-        </div>
+        </button>
     );
 }
 

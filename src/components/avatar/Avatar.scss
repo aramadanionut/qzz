@@ -6,6 +6,10 @@
     display: inline-flex;
     align-items: center;
     gap: 16px;
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
 
     .Avatar__image {
         width: 32px;
@@ -45,21 +49,22 @@
             opacity: 0;
             font-weight: 600;
             font-size: 12px;
-            cursor: pointer;
         }
 
     }
 
-    &:hover {
+    &:not(.Avatar--mobile) {
         &.Avatar--can-change {
-            .Avatar__username {
-                .Avatar__username__name {
-                    transform: translateY(-9px);
-                }
-        
-                .Avatar__username__change-button {
-                    transform: translateY(9px);
-                    opacity: 1;
+            &:hover {
+                .Avatar__username {
+                    .Avatar__username__name {
+                        transform: translateY(-9px);
+                    }
+            
+                    .Avatar__username__change-button {
+                        transform: translateY(9px);
+                        opacity: 1;
+                    }
                 }
             }
         }
