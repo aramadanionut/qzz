@@ -4,34 +4,45 @@ import PropTypes from 'prop-types';
 import './Score.scss';
 
 const FULL_CIRCLE_DASHARRAY = 283;
+const ANIMATION_STEP = 50;
 
 export default function Score(props) {
-    const { score, scorePerQuestion, correct, total } = props;
+    const { scorePerQuestion, correct, total } = props;
 
     const [ correctCount, setCorrectCount ] = useState(0);
     const [ scoreCount, setScoreCount ] = useState(0);
     const [ scoreStrokeDash, setScoreStrokeDash ] = useState(0);
 
-    const scoreStrokeAnimationDuration = (correct + 1) * 100;
+    const scoreStrokeAnimationDuration = (correct + 1) * ANIMATION_STEP;
 
     useEffect(() => {
         const timeoutID = setTimeout(() => {
             setScoreStrokeDash(correct / total * FULL_CIRCLE_DASHARRAY);
-        }, 100);
+        }, ANIMATION_STEP);
 
         return () => clearTimeout(timeoutID);
-    }, [ correct, score, total ]);
+    }, [
+        correct,
+        total
+    ]);
 
     useEffect(() => {
         if (correctCount === correct) return;
     
         const timeoutID = setTimeout(() => {
-            setScoreCount(scoreCount > score ? scoreCount - scorePerQuestion : scoreCount + scorePerQuestion);
-            setCorrectCount(correctCount > correct ? correctCount - 1 : correctCount + 1);
-        }, 100);
+            const updatedCorrectCount = correctCount > correct ? correctCount - 1 : correctCount + 1;
+
+            setCorrectCount(updatedCorrectCount);
+            setScoreCount(scorePerQuestion * updatedCorrectCount);
+        }, ANIMATION_STEP);
     
         return () => clearTimeout(timeoutID);
-    }, [ correct, score, correctCount ]);
+    }, [
+        correct,
+        correctCount,
+        scoreCount,
+        scorePerQuestion,
+    ]);
 
     return (
         <div className="Score">
@@ -81,9 +92,11 @@ export default function Score(props) {
 Score.propTypes = {
     correct: PropTypes.number,
     total: PropTypes.number,
+    scorePerQuestion: PropTypes.number
 };
 
 Score.defaultProps = {
     correct: 10,
-    total: 20
+    total: 20,
+    scorePerQuestion: 10
 };

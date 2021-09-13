@@ -15,11 +15,18 @@ export default function Footer(props) {
             <div className="Footer__copyright">{`Copyright ${copyrightYears}`}</div>
             <div className="Footer__separator">/</div>
             <div className="Footer__built-by">
-                Built by <a target="_blank" href="https://github.com/aramadanionut" className="Footer__author">danarama</a> 
+                Built by <a
+                    target="_blank"
+                    rel="noreferrer"
+                    href="https://github.com/aramadanionut"
+                    className="Footer__author">
+                    danarama
+                </a> 
             </div>
             <div className="Footer__separator">/</div>
             <a
                 target="_blank"
+                rel="noreferrer"
                 href="https://github.com/aramadanionut/qzz"
                 className="Footer__repo">
                 <FontAwesomeIcon icon={ faGithubSquare }/>

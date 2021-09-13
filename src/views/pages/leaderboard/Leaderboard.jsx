@@ -7,7 +7,7 @@ import { STORE_KEYS } from "utils/store-keys";
 import './Leaderboard.scss';
 
 export default function Leaderboard(props) {
-    const [ leaderboardEntries, setLeaderboardEntries ] = useStore(STORE_KEYS.LEADERBOARD);
+    const [ leaderboardEntries ] = useStore(STORE_KEYS.LEADERBOARD);
 
     return (
         <div className="Leaderboard">

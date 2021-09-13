@@ -58,7 +58,7 @@ export default function QuizResults(props) {
         }, 1000);
 
         return () => clearTimeout(timeoutID);
-    }, [])
+    });
 
     return (
         <div className="QuizResults">

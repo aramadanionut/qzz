@@ -2,7 +2,7 @@ import React, { forwardRef, useState } from "react";
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import useFocus from 'hooks/useFocus';
+// import useFocus from 'hooks/useFocus';
 import { POSITIONS } from "utils/constants";
 
 import './TextField.scss';

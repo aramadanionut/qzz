@@ -6,10 +6,6 @@ import { padStringLeft } from 'utils/helpers';
 
 import './Timer.scss';
 
-function str_pad_left(string,pad,length) {
-    return (new Array(length+1).join(pad)+string).slice(-length);
-}
-
 export default function Timer(props) {
     const { minutes, seconds, onFinished } = props;
     
@@ -30,7 +26,10 @@ export default function Timer(props) {
         }, 1000);
     
         return () => clearTimeout(timeoutID);
-    }, [timeLeft]);
+    }, [
+        timeLeft,
+        onFinished
+    ]);
 
     const remainingMinutes = Math.floor(timeLeft / 60);
     const remainingSeconds = timeLeft - remainingMinutes * 60;

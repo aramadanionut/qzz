@@ -14,7 +14,7 @@ export const Primary = (args) => (
 
 Primary.args = {
     score: 100,
-    questionValue: 10,
+    scorePerQuestion: 10,
     correct: 10,
     total: 20
 };

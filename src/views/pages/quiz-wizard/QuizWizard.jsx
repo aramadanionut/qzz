@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { Link, useHistory, useLocation } from "react-router-dom";
 import { useForm } from "react-hook-form";
 
@@ -32,7 +32,7 @@ export default function QuizWizard(props) {
     }
 
     // Form hook
-    const { register, watch, handleSubmit, formState } = useForm({ mode: 'onChange' });
+    const { register, watch, handleSubmit } = useForm({ mode: 'onChange' });
     const formValues = watch();
 
     // Fetch hook
@@ -46,9 +46,26 @@ export default function QuizWizard(props) {
     const steps = getQuizSteps(questions, formValues);
 
     // Track current question index
+    const [ selectedQuestion, setSelectedQuestion ] = useState(null);
     const [ questionIndex, setQuestionIndex ] = useState(0);
+
     const isFirstQuestion = questionIndex === 0;
     const isLastQuestion = questionIndex === steps.length - 1;
+
+    const goToQuestion = useCallback(
+        (index) => {
+            setSelectedQuestion(questions[index]);
+            setQuestionIndex(index);
+        },
+        [ questions ]
+    );
+
+    // Navigate to first question on data load
+    useEffect(() => {
+        if (isDataFetched) {
+            goToQuestion(0);
+        }
+    }, [ isDataFetched, goToQuestion ]);
 
     // Classes
     const formActionClasses = classNames({
@@ -129,26 +146,20 @@ export default function QuizWizard(props) {
                         className="QuizWizard__form"
                         onSubmit={ handleSubmit(onSubmit(false)) }>
 
-                        {questions && questions.length && (
+                        {questions && questions.length && selectedQuestion && (
                             <div className="QuizWizard__form__questions">
-                                {questions.map(({ id, type, question, answers }, index) => {
-                                    if (questionIndex === index) {
-                                        return (
-                                            <div
-                                                key={ id }
-                                                className="QuizWizard__form__question">
-                                                <Question
-                                                    id={ id }
-                                                    type={ type }
-                                                    question={ question }
-                                                    answer={ formValues[id] }
-                                                    answers={ answers }
-                                                    { ...register(id) }>
-                                                </Question>
-                                            </div>
-                                        )
-                                    }
-                                })}
+                                <div
+                                    key={ selectedQuestion.id }
+                                    className="QuizWizard__form__question">
+                                    <Question
+                                        id={ selectedQuestion.id }
+                                        type={ selectedQuestion.type }
+                                        question={ selectedQuestion.question }
+                                        answer={ formValues[selectedQuestion.id] }
+                                        answers={ selectedQuestion.answers }
+                                        { ...register(selectedQuestion.id) }>
+                                    </Question>
+                                </div>
                             </div>
                         )}
 
@@ -157,7 +168,7 @@ export default function QuizWizard(props) {
                                 <Button
                                     size={ SIZES.SMALL }
                                     direction={ DIRECTIONS.LEFT }
-                                    onClick={() => setQuestionIndex(questionIndex - 1)}>
+                                    onClick={() => goToQuestion(questionIndex - 1)}>
                                     Previous
                                 </Button>
                             )}
@@ -165,7 +176,7 @@ export default function QuizWizard(props) {
                             {!isLastQuestion && (
                                 <Button
                                     size={ SIZES.SMALL }
-                                    onClick={() => setQuestionIndex(questionIndex + 1)}>
+                                    onClick={() => goToQuestion(questionIndex + 1)}>
                                     Next
                                 </Button>
                             )}
@@ -186,7 +197,7 @@ export default function QuizWizard(props) {
                             <ProgressBar
                                 activeStepIndex={ questionIndex }
                                 steps={ steps }
-                                onChange={ setQuestionIndex }>
+                                onChange={ goToQuestion }>
                             </ProgressBar>
                         </div>
 

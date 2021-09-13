@@ -85,7 +85,10 @@ export default function useFetch(url, useCache) {
         return function cleanup() {
             cancelRequest = true;
         };
-    }, [ url ]);
+    }, [
+        url,
+        useCache
+    ]);
 
     return state;
 };
