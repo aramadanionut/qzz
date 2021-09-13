@@ -22,4 +22,14 @@
     .Home__button {
         margin-top: 60px;
     }
+
+    &.Home--mobile {
+        .Home__heading {
+            font-size: 3rem;
+        }
+
+        .Home__text {
+            font-size: 1rem;
+        }
+    }
 }
