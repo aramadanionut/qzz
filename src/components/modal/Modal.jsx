@@ -4,10 +4,9 @@ import { createPortal } from 'react-dom';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 import IconButton from 'components/common/buttons/icon-button/IconButton';
-import Button from 'components/common/buttons/button/Button';
 
 import './Modal.scss';
-import { COLORS, DIRECTIONS, SIZES } from 'utils/constants';
+import { COLORS, DIRECTIONS } from 'utils/constants';
 import SimpleButton from 'components/common/buttons/simple-button/SimpleButton';
 
 const Modal = (props) => {
