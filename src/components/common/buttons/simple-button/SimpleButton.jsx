@@ -22,9 +22,11 @@ const SimpleButton = (props) => {
         <button
             className={ simpleButtonClasses }
             onClick={ onClick }>
-            <div className="SimpleButton__overlay"></div>
-            <div className="SimpleButton__text">
-                { children }
+            <div className="SimpleButton__wrapper">
+                <div className="SimpleButton__overlay"></div>
+                <div className="SimpleButton__text">
+                    { children }
+                </div>
             </div>
         </button>
     )

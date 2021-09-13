@@ -3,74 +3,86 @@
 
 .SimpleButton {
     position: relative;
-    padding: 6px 12px;
+    padding: 0;
     outline: none;
-    font-family: 'Poppins', sans-serif;
     background: none;
-    
+    border: none;
     border-radius: 6px;
+    font-family: 'Poppins', sans-serif;
     overflow: hidden;
     cursor: pointer;
-    
-    .SimpleButton__text {
-        position: relative;
-        z-index: 2;
-        font-size: 12px;
-        font-weight: 600;
-        color: $light-cyan;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        transition: all .2s $easeInOutQuint;
-        -webkit-backface-visibility: hidden;
-        -moz-backface-visibility: hidden;
-        -ms-backface-visibility: hidden;
-    }
 
-    .SimpleButton__overlay {
-        position: absolute;
-        width: 110%;
-        height: 100%;
-        left: 0;
-        top: 0;
-        opacity: 0;
-        transform: scaleX(0);
-        transform-origin: 0% 50%;
-        transition: all .2s $easeInOutQuint;
-        background: $light-cyan;
-    }
-
-    &.SimpleButton--primary {
-        border: 2px solid $deep-cyan;
-
-        .SimpleButton__text {
-            color: $deep-cyan;
-        }
+    .SimpleButton__wrapper {
+        padding: 6px 12px;
+        border-radius: 6px;
 
         .SimpleButton__overlay {
-            background: $deep-cyan;
+            position: absolute;
+            width: 110%;
+            height: 100%;
+            left: 0;
+            top: 0;
+            opacity: 0;
+            transform: scaleX(0);
+            transform-origin: 0% 50%;
+            transition: all .2s $easeInOutQuint;
+            background: $light-cyan;
+        }
+
+        .SimpleButton__text {
+            position: relative;
+            z-index: 2;
+            font-size: 12px;
+            font-weight: 600;
+            color: $light-cyan;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all .2s $easeInOutQuint;
+            -webkit-backface-visibility: hidden;
+            -moz-backface-visibility: hidden;
+            -ms-backface-visibility: hidden;
+        }
+    }
+    
+
+    &.SimpleButton--primary {
+        .SimpleButton__wrapper {
+            border: 2px solid $deep-cyan;
+
+            .SimpleButton__text {
+                color: $deep-cyan;
+            }
+    
+            .SimpleButton__overlay {
+                background: $deep-cyan;
+            }
         }
     }
 
     &.SimpleButton--secondary {
-        border: 2px solid $mid-orange;
-
-        .SimpleButton__text {
-            color: $mid-orange;
-        }
-
-        .SimpleButton__overlay {
-            background: $mid-orange;
+        .SimpleButton__wrapper {
+            border: 2px solid $mid-orange;
+    
+            .SimpleButton__text {
+                color: $mid-orange;
+            }
+    
+            .SimpleButton__overlay {
+                background: $mid-orange;
+            }
         }
     }
 
     &:hover {
-        .SimpleButton__text {
-            color: white;
-        }
-
-        .SimpleButton__overlay {
-            opacity: 1;
-            transform: scaleX(1);
+        .SimpleButton__wrapper {
+            .SimpleButton__text {
+                color: white;
+            }
+    
+            .SimpleButton__overlay {
+                opacity: 1;
+                transform: scaleX(1);
+            }
         }
     }
 }
