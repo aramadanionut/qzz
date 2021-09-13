@@ -31,6 +31,8 @@ function useStore(key, initialValue) {
         const fn = dispatcher.on('data', (data) => {
             let value = data[key];
 
+            if (!value) return;
+
             if (Array.isArray(value)) {
                 setData(value);
 

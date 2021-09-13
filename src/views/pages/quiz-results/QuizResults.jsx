@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { Link, useHistory, useLocation } from "react-router-dom";
 
 import Spinner from "components/spinner/Spinner";
@@ -26,6 +26,7 @@ export default function QuizResults(props) {
     const [ user ] = useStore(STORE_KEYS.USER);
     const [ leaderboard, setLeaderboard ] = useStore(STORE_KEYS.LEADERBOARD, []);
     const [ isCalculating, setIsCalculating ] = useState(true);
+
     const [ result, setResult ] = useState({
         score: 0,
         scorePerQuestion: 0,
@@ -33,32 +34,35 @@ export default function QuizResults(props) {
         total: 0
     });
 
-    useEffect(() => {
-        const timeoutID = setTimeout(() => {
-            const result = scoreQuiz({
-                questions,
-                answers,
-                params: quizParams
+    const saveScore = () => {
+        const quizResult = scoreQuiz({
+            questions,
+            answers,
+            params: quizParams
+        });
+
+        setResult(quizResult);
+
+        if (quizResult.score > 0) {
+            leaderboard.push({
+                user,
+                difficulty: quizParams.difficulty,
+                score: quizResult.score,
             });
 
-            setResult(result);
+            // TODO: add update to useStore
+            setLeaderboard(leaderboard);
+        }
+    };
 
-            if (result.score > 0) {
-                leaderboard.push({
-                    user,
-                    difficulty: quizParams.difficulty,
-                    score: result.score,
-                });
-    
-                // TODO: add update to useStore
-                setLeaderboard(leaderboard);
-            }
-
+    useEffect(() => {
+        const timeoutID = setTimeout(() => {
+            saveScore();
             setIsCalculating(false);
         }, 1000);
 
         return () => clearTimeout(timeoutID);
-    });
+    }, []);
 
     return (
         <div className="QuizResults">
