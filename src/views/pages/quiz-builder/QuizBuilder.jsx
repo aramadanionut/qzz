@@ -26,7 +26,8 @@ export default function QuizBuilder(props) {
     const categoryOptions = buildCategoryOptions(categories);
 
     const formValues = watch();
-    const formIsValid = Object.values(formValues).every(x => !!x);
+    console.log(formValues);
+    const formIsValid = Object.keys(formValues).length && Object.values(formValues).every(x => !!x);
 
     const onSubmit = (data) => {
         const { label } = categoryOptions.find((option) => option.value === data[QUIZ_BUILDER_FORM.CATEGORY]);
